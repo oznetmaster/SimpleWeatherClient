@@ -1,0 +1,76 @@
+<Page
+    x:Class="SimpleWeather.Widget.WidgetSettingsDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="using:SimpleWeather.Widget"
+    mc:Ignorable="d">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollMode="Disabled"
+                  VerticalScrollMode="Auto">
+        <Grid Background="{ThemeResource SolidBackgroundFillColorBase}">
+            <Border CornerRadius="12"
+                    Padding="24"
+                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
+                <StackPanel Spacing="12">
+                    <TextBlock Text="Configure how the widget behaves"
+                               FontSize="18"
+                               FontWeight="SemiBold" />
+                    <StackPanel Spacing="12" Width="360">
+                        <TextBox x:Name="CityTextBox"
+                                 Header="City"
+                                 PlaceholderText="City"
+                                 Text="{x:Bind City, Mode=TwoWay}" />
+                        <TextBox x:Name="StateTextBox"
+                                 Header="State/Province (optional)"
+                                 Text="{x:Bind State, Mode=TwoWay}" />
+                        <TextBox x:Name="CountryTextBox"
+                                 Header="Country (optional)"
+                                 Text="{x:Bind Country, Mode=TwoWay}" />
+                        <TextBox x:Name="ApiKeyTextBox"
+                                 Header="OpenWeather API key"
+                                 PlaceholderText="Paste your API key"
+                                 Text="{x:Bind ApiKey, Mode=TwoWay}" />
+                        <ComboBox x:Name="UnitsComboBox"
+                                  Header="Units"
+                                  SelectedItem="{x:Bind Units, Mode=TwoWay}">
+                            <x:String>metric</x:String>
+                            <x:String>imperial</x:String>
+                            <x:String>standard</x:String>
+                        </ComboBox>
+                        <Slider x:Name="RefreshSlider"
+                                Minimum="5"
+                                Maximum="120"
+                                StepFrequency="5"
+                                Value="{x:Bind RefreshMinutes, Mode=TwoWay}">
+                            <Slider.Header>
+                                <StackPanel Orientation="Horizontal" Spacing="4">
+                                    <TextBlock Text="Refresh every" />
+                                    <TextBlock Text="{x:Bind FormatMinutes(RefreshSlider.Value), Mode=OneWay}"
+                                               FontWeight="SemiBold" />
+                                    <TextBlock Text="minutes" />
+                                </StackPanel>
+                            </Slider.Header>
+                        </Slider>
+                        <TextBlock Text="API keys are stored locally in %AppData%/SimpleWeather."
+                                   FontSize="12"
+                                   Foreground="Gray" />
+                        <TextBlock Text="Changes are applied immediately after saving."
+                                   FontSize="12"
+                                   Foreground="Gray" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Right"
+                                Spacing="8">
+                        <Button Content="Cancel"
+                                Click="CancelButton_OnClick" />
+                        <Button Content="Save"
+                                Click="SaveButton_OnClick" />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </ScrollViewer>
+</Page>

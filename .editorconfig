@@ -1,0 +1,28 @@
+root = true
+
+[*.{cs,vb}]
+# Keep analyzers available but let VS settings drive code style
+ dotnet_analyzer_diagnostic.category-Style.severity = suggestion
+ dotnet_analyzer_diagnostic.category-Simplification.severity = suggestion
+
+# Prefer file-scoped namespaces (keep this if you want that suggestion)
+ csharp_style_namespace_declarations = file_scoped:suggestion
+ dotnet_diagnostic.IDE0161.severity = suggestion
+
+# Avoid noisy Fix formatting warnings
+ dotnet_diagnostic.IDE0055.severity = none
+
+# IDE0072: Add missing cases to switch expression
+ dotnet_diagnostic.IDE0072.severity = none
+
+# IDE0010: Populate switch
+ dotnet_diagnostic.IDE0010.severity = none
+
+# CsWin32 analyzer diagnostics for NativeMethods.txt
+ dotnet_diagnostic.PInvoke003.severity = none
+ dotnet_diagnostic.PInvoke004.severity = none
+
+[*.txt]
+# CsWin32 input file (NativeMethods.txt) is a .txt, so suppressions must apply here.
+ dotnet_diagnostic.PInvoke003.severity = none
+ dotnet_diagnostic.PInvoke004.severity = none

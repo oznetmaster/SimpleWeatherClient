@@ -1,0 +1,567 @@
+### YamlMime:ManagedReference
+items:
+- uid: SimpleWeather.Alerts
+  commentId: T:SimpleWeather.Alerts
+  id: Alerts
+  parent: SimpleWeather
+  children:
+  - SimpleWeather.Alerts.#ctor(Newtonsoft.Json.Linq.JToken)
+  - SimpleWeather.Alerts.Description
+  - SimpleWeather.Alerts.End
+  - SimpleWeather.Alerts.Event
+  - SimpleWeather.Alerts.SenderName
+  - SimpleWeather.Alerts.Start
+  - SimpleWeather.Alerts.Tags
+  langs:
+  - csharp
+  - vb
+  name: Alerts
+  nameWithType: Alerts
+  fullName: SimpleWeather.Alerts
+  type: Class
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Represents a single weather alert returned by the One Call API.
+  example: []
+  syntax:
+    content: public class Alerts
+    content.vb: Public Class Alerts
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+- uid: SimpleWeather.Alerts.#ctor(Newtonsoft.Json.Linq.JToken)
+  commentId: M:SimpleWeather.Alerts.#ctor(Newtonsoft.Json.Linq.JToken)
+  id: '#ctor(Newtonsoft.Json.Linq.JToken)'
+  parent: SimpleWeather.Alerts
+  langs:
+  - csharp
+  - vb
+  name: Alerts(JToken?)
+  nameWithType: Alerts.Alerts(JToken?)
+  fullName: SimpleWeather.Alerts.Alerts(Newtonsoft.Json.Linq.JToken?)
+  type: Constructor
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Initializes a new instance of the <xref href="SimpleWeather.Alerts" data-throw-if-not-resolved="false"></xref> class from JSON data.
+  example: []
+  syntax:
+    content: public Alerts(JToken? data)
+    parameters:
+    - id: data
+      type: Newtonsoft.Json.Linq.JToken
+      description: The JSON token that contains the alert information.
+    content.vb: Public Sub New(data As JToken)
+  overload: SimpleWeather.Alerts.#ctor*
+  nameWithType.vb: Alerts.New(JToken)
+  fullName.vb: SimpleWeather.Alerts.New(Newtonsoft.Json.Linq.JToken)
+  name.vb: New(JToken)
+- uid: SimpleWeather.Alerts.SenderName
+  commentId: P:SimpleWeather.Alerts.SenderName
+  id: SenderName
+  parent: SimpleWeather.Alerts
+  langs:
+  - csharp
+  - vb
+  name: SenderName
+  nameWithType: Alerts.SenderName
+  fullName: SimpleWeather.Alerts.SenderName
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Gets the source agency issuing the alert.
+  example: []
+  syntax:
+    content: public string? SenderName { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property SenderName As String
+  overload: SimpleWeather.Alerts.SenderName*
+- uid: SimpleWeather.Alerts.Event
+  commentId: P:SimpleWeather.Alerts.Event
+  id: Event
+  parent: SimpleWeather.Alerts
+  langs:
+  - csharp
+  - vb
+  name: Event
+  nameWithType: Alerts.Event
+  fullName: SimpleWeather.Alerts.Event
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Gets the alert event name.
+  example: []
+  syntax:
+    content: public string? Event { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property [Event] As String
+  overload: SimpleWeather.Alerts.Event*
+- uid: SimpleWeather.Alerts.Start
+  commentId: P:SimpleWeather.Alerts.Start
+  id: Start
+  parent: SimpleWeather.Alerts
+  langs:
+  - csharp
+  - vb
+  name: Start
+  nameWithType: Alerts.Start
+  fullName: SimpleWeather.Alerts.Start
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Gets the local start time of the alert window.
+  example: []
+  syntax:
+    content: public DateTime Start { get; }
+    parameters: []
+    return:
+      type: System.DateTime
+    content.vb: Public ReadOnly Property Start As Date
+  overload: SimpleWeather.Alerts.Start*
+- uid: SimpleWeather.Alerts.End
+  commentId: P:SimpleWeather.Alerts.End
+  id: End
+  parent: SimpleWeather.Alerts
+  langs:
+  - csharp
+  - vb
+  name: End
+  nameWithType: Alerts.End
+  fullName: SimpleWeather.Alerts.End
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Gets the local end time of the alert window.
+  example: []
+  syntax:
+    content: public DateTime End { get; }
+    parameters: []
+    return:
+      type: System.DateTime
+    content.vb: Public ReadOnly Property [End] As Date
+  overload: SimpleWeather.Alerts.End*
+- uid: SimpleWeather.Alerts.Description
+  commentId: P:SimpleWeather.Alerts.Description
+  id: Description
+  parent: SimpleWeather.Alerts
+  langs:
+  - csharp
+  - vb
+  name: Description
+  nameWithType: Alerts.Description
+  fullName: SimpleWeather.Alerts.Description
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Gets the textual description of the alert.
+  example: []
+  syntax:
+    content: public string? Description { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Description As String
+  overload: SimpleWeather.Alerts.Description*
+- uid: SimpleWeather.Alerts.Tags
+  commentId: P:SimpleWeather.Alerts.Tags
+  id: Tags
+  parent: SimpleWeather.Alerts
+  langs:
+  - csharp
+  - vb
+  name: Tags
+  nameWithType: Alerts.Tags
+  fullName: SimpleWeather.Alerts.Tags
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Gets the raw tags supplied by the API.
+  example: []
+  syntax:
+    content: public string? Tags { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Tags As String
+  overload: SimpleWeather.Alerts.Tags*
+references:
+- uid: SimpleWeather
+  commentId: N:SimpleWeather
+  isExternal: true
+  href: SimpleWeather.html
+  name: SimpleWeather
+  nameWithType: SimpleWeather
+  fullName: SimpleWeather
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SimpleWeather.Alerts
+  commentId: T:SimpleWeather.Alerts
+  isExternal: true
+  href: SimpleWeather.Alerts.html
+  name: Alerts
+  nameWithType: Alerts
+  fullName: SimpleWeather.Alerts
+- uid: SimpleWeather.Alerts.#ctor*
+  commentId: Overload:SimpleWeather.Alerts.#ctor
+  isExternal: true
+  href: SimpleWeather.Alerts.html#SimpleWeather_Alerts__ctor_Newtonsoft_Json_Linq_JToken_
+  name: Alerts
+  nameWithType: Alerts.Alerts
+  fullName: SimpleWeather.Alerts.Alerts
+  nameWithType.vb: Alerts.New
+  fullName.vb: SimpleWeather.Alerts.New
+  name.vb: New
+- uid: Newtonsoft.Json.Linq.JToken
+  commentId: T:Newtonsoft.Json.Linq.JToken
+  parent: Newtonsoft.Json.Linq
+  isExternal: true
+  name: JToken
+  nameWithType: JToken
+  fullName: Newtonsoft.Json.Linq.JToken
+- uid: Newtonsoft.Json.Linq
+  commentId: N:Newtonsoft.Json.Linq
+  isExternal: true
+  name: Newtonsoft.Json.Linq
+  nameWithType: Newtonsoft.Json.Linq
+  fullName: Newtonsoft.Json.Linq
+  spec.csharp:
+  - uid: Newtonsoft
+    name: Newtonsoft
+    isExternal: true
+  - name: .
+  - uid: Newtonsoft.Json
+    name: Json
+    isExternal: true
+  - name: .
+  - uid: Newtonsoft.Json.Linq
+    name: Linq
+    isExternal: true
+  spec.vb:
+  - uid: Newtonsoft
+    name: Newtonsoft
+    isExternal: true
+  - name: .
+  - uid: Newtonsoft.Json
+    name: Json
+    isExternal: true
+  - name: .
+  - uid: Newtonsoft.Json.Linq
+    name: Linq
+    isExternal: true
+- uid: SimpleWeather.Alerts.SenderName*
+  commentId: Overload:SimpleWeather.Alerts.SenderName
+  isExternal: true
+  href: SimpleWeather.Alerts.html#SimpleWeather_Alerts_SenderName
+  name: SenderName
+  nameWithType: Alerts.SenderName
+  fullName: SimpleWeather.Alerts.SenderName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: SimpleWeather.Alerts.Event*
+  commentId: Overload:SimpleWeather.Alerts.Event
+  isExternal: true
+  href: SimpleWeather.Alerts.html#SimpleWeather_Alerts_Event
+  name: Event
+  nameWithType: Alerts.Event
+  fullName: SimpleWeather.Alerts.Event
+- uid: SimpleWeather.Alerts.Start*
+  commentId: Overload:SimpleWeather.Alerts.Start
+  isExternal: true
+  href: SimpleWeather.Alerts.html#SimpleWeather_Alerts_Start
+  name: Start
+  nameWithType: Alerts.Start
+  fullName: SimpleWeather.Alerts.Start
+- uid: System.DateTime
+  commentId: T:System.DateTime
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetime
+  name: DateTime
+  nameWithType: DateTime
+  fullName: System.DateTime
+  nameWithType.vb: Date
+  fullName.vb: Date
+  name.vb: Date
+- uid: SimpleWeather.Alerts.End*
+  commentId: Overload:SimpleWeather.Alerts.End
+  isExternal: true
+  href: SimpleWeather.Alerts.html#SimpleWeather_Alerts_End
+  name: End
+  nameWithType: Alerts.End
+  fullName: SimpleWeather.Alerts.End
+- uid: SimpleWeather.Alerts.Description*
+  commentId: Overload:SimpleWeather.Alerts.Description
+  isExternal: true
+  href: SimpleWeather.Alerts.html#SimpleWeather_Alerts_Description
+  name: Description
+  nameWithType: Alerts.Description
+  fullName: SimpleWeather.Alerts.Description
+- uid: SimpleWeather.Alerts.Tags*
+  commentId: Overload:SimpleWeather.Alerts.Tags
+  isExternal: true
+  href: SimpleWeather.Alerts.html#SimpleWeather_Alerts_Tags
+  name: Tags
+  nameWithType: Alerts.Tags
+  fullName: SimpleWeather.Alerts.Tags

@@ -1,0 +1,257 @@
+{
+  "source_base_path": "C:/Projects/SimpleWeather/docfx",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SimpleWeather.Alerts.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleWeather.Alerts.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SimpleWeather.Clouds.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleWeather.Clouds.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SimpleWeather.Coordinates.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleWeather.Coordinates.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SimpleWeather.Current.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleWeather.Current.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SimpleWeather.CurrentWeather.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleWeather.CurrentWeather.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SimpleWeather.Daily.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleWeather.Daily.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SimpleWeather.FeelsLike.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleWeather.FeelsLike.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SimpleWeather.GeoLocator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleWeather.GeoLocator.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SimpleWeather.GeoUtils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleWeather.GeoUtils.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SimpleWeather.Hourly.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleWeather.Hourly.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SimpleWeather.LatLong.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleWeather.LatLong.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SimpleWeather.Main.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleWeather.Main.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SimpleWeather.Rain.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleWeather.Rain.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SimpleWeather.Snow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleWeather.Snow.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SimpleWeather.Sys.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleWeather.Sys.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SimpleWeather.Temperature.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleWeather.Temperature.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SimpleWeather.Weather.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleWeather.Weather.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SimpleWeather.WeatherController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleWeather.WeatherController.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SimpleWeather.WeatherForecast.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleWeather.WeatherForecast.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SimpleWeather.Wind.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleWeather.Wind.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SimpleWeather.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleWeather.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/overview.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

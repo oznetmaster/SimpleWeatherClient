@@ -1,0 +1,953 @@
+### YamlMime:ManagedReference
+items:
+- uid: SimpleWeather.WeatherController
+  commentId: T:SimpleWeather.WeatherController
+  id: WeatherController
+  parent: SimpleWeather
+  children:
+  - SimpleWeather.WeatherController.#ctor(System.String)
+  - SimpleWeather.WeatherController.Dispose
+  - SimpleWeather.WeatherController.GetCurrentWeatherAsync(SimpleWeather.LatLong,System.String,System.Threading.CancellationToken)
+  - SimpleWeather.WeatherController.GetCurrentWeatherAsync(System.Double,System.Double,System.String,System.Threading.CancellationToken)
+  - SimpleWeather.WeatherController.GetCurrentWeatherAsync(System.String,System.String,System.String,System.String,System.Threading.CancellationToken)
+  - SimpleWeather.WeatherController.GetCurrentWeatherByPostCodeAsync(System.String,System.String,System.String,System.Threading.CancellationToken)
+  - SimpleWeather.WeatherController.GetWeatherForecastAsync(SimpleWeather.LatLong,System.String,System.Threading.CancellationToken)
+  - SimpleWeather.WeatherController.GetWeatherForecastAsync(System.Double,System.Double,System.String,System.Threading.CancellationToken)
+  - SimpleWeather.WeatherController.GetWeatherForecastAsync(System.String,System.String,System.String,System.String,System.Threading.CancellationToken)
+  - SimpleWeather.WeatherController.GetWeatherForecastByPostCodeAsync(System.String,System.String,System.String,System.Threading.CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: WeatherController
+  nameWithType: WeatherController
+  fullName: SimpleWeather.WeatherController
+  type: Class
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Provides high level weather APIs backed by the OpenWeather One Call endpoints.
+  example: []
+  syntax:
+    content: 'public class WeatherController : IDisposable'
+    content.vb: Public Class WeatherController Implements IDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+- uid: SimpleWeather.WeatherController.#ctor(System.String)
+  commentId: M:SimpleWeather.WeatherController.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: SimpleWeather.WeatherController
+  langs:
+  - csharp
+  - vb
+  name: WeatherController(string?)
+  nameWithType: WeatherController.WeatherController(string?)
+  fullName: SimpleWeather.WeatherController.WeatherController(string?)
+  type: Constructor
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Initializes a new instance of the <xref href="SimpleWeather.WeatherController" data-throw-if-not-resolved="false"></xref> class.
+  example: []
+  syntax:
+    content: public WeatherController(string? apiKey = null)
+    parameters:
+    - id: apiKey
+      type: System.String
+      description: Optional OpenWeather API key used for authenticated requests.
+    content.vb: Public Sub New(apiKey As String = Nothing)
+  overload: SimpleWeather.WeatherController.#ctor*
+  nameWithType.vb: WeatherController.New(String)
+  fullName.vb: SimpleWeather.WeatherController.New(String)
+  name.vb: New(String)
+- uid: SimpleWeather.WeatherController.GetCurrentWeatherAsync(System.String,System.String,System.String,System.String,System.Threading.CancellationToken)
+  commentId: M:SimpleWeather.WeatherController.GetCurrentWeatherAsync(System.String,System.String,System.String,System.String,System.Threading.CancellationToken)
+  id: GetCurrentWeatherAsync(System.String,System.String,System.String,System.String,System.Threading.CancellationToken)
+  parent: SimpleWeather.WeatherController
+  langs:
+  - csharp
+  - vb
+  name: GetCurrentWeatherAsync(string, string?, string?, string, CancellationToken)
+  nameWithType: WeatherController.GetCurrentWeatherAsync(string, string?, string?, string, CancellationToken)
+  fullName: SimpleWeather.WeatherController.GetCurrentWeatherAsync(string, string?, string?, string, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Returns an object that contains all the relevant data for the current weather in a given city.
+  example: []
+  syntax:
+    content: public Task<CurrentWeather> GetCurrentWeatherAsync(string cityName, string? stateCode = null, string? countryCode = null, string units = "metric", CancellationToken cancellationToken = default)
+    parameters:
+    - id: cityName
+      type: System.String
+      description: The name of the city
+    - id: stateCode
+      type: System.String
+      description: The state code (optional, for US cities)
+    - id: countryCode
+      type: System.String
+      description: The country code (optional, e.g. "US", "GB")
+    - id: units
+      type: System.String
+      description: Units of measurement. Standard, metric, and imperial units are available. Default is "metric"
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: Token used to cancel the HTTP request.
+    return:
+      type: System.Threading.Tasks.Task{SimpleWeather.CurrentWeather}
+      description: A <xref href="SimpleWeather.CurrentWeather" data-throw-if-not-resolved="false"></xref> object for the specified city
+    content.vb: Public Function GetCurrentWeatherAsync(cityName As String, stateCode As String = Nothing, countryCode As String = Nothing, units As String = "metric", cancellationToken As CancellationToken = Nothing) As Task(Of CurrentWeather)
+  overload: SimpleWeather.WeatherController.GetCurrentWeatherAsync*
+  nameWithType.vb: WeatherController.GetCurrentWeatherAsync(String, String, String, String, CancellationToken)
+  fullName.vb: SimpleWeather.WeatherController.GetCurrentWeatherAsync(String, String, String, String, System.Threading.CancellationToken)
+  name.vb: GetCurrentWeatherAsync(String, String, String, String, CancellationToken)
+- uid: SimpleWeather.WeatherController.GetCurrentWeatherAsync(System.Double,System.Double,System.String,System.Threading.CancellationToken)
+  commentId: M:SimpleWeather.WeatherController.GetCurrentWeatherAsync(System.Double,System.Double,System.String,System.Threading.CancellationToken)
+  id: GetCurrentWeatherAsync(System.Double,System.Double,System.String,System.Threading.CancellationToken)
+  parent: SimpleWeather.WeatherController
+  langs:
+  - csharp
+  - vb
+  name: GetCurrentWeatherAsync(double, double, string, CancellationToken)
+  nameWithType: WeatherController.GetCurrentWeatherAsync(double, double, string, CancellationToken)
+  fullName: SimpleWeather.WeatherController.GetCurrentWeatherAsync(double, double, string, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Returns an object that contains all the relevant data for the current weather at the specified latitude and longitude.
+  example: []
+  syntax:
+    content: public Task<CurrentWeather> GetCurrentWeatherAsync(double lat, double lon, string units = "metric", CancellationToken cancellationToken = default)
+    parameters:
+    - id: lat
+      type: System.Double
+      description: Latitude of the location
+    - id: lon
+      type: System.Double
+      description: Longitude of the location
+    - id: units
+      type: System.String
+      description: Units of measurement. Standard, metric, and imperial units are available. Default is "metric"
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: Token used to cancel the HTTP request.
+    return:
+      type: System.Threading.Tasks.Task{SimpleWeather.CurrentWeather}
+      description: A <xref href="SimpleWeather.CurrentWeather" data-throw-if-not-resolved="false"></xref> object for the specified coordinates
+    content.vb: Public Function GetCurrentWeatherAsync(lat As Double, lon As Double, units As String = "metric", cancellationToken As CancellationToken = Nothing) As Task(Of CurrentWeather)
+  overload: SimpleWeather.WeatherController.GetCurrentWeatherAsync*
+  nameWithType.vb: WeatherController.GetCurrentWeatherAsync(Double, Double, String, CancellationToken)
+  fullName.vb: SimpleWeather.WeatherController.GetCurrentWeatherAsync(Double, Double, String, System.Threading.CancellationToken)
+  name.vb: GetCurrentWeatherAsync(Double, Double, String, CancellationToken)
+- uid: SimpleWeather.WeatherController.GetCurrentWeatherAsync(SimpleWeather.LatLong,System.String,System.Threading.CancellationToken)
+  commentId: M:SimpleWeather.WeatherController.GetCurrentWeatherAsync(SimpleWeather.LatLong,System.String,System.Threading.CancellationToken)
+  id: GetCurrentWeatherAsync(SimpleWeather.LatLong,System.String,System.Threading.CancellationToken)
+  parent: SimpleWeather.WeatherController
+  langs:
+  - csharp
+  - vb
+  name: GetCurrentWeatherAsync(LatLong, string, CancellationToken)
+  nameWithType: WeatherController.GetCurrentWeatherAsync(LatLong, string, CancellationToken)
+  fullName: SimpleWeather.WeatherController.GetCurrentWeatherAsync(SimpleWeather.LatLong, string, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Asynchronously gets the current weather for the specified coordinates.
+  example: []
+  syntax:
+    content: public Task<CurrentWeather> GetCurrentWeatherAsync(LatLong coordinates, string units = "metric", CancellationToken cancellationToken = default)
+    parameters:
+    - id: coordinates
+      type: SimpleWeather.LatLong
+      description: The coordinates of the location
+    - id: units
+      type: System.String
+      description: Units of measurement. Standard, metric, and imperial units are available. Default is "metric"
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: Token used to cancel the HTTP request.
+    return:
+      type: System.Threading.Tasks.Task{SimpleWeather.CurrentWeather}
+      description: A task representing the asynchronous operation whose result is a <xref href="SimpleWeather.CurrentWeather" data-throw-if-not-resolved="false"></xref> for the specified coordinates.
+    content.vb: Public Function GetCurrentWeatherAsync(coordinates As LatLong, units As String = "metric", cancellationToken As CancellationToken = Nothing) As Task(Of CurrentWeather)
+  overload: SimpleWeather.WeatherController.GetCurrentWeatherAsync*
+  nameWithType.vb: WeatherController.GetCurrentWeatherAsync(LatLong, String, CancellationToken)
+  fullName.vb: SimpleWeather.WeatherController.GetCurrentWeatherAsync(SimpleWeather.LatLong, String, System.Threading.CancellationToken)
+  name.vb: GetCurrentWeatherAsync(LatLong, String, CancellationToken)
+- uid: SimpleWeather.WeatherController.GetWeatherForecastAsync(System.String,System.String,System.String,System.String,System.Threading.CancellationToken)
+  commentId: M:SimpleWeather.WeatherController.GetWeatherForecastAsync(System.String,System.String,System.String,System.String,System.Threading.CancellationToken)
+  id: GetWeatherForecastAsync(System.String,System.String,System.String,System.String,System.Threading.CancellationToken)
+  parent: SimpleWeather.WeatherController
+  langs:
+  - csharp
+  - vb
+  name: GetWeatherForecastAsync(string, string?, string?, string, CancellationToken)
+  nameWithType: WeatherController.GetWeatherForecastAsync(string, string?, string?, string, CancellationToken)
+  fullName: SimpleWeather.WeatherController.GetWeatherForecastAsync(string, string?, string?, string, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Returns an object that contains all the relevant weather forecast data for a given city.
+  example: []
+  syntax:
+    content: public Task<WeatherForecast> GetWeatherForecastAsync(string cityName, string? stateCode = null, string? countryCode = null, string units = "metric", CancellationToken cancellationToken = default)
+    parameters:
+    - id: cityName
+      type: System.String
+      description: The name of the city
+    - id: stateCode
+      type: System.String
+      description: The state code (optional, for US cities)
+    - id: countryCode
+      type: System.String
+      description: The country code (optional, e.g. "US", "GB")
+    - id: units
+      type: System.String
+      description: Units of measurement. Standard, metric, and imperial units are available. Default is "metric"
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: Token used to cancel the HTTP request.
+    return:
+      type: System.Threading.Tasks.Task{SimpleWeather.WeatherForecast}
+      description: A <xref href="SimpleWeather.WeatherForecast" data-throw-if-not-resolved="false"></xref> object for the specified city
+    content.vb: Public Function GetWeatherForecastAsync(cityName As String, stateCode As String = Nothing, countryCode As String = Nothing, units As String = "metric", cancellationToken As CancellationToken = Nothing) As Task(Of WeatherForecast)
+  overload: SimpleWeather.WeatherController.GetWeatherForecastAsync*
+  nameWithType.vb: WeatherController.GetWeatherForecastAsync(String, String, String, String, CancellationToken)
+  fullName.vb: SimpleWeather.WeatherController.GetWeatherForecastAsync(String, String, String, String, System.Threading.CancellationToken)
+  name.vb: GetWeatherForecastAsync(String, String, String, String, CancellationToken)
+- uid: SimpleWeather.WeatherController.GetWeatherForecastAsync(System.Double,System.Double,System.String,System.Threading.CancellationToken)
+  commentId: M:SimpleWeather.WeatherController.GetWeatherForecastAsync(System.Double,System.Double,System.String,System.Threading.CancellationToken)
+  id: GetWeatherForecastAsync(System.Double,System.Double,System.String,System.Threading.CancellationToken)
+  parent: SimpleWeather.WeatherController
+  langs:
+  - csharp
+  - vb
+  name: GetWeatherForecastAsync(double, double, string, CancellationToken)
+  nameWithType: WeatherController.GetWeatherForecastAsync(double, double, string, CancellationToken)
+  fullName: SimpleWeather.WeatherController.GetWeatherForecastAsync(double, double, string, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Returns an object that contains all the relevant weather forecast data for a given latitude and longitude.
+  example: []
+  syntax:
+    content: public Task<WeatherForecast> GetWeatherForecastAsync(double lat, double lon, string units = "metric", CancellationToken cancellationToken = default)
+    parameters:
+    - id: lat
+      type: System.Double
+      description: Latitude of the location
+    - id: lon
+      type: System.Double
+      description: Longitude of the location
+    - id: units
+      type: System.String
+      description: Units of measurement. Standard, metric, and imperial units are available. Default is "metric"
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: Token used to cancel the HTTP request.
+    return:
+      type: System.Threading.Tasks.Task{SimpleWeather.WeatherForecast}
+      description: A <xref href="SimpleWeather.WeatherForecast" data-throw-if-not-resolved="false"></xref> object for the specified coordinates
+    content.vb: Public Function GetWeatherForecastAsync(lat As Double, lon As Double, units As String = "metric", cancellationToken As CancellationToken = Nothing) As Task(Of WeatherForecast)
+  overload: SimpleWeather.WeatherController.GetWeatherForecastAsync*
+  nameWithType.vb: WeatherController.GetWeatherForecastAsync(Double, Double, String, CancellationToken)
+  fullName.vb: SimpleWeather.WeatherController.GetWeatherForecastAsync(Double, Double, String, System.Threading.CancellationToken)
+  name.vb: GetWeatherForecastAsync(Double, Double, String, CancellationToken)
+- uid: SimpleWeather.WeatherController.GetWeatherForecastAsync(SimpleWeather.LatLong,System.String,System.Threading.CancellationToken)
+  commentId: M:SimpleWeather.WeatherController.GetWeatherForecastAsync(SimpleWeather.LatLong,System.String,System.Threading.CancellationToken)
+  id: GetWeatherForecastAsync(SimpleWeather.LatLong,System.String,System.Threading.CancellationToken)
+  parent: SimpleWeather.WeatherController
+  langs:
+  - csharp
+  - vb
+  name: GetWeatherForecastAsync(LatLong, string, CancellationToken)
+  nameWithType: WeatherController.GetWeatherForecastAsync(LatLong, string, CancellationToken)
+  fullName: SimpleWeather.WeatherController.GetWeatherForecastAsync(SimpleWeather.LatLong, string, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Asynchronously gets the weather forecast for the specified coordinates.
+  example: []
+  syntax:
+    content: public Task<WeatherForecast> GetWeatherForecastAsync(LatLong coordinates, string units = "metric", CancellationToken cancellationToken = default)
+    parameters:
+    - id: coordinates
+      type: SimpleWeather.LatLong
+      description: The coordinates of the location
+    - id: units
+      type: System.String
+      description: Units of measurement. Standard, metric, and imperial units are available. Default is "metric"
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: Token used to cancel the HTTP request.
+    return:
+      type: System.Threading.Tasks.Task{SimpleWeather.WeatherForecast}
+      description: A task representing the asynchronous operation whose result is a <xref href="SimpleWeather.WeatherForecast" data-throw-if-not-resolved="false"></xref> for the specified coordinates.
+    content.vb: Public Function GetWeatherForecastAsync(coordinates As LatLong, units As String = "metric", cancellationToken As CancellationToken = Nothing) As Task(Of WeatherForecast)
+  overload: SimpleWeather.WeatherController.GetWeatherForecastAsync*
+  nameWithType.vb: WeatherController.GetWeatherForecastAsync(LatLong, String, CancellationToken)
+  fullName.vb: SimpleWeather.WeatherController.GetWeatherForecastAsync(SimpleWeather.LatLong, String, System.Threading.CancellationToken)
+  name.vb: GetWeatherForecastAsync(LatLong, String, CancellationToken)
+- uid: SimpleWeather.WeatherController.GetCurrentWeatherByPostCodeAsync(System.String,System.String,System.String,System.Threading.CancellationToken)
+  commentId: M:SimpleWeather.WeatherController.GetCurrentWeatherByPostCodeAsync(System.String,System.String,System.String,System.Threading.CancellationToken)
+  id: GetCurrentWeatherByPostCodeAsync(System.String,System.String,System.String,System.Threading.CancellationToken)
+  parent: SimpleWeather.WeatherController
+  langs:
+  - csharp
+  - vb
+  name: GetCurrentWeatherByPostCodeAsync(string, string, string, CancellationToken)
+  nameWithType: WeatherController.GetCurrentWeatherByPostCodeAsync(string, string, string, CancellationToken)
+  fullName: SimpleWeather.WeatherController.GetCurrentWeatherByPostCodeAsync(string, string, string, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Returns an object that contains all the relevant data for the current weather at the specified postal/zip code and country code.
+  example: []
+  syntax:
+    content: public Task<CurrentWeather> GetCurrentWeatherByPostCodeAsync(string postCode, string countryCode, string units = "metric", CancellationToken cancellationToken = default)
+    parameters:
+    - id: postCode
+      type: System.String
+      description: The postal or zip code
+    - id: countryCode
+      type: System.String
+      description: The country code (e.g. "US", "GB")
+    - id: units
+      type: System.String
+      description: Units of measurement. Standard, metric, and imperial units are available. Default is "metric"
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: Token used to cancel the HTTP request.
+    return:
+      type: System.Threading.Tasks.Task{SimpleWeather.CurrentWeather}
+      description: A <xref href="SimpleWeather.CurrentWeather" data-throw-if-not-resolved="false"></xref> object for the specified postal/zip code
+    content.vb: Public Function GetCurrentWeatherByPostCodeAsync(postCode As String, countryCode As String, units As String = "metric", cancellationToken As CancellationToken = Nothing) As Task(Of CurrentWeather)
+  overload: SimpleWeather.WeatherController.GetCurrentWeatherByPostCodeAsync*
+  nameWithType.vb: WeatherController.GetCurrentWeatherByPostCodeAsync(String, String, String, CancellationToken)
+  fullName.vb: SimpleWeather.WeatherController.GetCurrentWeatherByPostCodeAsync(String, String, String, System.Threading.CancellationToken)
+  name.vb: GetCurrentWeatherByPostCodeAsync(String, String, String, CancellationToken)
+- uid: SimpleWeather.WeatherController.GetWeatherForecastByPostCodeAsync(System.String,System.String,System.String,System.Threading.CancellationToken)
+  commentId: M:SimpleWeather.WeatherController.GetWeatherForecastByPostCodeAsync(System.String,System.String,System.String,System.Threading.CancellationToken)
+  id: GetWeatherForecastByPostCodeAsync(System.String,System.String,System.String,System.Threading.CancellationToken)
+  parent: SimpleWeather.WeatherController
+  langs:
+  - csharp
+  - vb
+  name: GetWeatherForecastByPostCodeAsync(string, string, string, CancellationToken)
+  nameWithType: WeatherController.GetWeatherForecastByPostCodeAsync(string, string, string, CancellationToken)
+  fullName: SimpleWeather.WeatherController.GetWeatherForecastByPostCodeAsync(string, string, string, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Returns an object that contains all the relevant weather forecast data for the specified postal/zip code and country code.
+  example: []
+  syntax:
+    content: public Task<WeatherForecast> GetWeatherForecastByPostCodeAsync(string postCode, string countryCode, string units = "metric", CancellationToken cancellationToken = default)
+    parameters:
+    - id: postCode
+      type: System.String
+      description: The postal or zip code
+    - id: countryCode
+      type: System.String
+      description: The country code (e.g. "US", "GB")
+    - id: units
+      type: System.String
+      description: Units of measurement. Standard, metric, and imperial units are available. Default is "metric"
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: Token used to cancel the HTTP request.
+    return:
+      type: System.Threading.Tasks.Task{SimpleWeather.WeatherForecast}
+      description: A <xref href="SimpleWeather.WeatherForecast" data-throw-if-not-resolved="false"></xref> object for the specified postal/zip code
+    content.vb: Public Function GetWeatherForecastByPostCodeAsync(postCode As String, countryCode As String, units As String = "metric", cancellationToken As CancellationToken = Nothing) As Task(Of WeatherForecast)
+  overload: SimpleWeather.WeatherController.GetWeatherForecastByPostCodeAsync*
+  nameWithType.vb: WeatherController.GetWeatherForecastByPostCodeAsync(String, String, String, CancellationToken)
+  fullName.vb: SimpleWeather.WeatherController.GetWeatherForecastByPostCodeAsync(String, String, String, System.Threading.CancellationToken)
+  name.vb: GetWeatherForecastByPostCodeAsync(String, String, String, CancellationToken)
+- uid: SimpleWeather.WeatherController.Dispose
+  commentId: M:SimpleWeather.WeatherController.Dispose
+  id: Dispose
+  parent: SimpleWeather.WeatherController
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: WeatherController.Dispose()
+  fullName: SimpleWeather.WeatherController.Dispose()
+  type: Method
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Disposes the underlying <xref href="System.Net.Http.HttpClient" data-throw-if-not-resolved="false"></xref> instance and suppresses finalization.
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: SimpleWeather.WeatherController.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+references:
+- uid: SimpleWeather
+  commentId: N:SimpleWeather
+  isExternal: true
+  href: SimpleWeather.html
+  name: SimpleWeather
+  nameWithType: SimpleWeather
+  fullName: SimpleWeather
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SimpleWeather.WeatherController
+  commentId: T:SimpleWeather.WeatherController
+  isExternal: true
+  href: SimpleWeather.WeatherController.html
+  name: WeatherController
+  nameWithType: WeatherController
+  fullName: SimpleWeather.WeatherController
+- uid: SimpleWeather.WeatherController.#ctor*
+  commentId: Overload:SimpleWeather.WeatherController.#ctor
+  isExternal: true
+  href: SimpleWeather.WeatherController.html#SimpleWeather_WeatherController__ctor_System_String_
+  name: WeatherController
+  nameWithType: WeatherController.WeatherController
+  fullName: SimpleWeather.WeatherController.WeatherController
+  nameWithType.vb: WeatherController.New
+  fullName.vb: SimpleWeather.WeatherController.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: SimpleWeather.CurrentWeather
+  commentId: T:SimpleWeather.CurrentWeather
+  isExternal: true
+  href: SimpleWeather.CurrentWeather.html
+  name: CurrentWeather
+  nameWithType: CurrentWeather
+  fullName: SimpleWeather.CurrentWeather
+- uid: SimpleWeather.WeatherController.GetCurrentWeatherAsync*
+  commentId: Overload:SimpleWeather.WeatherController.GetCurrentWeatherAsync
+  isExternal: true
+  href: SimpleWeather.WeatherController.html#SimpleWeather_WeatherController_GetCurrentWeatherAsync_System_String_System_String_System_String_System_String_System_Threading_CancellationToken_
+  name: GetCurrentWeatherAsync
+  nameWithType: WeatherController.GetCurrentWeatherAsync
+  fullName: SimpleWeather.WeatherController.GetCurrentWeatherAsync
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task{SimpleWeather.CurrentWeather}
+  commentId: T:System.Threading.Tasks.Task{SimpleWeather.CurrentWeather}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<CurrentWeather>
+  nameWithType: Task<CurrentWeather>
+  fullName: System.Threading.Tasks.Task<SimpleWeather.CurrentWeather>
+  nameWithType.vb: Task(Of CurrentWeather)
+  fullName.vb: System.Threading.Tasks.Task(Of SimpleWeather.CurrentWeather)
+  name.vb: Task(Of CurrentWeather)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: SimpleWeather.CurrentWeather
+    name: CurrentWeather
+    isExternal: true
+    href: SimpleWeather.CurrentWeather.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: SimpleWeather.CurrentWeather
+    name: CurrentWeather
+    isExternal: true
+    href: SimpleWeather.CurrentWeather.html
+  - name: )
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: SimpleWeather.LatLong
+  commentId: T:SimpleWeather.LatLong
+  parent: SimpleWeather
+  isExternal: true
+  href: SimpleWeather.LatLong.html
+  name: LatLong
+  nameWithType: LatLong
+  fullName: SimpleWeather.LatLong
+- uid: SimpleWeather.WeatherForecast
+  commentId: T:SimpleWeather.WeatherForecast
+  isExternal: true
+  href: SimpleWeather.WeatherForecast.html
+  name: WeatherForecast
+  nameWithType: WeatherForecast
+  fullName: SimpleWeather.WeatherForecast
+- uid: SimpleWeather.WeatherController.GetWeatherForecastAsync*
+  commentId: Overload:SimpleWeather.WeatherController.GetWeatherForecastAsync
+  isExternal: true
+  href: SimpleWeather.WeatherController.html#SimpleWeather_WeatherController_GetWeatherForecastAsync_System_String_System_String_System_String_System_String_System_Threading_CancellationToken_
+  name: GetWeatherForecastAsync
+  nameWithType: WeatherController.GetWeatherForecastAsync
+  fullName: SimpleWeather.WeatherController.GetWeatherForecastAsync
+- uid: System.Threading.Tasks.Task{SimpleWeather.WeatherForecast}
+  commentId: T:System.Threading.Tasks.Task{SimpleWeather.WeatherForecast}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<WeatherForecast>
+  nameWithType: Task<WeatherForecast>
+  fullName: System.Threading.Tasks.Task<SimpleWeather.WeatherForecast>
+  nameWithType.vb: Task(Of WeatherForecast)
+  fullName.vb: System.Threading.Tasks.Task(Of SimpleWeather.WeatherForecast)
+  name.vb: Task(Of WeatherForecast)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: SimpleWeather.WeatherForecast
+    name: WeatherForecast
+    isExternal: true
+    href: SimpleWeather.WeatherForecast.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: SimpleWeather.WeatherForecast
+    name: WeatherForecast
+    isExternal: true
+    href: SimpleWeather.WeatherForecast.html
+  - name: )
+- uid: SimpleWeather.WeatherController.GetCurrentWeatherByPostCodeAsync*
+  commentId: Overload:SimpleWeather.WeatherController.GetCurrentWeatherByPostCodeAsync
+  isExternal: true
+  href: SimpleWeather.WeatherController.html#SimpleWeather_WeatherController_GetCurrentWeatherByPostCodeAsync_System_String_System_String_System_String_System_Threading_CancellationToken_
+  name: GetCurrentWeatherByPostCodeAsync
+  nameWithType: WeatherController.GetCurrentWeatherByPostCodeAsync
+  fullName: SimpleWeather.WeatherController.GetCurrentWeatherByPostCodeAsync
+- uid: SimpleWeather.WeatherController.GetWeatherForecastByPostCodeAsync*
+  commentId: Overload:SimpleWeather.WeatherController.GetWeatherForecastByPostCodeAsync
+  isExternal: true
+  href: SimpleWeather.WeatherController.html#SimpleWeather_WeatherController_GetWeatherForecastByPostCodeAsync_System_String_System_String_System_String_System_Threading_CancellationToken_
+  name: GetWeatherForecastByPostCodeAsync
+  nameWithType: WeatherController.GetWeatherForecastByPostCodeAsync
+  fullName: SimpleWeather.WeatherController.GetWeatherForecastByPostCodeAsync
+- uid: System.Net.Http.HttpClient
+  commentId: T:System.Net.Http.HttpClient
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.net.http.httpclient
+  name: HttpClient
+  nameWithType: HttpClient
+  fullName: System.Net.Http.HttpClient
+- uid: SimpleWeather.WeatherController.Dispose*
+  commentId: Overload:SimpleWeather.WeatherController.Dispose
+  isExternal: true
+  href: SimpleWeather.WeatherController.html#SimpleWeather_WeatherController_Dispose
+  name: Dispose
+  nameWithType: WeatherController.Dispose
+  fullName: SimpleWeather.WeatherController.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )

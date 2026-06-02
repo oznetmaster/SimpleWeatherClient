@@ -1,0 +1,406 @@
+### YamlMime:ManagedReference
+items:
+- uid: SimpleWeather.LatLong
+  commentId: T:SimpleWeather.LatLong
+  id: LatLong
+  parent: SimpleWeather
+  children:
+  - SimpleWeather.LatLong.#ctor(System.Double,System.Double)
+  - SimpleWeather.LatLong.Latitude
+  - SimpleWeather.LatLong.Longitude
+  - SimpleWeather.LatLong.ToString
+  langs:
+  - csharp
+  - vb
+  name: LatLong
+  nameWithType: LatLong
+  fullName: SimpleWeather.LatLong
+  type: Struct
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Represents a coordinate pair expressed in decimal degrees.
+  example: []
+  syntax:
+    content: public readonly struct LatLong
+    content.vb: Public Structure LatLong
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetType
+- uid: SimpleWeather.LatLong.#ctor(System.Double,System.Double)
+  commentId: M:SimpleWeather.LatLong.#ctor(System.Double,System.Double)
+  id: '#ctor(System.Double,System.Double)'
+  parent: SimpleWeather.LatLong
+  langs:
+  - csharp
+  - vb
+  name: LatLong(double, double)
+  nameWithType: LatLong.LatLong(double, double)
+  fullName: SimpleWeather.LatLong.LatLong(double, double)
+  type: Constructor
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Represents a coordinate pair expressed in decimal degrees.
+  example: []
+  syntax:
+    content: public LatLong(double latitude, double longitude)
+    parameters:
+    - id: latitude
+      type: System.Double
+    - id: longitude
+      type: System.Double
+    content.vb: Public Sub New(latitude As Double, longitude As Double)
+  overload: SimpleWeather.LatLong.#ctor*
+  nameWithType.vb: LatLong.New(Double, Double)
+  fullName.vb: SimpleWeather.LatLong.New(Double, Double)
+  name.vb: New(Double, Double)
+- uid: SimpleWeather.LatLong.ToString
+  commentId: M:SimpleWeather.LatLong.ToString
+  id: ToString
+  parent: SimpleWeather.LatLong
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: LatLong.ToString()
+  fullName: SimpleWeather.LatLong.ToString()
+  type: Method
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.ValueType.ToString
+  overload: SimpleWeather.LatLong.ToString*
+- uid: SimpleWeather.LatLong.Latitude
+  commentId: P:SimpleWeather.LatLong.Latitude
+  id: Latitude
+  parent: SimpleWeather.LatLong
+  langs:
+  - csharp
+  - vb
+  name: Latitude
+  nameWithType: LatLong.Latitude
+  fullName: SimpleWeather.LatLong.Latitude
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Gets the latitude component in decimal degrees.
+  example: []
+  syntax:
+    content: public double Latitude { get; init; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property Latitude As Double
+  overload: SimpleWeather.LatLong.Latitude*
+- uid: SimpleWeather.LatLong.Longitude
+  commentId: P:SimpleWeather.LatLong.Longitude
+  id: Longitude
+  parent: SimpleWeather.LatLong
+  langs:
+  - csharp
+  - vb
+  name: Longitude
+  nameWithType: LatLong.Longitude
+  fullName: SimpleWeather.LatLong.Longitude
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Gets the longitude component in decimal degrees.
+  example: []
+  syntax:
+    content: public double Longitude { get; init; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property Longitude As Double
+  overload: SimpleWeather.LatLong.Longitude*
+references:
+- uid: SimpleWeather
+  commentId: N:SimpleWeather
+  isExternal: true
+  href: SimpleWeather.html
+  name: SimpleWeather
+  nameWithType: SimpleWeather
+  fullName: SimpleWeather
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SimpleWeather.LatLong.#ctor*
+  commentId: Overload:SimpleWeather.LatLong.#ctor
+  isExternal: true
+  href: SimpleWeather.LatLong.html#SimpleWeather_LatLong__ctor_System_Double_System_Double_
+  name: LatLong
+  nameWithType: LatLong.LatLong
+  fullName: SimpleWeather.LatLong.LatLong
+  nameWithType.vb: LatLong.New
+  fullName.vb: SimpleWeather.LatLong.New
+  name.vb: New
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: SimpleWeather.LatLong.ToString*
+  commentId: Overload:SimpleWeather.LatLong.ToString
+  isExternal: true
+  href: SimpleWeather.LatLong.html#SimpleWeather_LatLong_ToString
+  name: ToString
+  nameWithType: LatLong.ToString
+  fullName: SimpleWeather.LatLong.ToString
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: SimpleWeather.LatLong.Latitude*
+  commentId: Overload:SimpleWeather.LatLong.Latitude
+  isExternal: true
+  href: SimpleWeather.LatLong.html#SimpleWeather_LatLong_Latitude
+  name: Latitude
+  nameWithType: LatLong.Latitude
+  fullName: SimpleWeather.LatLong.Latitude
+- uid: SimpleWeather.LatLong.Longitude*
+  commentId: Overload:SimpleWeather.LatLong.Longitude
+  isExternal: true
+  href: SimpleWeather.LatLong.html#SimpleWeather_LatLong_Longitude
+  name: Longitude
+  nameWithType: LatLong.Longitude
+  fullName: SimpleWeather.LatLong.Longitude

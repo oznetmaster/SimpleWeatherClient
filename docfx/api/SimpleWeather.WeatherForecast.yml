@@ -1,0 +1,821 @@
+### YamlMime:ManagedReference
+items:
+- uid: SimpleWeather.WeatherForecast
+  commentId: T:SimpleWeather.WeatherForecast
+  id: WeatherForecast
+  parent: SimpleWeather
+  children:
+  - SimpleWeather.WeatherForecast.#ctor(System.String)
+  - SimpleWeather.WeatherForecast.Alerts
+  - SimpleWeather.WeatherForecast.Current
+  - SimpleWeather.WeatherForecast.Daily
+  - SimpleWeather.WeatherForecast.Hourly
+  - SimpleWeather.WeatherForecast.Latitude
+  - SimpleWeather.WeatherForecast.Longitude
+  - SimpleWeather.WeatherForecast.Timezone
+  - SimpleWeather.WeatherForecast.TimezoneOffset
+  langs:
+  - csharp
+  - vb
+  name: WeatherForecast
+  nameWithType: WeatherForecast
+  fullName: SimpleWeather.WeatherForecast
+  type: Class
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: An object that provides weather forecast data
+  example: []
+  syntax:
+    content: public class WeatherForecast
+    content.vb: Public Class WeatherForecast
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+- uid: SimpleWeather.WeatherForecast.#ctor(System.String)
+  commentId: M:SimpleWeather.WeatherForecast.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: SimpleWeather.WeatherForecast
+  langs:
+  - csharp
+  - vb
+  name: WeatherForecast(string)
+  nameWithType: WeatherForecast.WeatherForecast(string)
+  fullName: SimpleWeather.WeatherForecast.WeatherForecast(string)
+  type: Constructor
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Initializes a new instance of the <xref href="SimpleWeather.WeatherForecast" data-throw-if-not-resolved="false"></xref> class from a JSON response.
+  example: []
+  syntax:
+    content: public WeatherForecast(string jsonResponse)
+    parameters:
+    - id: jsonResponse
+      type: System.String
+      description: The raw JSON returned by the One Call API.
+    content.vb: Public Sub New(jsonResponse As String)
+  overload: SimpleWeather.WeatherForecast.#ctor*
+  nameWithType.vb: WeatherForecast.New(String)
+  fullName.vb: SimpleWeather.WeatherForecast.New(String)
+  name.vb: New(String)
+- uid: SimpleWeather.WeatherForecast.Latitude
+  commentId: P:SimpleWeather.WeatherForecast.Latitude
+  id: Latitude
+  parent: SimpleWeather.WeatherForecast
+  langs:
+  - csharp
+  - vb
+  name: Latitude
+  nameWithType: WeatherForecast.Latitude
+  fullName: SimpleWeather.WeatherForecast.Latitude
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Geographical coordinates of the location (latitude)
+  example: []
+  syntax:
+    content: public double? Latitude { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Double}
+    content.vb: Public ReadOnly Property Latitude As Double?
+  overload: SimpleWeather.WeatherForecast.Latitude*
+- uid: SimpleWeather.WeatherForecast.Longitude
+  commentId: P:SimpleWeather.WeatherForecast.Longitude
+  id: Longitude
+  parent: SimpleWeather.WeatherForecast
+  langs:
+  - csharp
+  - vb
+  name: Longitude
+  nameWithType: WeatherForecast.Longitude
+  fullName: SimpleWeather.WeatherForecast.Longitude
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Geographical coordinates of the location (longitude)
+  example: []
+  syntax:
+    content: public double? Longitude { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Double}
+    content.vb: Public ReadOnly Property Longitude As Double?
+  overload: SimpleWeather.WeatherForecast.Longitude*
+- uid: SimpleWeather.WeatherForecast.Timezone
+  commentId: P:SimpleWeather.WeatherForecast.Timezone
+  id: Timezone
+  parent: SimpleWeather.WeatherForecast
+  langs:
+  - csharp
+  - vb
+  name: Timezone
+  nameWithType: WeatherForecast.Timezone
+  fullName: SimpleWeather.WeatherForecast.Timezone
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Timezone name for the requested location
+  example: []
+  syntax:
+    content: public string? Timezone { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Timezone As String
+  overload: SimpleWeather.WeatherForecast.Timezone*
+- uid: SimpleWeather.WeatherForecast.TimezoneOffset
+  commentId: P:SimpleWeather.WeatherForecast.TimezoneOffset
+  id: TimezoneOffset
+  parent: SimpleWeather.WeatherForecast
+  langs:
+  - csharp
+  - vb
+  name: TimezoneOffset
+  nameWithType: WeatherForecast.TimezoneOffset
+  fullName: SimpleWeather.WeatherForecast.TimezoneOffset
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Shift in hours from UTC
+  example: []
+  syntax:
+    content: public int TimezoneOffset { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property TimezoneOffset As Integer
+  overload: SimpleWeather.WeatherForecast.TimezoneOffset*
+- uid: SimpleWeather.WeatherForecast.Current
+  commentId: P:SimpleWeather.WeatherForecast.Current
+  id: Current
+  parent: SimpleWeather.WeatherForecast
+  langs:
+  - csharp
+  - vb
+  name: Current
+  nameWithType: WeatherForecast.Current
+  fullName: SimpleWeather.WeatherForecast.Current
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Current weather data as an object
+  example: []
+  syntax:
+    content: public Current? Current { get; }
+    parameters: []
+    return:
+      type: SimpleWeather.Current
+    content.vb: Public ReadOnly Property Current As Current
+  overload: SimpleWeather.WeatherForecast.Current*
+- uid: SimpleWeather.WeatherForecast.Hourly
+  commentId: P:SimpleWeather.WeatherForecast.Hourly
+  id: Hourly
+  parent: SimpleWeather.WeatherForecast
+  langs:
+  - csharp
+  - vb
+  name: Hourly
+  nameWithType: WeatherForecast.Hourly
+  fullName: SimpleWeather.WeatherForecast.Hourly
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Hourly forecast weather data as a list of objects containing the data for each hour
+  example: []
+  syntax:
+    content: public List<Hourly> Hourly { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{SimpleWeather.Hourly}
+    content.vb: Public ReadOnly Property Hourly As List(Of Hourly)
+  overload: SimpleWeather.WeatherForecast.Hourly*
+- uid: SimpleWeather.WeatherForecast.Daily
+  commentId: P:SimpleWeather.WeatherForecast.Daily
+  id: Daily
+  parent: SimpleWeather.WeatherForecast
+  langs:
+  - csharp
+  - vb
+  name: Daily
+  nameWithType: WeatherForecast.Daily
+  fullName: SimpleWeather.WeatherForecast.Daily
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Daily forecast weather data as a list of objects containing the data for each day
+  example: []
+  syntax:
+    content: public List<Daily> Daily { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{SimpleWeather.Daily}
+    content.vb: Public ReadOnly Property Daily As List(Of Daily)
+  overload: SimpleWeather.WeatherForecast.Daily*
+- uid: SimpleWeather.WeatherForecast.Alerts
+  commentId: P:SimpleWeather.WeatherForecast.Alerts
+  id: Alerts
+  parent: SimpleWeather.WeatherForecast
+  langs:
+  - csharp
+  - vb
+  name: Alerts
+  nameWithType: WeatherForecast.Alerts
+  fullName: SimpleWeather.WeatherForecast.Alerts
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: A list of objects containing National weather alerts data from major national weather warning systems
+  example: []
+  syntax:
+    content: public List<Alerts> Alerts { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{SimpleWeather.Alerts}
+    content.vb: Public ReadOnly Property Alerts As List(Of Alerts)
+  overload: SimpleWeather.WeatherForecast.Alerts*
+references:
+- uid: SimpleWeather
+  commentId: N:SimpleWeather
+  isExternal: true
+  href: SimpleWeather.html
+  name: SimpleWeather
+  nameWithType: SimpleWeather
+  fullName: SimpleWeather
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SimpleWeather.WeatherForecast
+  commentId: T:SimpleWeather.WeatherForecast
+  isExternal: true
+  href: SimpleWeather.WeatherForecast.html
+  name: WeatherForecast
+  nameWithType: WeatherForecast
+  fullName: SimpleWeather.WeatherForecast
+- uid: SimpleWeather.WeatherForecast.#ctor*
+  commentId: Overload:SimpleWeather.WeatherForecast.#ctor
+  isExternal: true
+  href: SimpleWeather.WeatherForecast.html#SimpleWeather_WeatherForecast__ctor_System_String_
+  name: WeatherForecast
+  nameWithType: WeatherForecast.WeatherForecast
+  fullName: SimpleWeather.WeatherForecast.WeatherForecast
+  nameWithType.vb: WeatherForecast.New
+  fullName.vb: SimpleWeather.WeatherForecast.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: SimpleWeather.WeatherForecast.Latitude*
+  commentId: Overload:SimpleWeather.WeatherForecast.Latitude
+  isExternal: true
+  href: SimpleWeather.WeatherForecast.html#SimpleWeather_WeatherForecast_Latitude
+  name: Latitude
+  nameWithType: WeatherForecast.Latitude
+  fullName: SimpleWeather.WeatherForecast.Latitude
+- uid: System.Nullable{System.Double}
+  commentId: T:System.Nullable{System.Double}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double?
+  nameWithType: double?
+  fullName: double?
+  nameWithType.vb: Double?
+  fullName.vb: Double?
+  name.vb: Double?
+  spec.csharp:
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '?'
+  spec.vb:
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: SimpleWeather.WeatherForecast.Longitude*
+  commentId: Overload:SimpleWeather.WeatherForecast.Longitude
+  isExternal: true
+  href: SimpleWeather.WeatherForecast.html#SimpleWeather_WeatherForecast_Longitude
+  name: Longitude
+  nameWithType: WeatherForecast.Longitude
+  fullName: SimpleWeather.WeatherForecast.Longitude
+- uid: SimpleWeather.WeatherForecast.Timezone*
+  commentId: Overload:SimpleWeather.WeatherForecast.Timezone
+  isExternal: true
+  href: SimpleWeather.WeatherForecast.html#SimpleWeather_WeatherForecast_Timezone
+  name: Timezone
+  nameWithType: WeatherForecast.Timezone
+  fullName: SimpleWeather.WeatherForecast.Timezone
+- uid: SimpleWeather.WeatherForecast.TimezoneOffset*
+  commentId: Overload:SimpleWeather.WeatherForecast.TimezoneOffset
+  isExternal: true
+  href: SimpleWeather.WeatherForecast.html#SimpleWeather_WeatherForecast_TimezoneOffset
+  name: TimezoneOffset
+  nameWithType: WeatherForecast.TimezoneOffset
+  fullName: SimpleWeather.WeatherForecast.TimezoneOffset
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: SimpleWeather.WeatherForecast.Current*
+  commentId: Overload:SimpleWeather.WeatherForecast.Current
+  isExternal: true
+  href: SimpleWeather.WeatherForecast.html#SimpleWeather_WeatherForecast_Current
+  name: Current
+  nameWithType: WeatherForecast.Current
+  fullName: SimpleWeather.WeatherForecast.Current
+- uid: SimpleWeather.Current
+  commentId: T:SimpleWeather.Current
+  parent: SimpleWeather
+  isExternal: true
+  href: SimpleWeather.Current.html
+  name: Current
+  nameWithType: Current
+  fullName: SimpleWeather.Current
+- uid: SimpleWeather.WeatherForecast.Hourly*
+  commentId: Overload:SimpleWeather.WeatherForecast.Hourly
+  isExternal: true
+  href: SimpleWeather.WeatherForecast.html#SimpleWeather_WeatherForecast_Hourly
+  name: Hourly
+  nameWithType: WeatherForecast.Hourly
+  fullName: SimpleWeather.WeatherForecast.Hourly
+- uid: System.Collections.Generic.List{SimpleWeather.Hourly}
+  commentId: T:System.Collections.Generic.List{SimpleWeather.Hourly}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<Hourly>
+  nameWithType: List<Hourly>
+  fullName: System.Collections.Generic.List<SimpleWeather.Hourly>
+  nameWithType.vb: List(Of Hourly)
+  fullName.vb: System.Collections.Generic.List(Of SimpleWeather.Hourly)
+  name.vb: List(Of Hourly)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: SimpleWeather.Hourly
+    name: Hourly
+    isExternal: true
+    href: SimpleWeather.Hourly.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: SimpleWeather.Hourly
+    name: Hourly
+    isExternal: true
+    href: SimpleWeather.Hourly.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: SimpleWeather.WeatherForecast.Daily*
+  commentId: Overload:SimpleWeather.WeatherForecast.Daily
+  isExternal: true
+  href: SimpleWeather.WeatherForecast.html#SimpleWeather_WeatherForecast_Daily
+  name: Daily
+  nameWithType: WeatherForecast.Daily
+  fullName: SimpleWeather.WeatherForecast.Daily
+- uid: System.Collections.Generic.List{SimpleWeather.Daily}
+  commentId: T:System.Collections.Generic.List{SimpleWeather.Daily}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<Daily>
+  nameWithType: List<Daily>
+  fullName: System.Collections.Generic.List<SimpleWeather.Daily>
+  nameWithType.vb: List(Of Daily)
+  fullName.vb: System.Collections.Generic.List(Of SimpleWeather.Daily)
+  name.vb: List(Of Daily)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: SimpleWeather.Daily
+    name: Daily
+    isExternal: true
+    href: SimpleWeather.Daily.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: SimpleWeather.Daily
+    name: Daily
+    isExternal: true
+    href: SimpleWeather.Daily.html
+  - name: )
+- uid: SimpleWeather.WeatherForecast.Alerts*
+  commentId: Overload:SimpleWeather.WeatherForecast.Alerts
+  isExternal: true
+  href: SimpleWeather.WeatherForecast.html#SimpleWeather_WeatherForecast_Alerts
+  name: Alerts
+  nameWithType: WeatherForecast.Alerts
+  fullName: SimpleWeather.WeatherForecast.Alerts
+- uid: System.Collections.Generic.List{SimpleWeather.Alerts}
+  commentId: T:System.Collections.Generic.List{SimpleWeather.Alerts}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<Alerts>
+  nameWithType: List<Alerts>
+  fullName: System.Collections.Generic.List<SimpleWeather.Alerts>
+  nameWithType.vb: List(Of Alerts)
+  fullName.vb: System.Collections.Generic.List(Of SimpleWeather.Alerts)
+  name.vb: List(Of Alerts)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: SimpleWeather.Alerts
+    name: Alerts
+    isExternal: true
+    href: SimpleWeather.Alerts.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: SimpleWeather.Alerts
+    name: Alerts
+    isExternal: true
+    href: SimpleWeather.Alerts.html
+  - name: )

@@ -1,0 +1,11 @@
+GetWindowLong
+SetWindowLong
+SetWindowPos
+DwmSetWindowAttribute
+Windows.Win32.Foundation.HWND
+Windows.Win32.Foundation.HRESULT
+Windows.Win32.Graphics.Dwm.DWMWINDOWATTRIBUTE
+Windows.Win32.Graphics.Dwm.DWM_WINDOW_CORNER_PREFERENCE
+Windows.Win32.UI.WindowsAndMessaging.WINDOW_LONG_PTR_INDEX
+Windows.Win32.UI.WindowsAndMessaging.SET_WINDOW_POS_FLAGS
+Windows.Win32.UI.WindowsAndMessaging.WINDOW_STYLE

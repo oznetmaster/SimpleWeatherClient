@@ -1,0 +1,96 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+	  <RootNamespace>SimpleWeather</RootNamespace>
+    <TargetFrameworks>net472;net10.0</TargetFrameworks>
+    <OutputType>Library</OutputType>
+	  <LangVersion>latest</LangVersion>
+	  <Nullable>enable</Nullable>
+	  <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+	  <AnalysisLevel>latest-recommended</AnalysisLevel>
+	  <EnableNETAnalyzers>true</EnableNETAnalyzers>
+	  <EnforceCodeStyleInBuild>false</EnforceCodeStyleInBuild>
+	  <CodeAnalysisTreatWarningsAsErrors>false</CodeAnalysisTreatWarningsAsErrors>
+	  <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+    <RestoreTargetFrameworks>net472;net10.0</RestoreTargetFrameworks>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <BaseOutputPath>bin\</BaseOutputPath>
+    <AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+
+      <!-- Migrated from AssemblyInfo.cs -->
+      <AssemblyTitle>SimpleWeather</AssemblyTitle>
+      <Description></Description>
+      <Company>Neil Colvin</Company>
+      <Product>SimpleWeather</Product>
+      <Copyright>Copyright © 2026 Neil Colvin</Copyright>
+      <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      <FileVersion>1.0.0.0</FileVersion>
+      <ComVisible>false</ComVisible>
+      <Platforms>AnyCPU</Platforms>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net472'">
+	  <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+	  <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <Net472ReferenceAssemblies>$(MSBuildProgramFiles32)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2</Net472ReferenceAssemblies>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+		<DebugType>portable</DebugType>
+		<DebugSymbols>true</DebugSymbols>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)' == 'Release'">
+		<DebugType>none</DebugType>
+		<DebugSymbols>false</DebugSymbols>
+		<Optimize>true</Optimize>
+	</PropertyGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net472'">
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="log4net" Version="3.3.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net472'">
+    <PackageReference Include="IsExternalInit" Version="1.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+	  <PackageReference Include="Hafner.Compatibility.MetaPackage" Version="1.9.0" />
+	  <PackageReference Include="RequiredMemberAttribute" Version="1.0.0">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net472'">
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="10.0.8" />
+    <PackageReference Include="Microsoft.Bcl.HashCode" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Bcl.Memory" Version="10.0.8" />
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="build\" />
+  </ItemGroup>
+
+  <Target Name="GenerateDocumentationPdf" AfterTargets="Build" Condition="'$(Configuration)' == 'Release' and '$(TargetFramework)' == 'net472' and '$(IsBuildingProject)' == 'true'">
+    <PropertyGroup>
+      <DocfxConfig>$(MSBuildProjectDirectory)\..\docfx\docfx.json</DocfxConfig>
+      <DocfxSiteDir>$(MSBuildProjectDirectory)\$(IntermediateOutputPath)docfx-site</DocfxSiteDir>
+      <DocfxFinalPdf>$(TargetDir)SimpleWeather.docfx.pdf</DocfxFinalPdf>
+      <DocfxPdfOutput>$(DocfxSiteDir)\toc.pdf</DocfxPdfOutput>
+      <DocfxReferenceDir>$(MSBuildProjectDirectory)\..\docfx\references</DocfxReferenceDir>
+      <SystemNetHttpReference>$(Net472ReferenceAssemblies)\System.Net.Http.dll</SystemNetHttpReference>
+    </PropertyGroup>
+    <MakeDir Directories="$(DocfxReferenceDir)" />
+    <Copy SourceFiles="$(SystemNetHttpReference)" DestinationFiles="$(DocfxReferenceDir)\System.Net.Http.dll" SkipUnchangedFiles="true" />
+    <Exec Command="dotnet tool restore" />
+    <Exec Command="dotnet tool run docfx metadata &quot;$(DocfxConfig)&quot; --logLevel Error --property TargetFramework=net472;Configuration=$(Configuration)" />
+    <Exec Command="dotnet tool run docfx build &quot;$(DocfxConfig)&quot; --output &quot;$(DocfxSiteDir)&quot;" />
+    <Exec Command="dotnet tool run docfx pdf &quot;$(DocfxConfig)&quot; --output &quot;$(DocfxSiteDir)&quot;" />
+    <Copy SourceFiles="$(DocfxPdfOutput)" DestinationFiles="$(DocfxFinalPdf)" Condition="Exists('$(DocfxPdfOutput)')" />
+  </Target>
+</Project>

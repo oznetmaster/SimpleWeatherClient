@@ -1,0 +1,48 @@
+### YamlMime:TableOfContent
+items:
+- uid: SimpleWeather
+  name: SimpleWeather
+  items:
+  - uid: SimpleWeather.Alerts
+    name: Alerts
+  - uid: SimpleWeather.Clouds
+    name: Clouds
+  - uid: SimpleWeather.Coordinates
+    name: Coordinates
+  - uid: SimpleWeather.Current
+    name: Current
+  - uid: SimpleWeather.CurrentWeather
+    name: CurrentWeather
+  - uid: SimpleWeather.Daily
+    name: Daily
+  - uid: SimpleWeather.FeelsLike
+    name: FeelsLike
+  - uid: SimpleWeather.GeoLocator
+    name: GeoLocator
+  - uid: SimpleWeather.GeoUtils
+    name: GeoUtils
+  - uid: SimpleWeather.Hourly
+    name: Hourly
+  - uid: SimpleWeather.LatLong
+    name: LatLong
+  - uid: SimpleWeather.Main
+    name: Main
+  - uid: SimpleWeather.Rain
+    name: Rain
+  - uid: SimpleWeather.Snow
+    name: Snow
+  - uid: SimpleWeather.Sys
+    name: Sys
+  - uid: SimpleWeather.Temperature
+    name: Temperature
+  - uid: SimpleWeather.Weather
+    name: Weather
+  - uid: SimpleWeather.WeatherController
+    name: WeatherController
+  - uid: SimpleWeather.WeatherForecast
+    name: WeatherForecast
+  - uid: SimpleWeather.WeatherIconResolution
+    name: WeatherIconResolution
+  - uid: SimpleWeather.Wind
+    name: Wind
+memberLayout: SamePage

@@ -1,0 +1,653 @@
+### YamlMime:ManagedReference
+items:
+- uid: SimpleWeather.Wind
+  commentId: T:SimpleWeather.Wind
+  id: Wind
+  parent: SimpleWeather
+  children:
+  - SimpleWeather.Wind.#ctor(Newtonsoft.Json.Linq.JToken)
+  - SimpleWeather.Wind.Degree
+  - SimpleWeather.Wind.GetWindDirectionLong(System.Nullable{System.Double})
+  - SimpleWeather.Wind.GetWindDirectionShort(System.Nullable{System.Double})
+  - SimpleWeather.Wind.Gust
+  - SimpleWeather.Wind.Speed
+  - SimpleWeather.Wind.WindDirectionLong
+  - SimpleWeather.Wind.WindDirectionShort
+  langs:
+  - csharp
+  - vb
+  name: Wind
+  nameWithType: Wind
+  fullName: SimpleWeather.Wind
+  type: Class
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Represents the wind section of the current weather response, including derived directions.
+  example: []
+  syntax:
+    content: public class Wind
+    content.vb: Public Class Wind
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+- uid: SimpleWeather.Wind.#ctor(Newtonsoft.Json.Linq.JToken)
+  commentId: M:SimpleWeather.Wind.#ctor(Newtonsoft.Json.Linq.JToken)
+  id: '#ctor(Newtonsoft.Json.Linq.JToken)'
+  parent: SimpleWeather.Wind
+  langs:
+  - csharp
+  - vb
+  name: Wind(JToken?)
+  nameWithType: Wind.Wind(JToken?)
+  fullName: SimpleWeather.Wind.Wind(Newtonsoft.Json.Linq.JToken?)
+  type: Constructor
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Initializes a new instance of the <xref href="SimpleWeather.Wind" data-throw-if-not-resolved="false"></xref> class from JSON data.
+  example: []
+  syntax:
+    content: public Wind(JToken? data)
+    parameters:
+    - id: data
+      type: Newtonsoft.Json.Linq.JToken
+      description: The JSON token containing wind metrics.
+    content.vb: Public Sub New(data As JToken)
+  overload: SimpleWeather.Wind.#ctor*
+  nameWithType.vb: Wind.New(JToken)
+  fullName.vb: SimpleWeather.Wind.New(Newtonsoft.Json.Linq.JToken)
+  name.vb: New(JToken)
+- uid: SimpleWeather.Wind.GetWindDirectionShort(System.Nullable{System.Double})
+  commentId: M:SimpleWeather.Wind.GetWindDirectionShort(System.Nullable{System.Double})
+  id: GetWindDirectionShort(System.Nullable{System.Double})
+  parent: SimpleWeather.Wind
+  langs:
+  - csharp
+  - vb
+  name: GetWindDirectionShort(double?)
+  nameWithType: Wind.GetWindDirectionShort(double?)
+  fullName: SimpleWeather.Wind.GetWindDirectionShort(double?)
+  type: Method
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Converts a numeric wind bearing into the corresponding short compass representation.
+  example: []
+  syntax:
+    content: public static string GetWindDirectionShort(double? windDegree)
+    parameters:
+    - id: windDegree
+      type: System.Nullable{System.Double}
+      description: The meteorological wind degree.
+    return:
+      type: System.String
+      description: The short direction token (e.g., N, NW).
+    content.vb: Public Shared Function GetWindDirectionShort(windDegree As Double?) As String
+  overload: SimpleWeather.Wind.GetWindDirectionShort*
+  nameWithType.vb: Wind.GetWindDirectionShort(Double?)
+  fullName.vb: SimpleWeather.Wind.GetWindDirectionShort(Double?)
+  name.vb: GetWindDirectionShort(Double?)
+- uid: SimpleWeather.Wind.GetWindDirectionLong(System.Nullable{System.Double})
+  commentId: M:SimpleWeather.Wind.GetWindDirectionLong(System.Nullable{System.Double})
+  id: GetWindDirectionLong(System.Nullable{System.Double})
+  parent: SimpleWeather.Wind
+  langs:
+  - csharp
+  - vb
+  name: GetWindDirectionLong(double?)
+  nameWithType: Wind.GetWindDirectionLong(double?)
+  fullName: SimpleWeather.Wind.GetWindDirectionLong(double?)
+  type: Method
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Converts a numeric wind bearing into the corresponding long compass representation.
+  example: []
+  syntax:
+    content: public static string GetWindDirectionLong(double? windDegree)
+    parameters:
+    - id: windDegree
+      type: System.Nullable{System.Double}
+      description: The meteorological wind degree.
+    return:
+      type: System.String
+      description: The long direction token (e.g., North, Northwest).
+    content.vb: Public Shared Function GetWindDirectionLong(windDegree As Double?) As String
+  overload: SimpleWeather.Wind.GetWindDirectionLong*
+  nameWithType.vb: Wind.GetWindDirectionLong(Double?)
+  fullName.vb: SimpleWeather.Wind.GetWindDirectionLong(Double?)
+  name.vb: GetWindDirectionLong(Double?)
+- uid: SimpleWeather.Wind.Speed
+  commentId: P:SimpleWeather.Wind.Speed
+  id: Speed
+  parent: SimpleWeather.Wind
+  langs:
+  - csharp
+  - vb
+  name: Speed
+  nameWithType: Wind.Speed
+  fullName: SimpleWeather.Wind.Speed
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: 'Wind speed. Default Unit: meter/sec'
+  example: []
+  syntax:
+    content: public double? Speed { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Double}
+    content.vb: Public ReadOnly Property Speed As Double?
+  overload: SimpleWeather.Wind.Speed*
+- uid: SimpleWeather.Wind.Degree
+  commentId: P:SimpleWeather.Wind.Degree
+  id: Degree
+  parent: SimpleWeather.Wind
+  langs:
+  - csharp
+  - vb
+  name: Degree
+  nameWithType: Wind.Degree
+  fullName: SimpleWeather.Wind.Degree
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Wind direction, degrees (meteorological)
+  example: []
+  syntax:
+    content: public double? Degree { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Double}
+    content.vb: Public ReadOnly Property Degree As Double?
+  overload: SimpleWeather.Wind.Degree*
+- uid: SimpleWeather.Wind.WindDirectionShort
+  commentId: P:SimpleWeather.Wind.WindDirectionShort
+  id: WindDirectionShort
+  parent: SimpleWeather.Wind
+  langs:
+  - csharp
+  - vb
+  name: WindDirectionShort
+  nameWithType: Wind.WindDirectionShort
+  fullName: SimpleWeather.Wind.WindDirectionShort
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Short wind direction represented by a string (N, E, S, W, etc.)
+  example: []
+  syntax:
+    content: public string? WindDirectionShort { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property WindDirectionShort As String
+  overload: SimpleWeather.Wind.WindDirectionShort*
+- uid: SimpleWeather.Wind.WindDirectionLong
+  commentId: P:SimpleWeather.Wind.WindDirectionLong
+  id: WindDirectionLong
+  parent: SimpleWeather.Wind
+  langs:
+  - csharp
+  - vb
+  name: WindDirectionLong
+  nameWithType: Wind.WindDirectionLong
+  fullName: SimpleWeather.Wind.WindDirectionLong
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Long wind direction represented by a string (North, East, South, West, etc.)
+  example: []
+  syntax:
+    content: public string? WindDirectionLong { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property WindDirectionLong As String
+  overload: SimpleWeather.Wind.WindDirectionLong*
+- uid: SimpleWeather.Wind.Gust
+  commentId: P:SimpleWeather.Wind.Gust
+  id: Gust
+  parent: SimpleWeather.Wind
+  langs:
+  - csharp
+  - vb
+  name: Gust
+  nameWithType: Wind.Gust
+  fullName: SimpleWeather.Wind.Gust
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: 'Wind gust. Default Unit: meter/sec'
+  example: []
+  syntax:
+    content: public double? Gust { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Double}
+    content.vb: Public ReadOnly Property Gust As Double?
+  overload: SimpleWeather.Wind.Gust*
+references:
+- uid: SimpleWeather
+  commentId: N:SimpleWeather
+  isExternal: true
+  href: SimpleWeather.html
+  name: SimpleWeather
+  nameWithType: SimpleWeather
+  fullName: SimpleWeather
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SimpleWeather.Wind
+  commentId: T:SimpleWeather.Wind
+  parent: SimpleWeather
+  isExternal: true
+  href: SimpleWeather.Wind.html
+  name: Wind
+  nameWithType: Wind
+  fullName: SimpleWeather.Wind
+- uid: SimpleWeather.Wind.#ctor*
+  commentId: Overload:SimpleWeather.Wind.#ctor
+  isExternal: true
+  href: SimpleWeather.Wind.html#SimpleWeather_Wind__ctor_Newtonsoft_Json_Linq_JToken_
+  name: Wind
+  nameWithType: Wind.Wind
+  fullName: SimpleWeather.Wind.Wind
+  nameWithType.vb: Wind.New
+  fullName.vb: SimpleWeather.Wind.New
+  name.vb: New
+- uid: Newtonsoft.Json.Linq.JToken
+  commentId: T:Newtonsoft.Json.Linq.JToken
+  parent: Newtonsoft.Json.Linq
+  isExternal: true
+  name: JToken
+  nameWithType: JToken
+  fullName: Newtonsoft.Json.Linq.JToken
+- uid: Newtonsoft.Json.Linq
+  commentId: N:Newtonsoft.Json.Linq
+  isExternal: true
+  name: Newtonsoft.Json.Linq
+  nameWithType: Newtonsoft.Json.Linq
+  fullName: Newtonsoft.Json.Linq
+  spec.csharp:
+  - uid: Newtonsoft
+    name: Newtonsoft
+    isExternal: true
+  - name: .
+  - uid: Newtonsoft.Json
+    name: Json
+    isExternal: true
+  - name: .
+  - uid: Newtonsoft.Json.Linq
+    name: Linq
+    isExternal: true
+  spec.vb:
+  - uid: Newtonsoft
+    name: Newtonsoft
+    isExternal: true
+  - name: .
+  - uid: Newtonsoft.Json
+    name: Json
+    isExternal: true
+  - name: .
+  - uid: Newtonsoft.Json.Linq
+    name: Linq
+    isExternal: true
+- uid: SimpleWeather.Wind.GetWindDirectionShort*
+  commentId: Overload:SimpleWeather.Wind.GetWindDirectionShort
+  isExternal: true
+  href: SimpleWeather.Wind.html#SimpleWeather_Wind_GetWindDirectionShort_System_Nullable_System_Double__
+  name: GetWindDirectionShort
+  nameWithType: Wind.GetWindDirectionShort
+  fullName: SimpleWeather.Wind.GetWindDirectionShort
+- uid: System.Nullable{System.Double}
+  commentId: T:System.Nullable{System.Double}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double?
+  nameWithType: double?
+  fullName: double?
+  nameWithType.vb: Double?
+  fullName.vb: Double?
+  name.vb: Double?
+  spec.csharp:
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '?'
+  spec.vb:
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '?'
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: SimpleWeather.Wind.GetWindDirectionLong*
+  commentId: Overload:SimpleWeather.Wind.GetWindDirectionLong
+  isExternal: true
+  href: SimpleWeather.Wind.html#SimpleWeather_Wind_GetWindDirectionLong_System_Nullable_System_Double__
+  name: GetWindDirectionLong
+  nameWithType: Wind.GetWindDirectionLong
+  fullName: SimpleWeather.Wind.GetWindDirectionLong
+- uid: SimpleWeather.Wind.Speed*
+  commentId: Overload:SimpleWeather.Wind.Speed
+  isExternal: true
+  href: SimpleWeather.Wind.html#SimpleWeather_Wind_Speed
+  name: Speed
+  nameWithType: Wind.Speed
+  fullName: SimpleWeather.Wind.Speed
+- uid: SimpleWeather.Wind.Degree*
+  commentId: Overload:SimpleWeather.Wind.Degree
+  isExternal: true
+  href: SimpleWeather.Wind.html#SimpleWeather_Wind_Degree
+  name: Degree
+  nameWithType: Wind.Degree
+  fullName: SimpleWeather.Wind.Degree
+- uid: SimpleWeather.Wind.WindDirectionShort*
+  commentId: Overload:SimpleWeather.Wind.WindDirectionShort
+  isExternal: true
+  href: SimpleWeather.Wind.html#SimpleWeather_Wind_WindDirectionShort
+  name: WindDirectionShort
+  nameWithType: Wind.WindDirectionShort
+  fullName: SimpleWeather.Wind.WindDirectionShort
+- uid: SimpleWeather.Wind.WindDirectionLong*
+  commentId: Overload:SimpleWeather.Wind.WindDirectionLong
+  isExternal: true
+  href: SimpleWeather.Wind.html#SimpleWeather_Wind_WindDirectionLong
+  name: WindDirectionLong
+  nameWithType: Wind.WindDirectionLong
+  fullName: SimpleWeather.Wind.WindDirectionLong
+- uid: SimpleWeather.Wind.Gust*
+  commentId: Overload:SimpleWeather.Wind.Gust
+  isExternal: true
+  href: SimpleWeather.Wind.html#SimpleWeather_Wind_Gust
+  name: Gust
+  nameWithType: Wind.Gust
+  fullName: SimpleWeather.Wind.Gust

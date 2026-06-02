@@ -1,0 +1,573 @@
+### YamlMime:ManagedReference
+items:
+- uid: SimpleWeather.Weather
+  commentId: T:SimpleWeather.Weather
+  id: Weather
+  parent: SimpleWeather
+  children:
+  - SimpleWeather.Weather.#ctor
+  - SimpleWeather.Weather.#ctor(Newtonsoft.Json.Linq.JToken)
+  - SimpleWeather.Weather.Description
+  - SimpleWeather.Weather.GetIconUrl(SimpleWeather.WeatherIconResolution)
+  - SimpleWeather.Weather.ID
+  - SimpleWeather.Weather.Icon
+  - SimpleWeather.Weather.Main
+  langs:
+  - csharp
+  - vb
+  name: Weather
+  nameWithType: Weather
+  fullName: SimpleWeather.Weather
+  type: Class
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Represents a single entry from the OpenWeather <code>weather</code> collection.
+  example: []
+  syntax:
+    content: public class Weather
+    content.vb: Public Class Weather
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+- uid: SimpleWeather.Weather.#ctor(Newtonsoft.Json.Linq.JToken)
+  commentId: M:SimpleWeather.Weather.#ctor(Newtonsoft.Json.Linq.JToken)
+  id: '#ctor(Newtonsoft.Json.Linq.JToken)'
+  parent: SimpleWeather.Weather
+  langs:
+  - csharp
+  - vb
+  name: Weather(JToken?)
+  nameWithType: Weather.Weather(JToken?)
+  fullName: SimpleWeather.Weather.Weather(Newtonsoft.Json.Linq.JToken?)
+  type: Constructor
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Initializes a new instance of the <xref href="SimpleWeather.Weather" data-throw-if-not-resolved="false"></xref> class from a JSON token.
+  example: []
+  syntax:
+    content: public Weather(JToken? data)
+    parameters:
+    - id: data
+      type: Newtonsoft.Json.Linq.JToken
+      description: The JSON array that contains the weather description.
+    content.vb: Public Sub New(data As JToken)
+  overload: SimpleWeather.Weather.#ctor*
+  nameWithType.vb: Weather.New(JToken)
+  fullName.vb: SimpleWeather.Weather.New(Newtonsoft.Json.Linq.JToken)
+  name.vb: New(JToken)
+- uid: SimpleWeather.Weather.#ctor
+  commentId: M:SimpleWeather.Weather.#ctor
+  id: '#ctor'
+  parent: SimpleWeather.Weather
+  langs:
+  - csharp
+  - vb
+  name: Weather()
+  nameWithType: Weather.Weather()
+  fullName: SimpleWeather.Weather.Weather()
+  type: Constructor
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Initializes a new, empty instance of the <xref href="SimpleWeather.Weather" data-throw-if-not-resolved="false"></xref> class.
+  example: []
+  syntax:
+    content: public Weather()
+    content.vb: Public Sub New()
+  overload: SimpleWeather.Weather.#ctor*
+  nameWithType.vb: Weather.New()
+  fullName.vb: SimpleWeather.Weather.New()
+  name.vb: New()
+- uid: SimpleWeather.Weather.GetIconUrl(SimpleWeather.WeatherIconResolution)
+  commentId: M:SimpleWeather.Weather.GetIconUrl(SimpleWeather.WeatherIconResolution)
+  id: GetIconUrl(SimpleWeather.WeatherIconResolution)
+  parent: SimpleWeather.Weather
+  langs:
+  - csharp
+  - vb
+  name: GetIconUrl(WeatherIconResolution)
+  nameWithType: Weather.GetIconUrl(WeatherIconResolution)
+  fullName: SimpleWeather.Weather.GetIconUrl(SimpleWeather.WeatherIconResolution)
+  type: Method
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Builds the CDN URL for this weather icon using the documented OpenWeather pattern.
+  example: []
+  syntax:
+    content: public string? GetIconUrl(WeatherIconResolution resolution = WeatherIconResolution.DoubleScale)
+    parameters:
+    - id: resolution
+      type: SimpleWeather.WeatherIconResolution
+      description: Desired image scale (1x, 2x, or 4x).
+    return:
+      type: System.String
+      description: The full icon URL or <code>null</code> when the icon code is unavailable.
+    content.vb: Public Function GetIconUrl(resolution As WeatherIconResolution = WeatherIconResolution.DoubleScale) As String
+  overload: SimpleWeather.Weather.GetIconUrl*
+- uid: SimpleWeather.Weather.ID
+  commentId: P:SimpleWeather.Weather.ID
+  id: ID
+  parent: SimpleWeather.Weather
+  langs:
+  - csharp
+  - vb
+  name: ID
+  nameWithType: Weather.ID
+  fullName: SimpleWeather.Weather.ID
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Weather condition ID
+  example: []
+  syntax:
+    content: public int ID { get; init; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property ID As Integer
+  overload: SimpleWeather.Weather.ID*
+- uid: SimpleWeather.Weather.Main
+  commentId: P:SimpleWeather.Weather.Main
+  id: Main
+  parent: SimpleWeather.Weather
+  langs:
+  - csharp
+  - vb
+  name: Main
+  nameWithType: Weather.Main
+  fullName: SimpleWeather.Weather.Main
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Group of weather parameters (Rain, Snow, Extreme etc.)
+  example: []
+  syntax:
+    content: public string? Main { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Main As String
+  overload: SimpleWeather.Weather.Main*
+- uid: SimpleWeather.Weather.Description
+  commentId: P:SimpleWeather.Weather.Description
+  id: Description
+  parent: SimpleWeather.Weather
+  langs:
+  - csharp
+  - vb
+  name: Description
+  nameWithType: Weather.Description
+  fullName: SimpleWeather.Weather.Description
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Weather condition within the group
+  example: []
+  syntax:
+    content: public string? Description { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Description As String
+  overload: SimpleWeather.Weather.Description*
+- uid: SimpleWeather.Weather.Icon
+  commentId: P:SimpleWeather.Weather.Icon
+  id: Icon
+  parent: SimpleWeather.Weather
+  langs:
+  - csharp
+  - vb
+  name: Icon
+  nameWithType: Weather.Icon
+  fullName: SimpleWeather.Weather.Icon
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Weather icon ID
+  example: []
+  syntax:
+    content: public string? Icon { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Icon As String
+  overload: SimpleWeather.Weather.Icon*
+references:
+- uid: SimpleWeather
+  commentId: N:SimpleWeather
+  isExternal: true
+  href: SimpleWeather.html
+  name: SimpleWeather
+  nameWithType: SimpleWeather
+  fullName: SimpleWeather
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SimpleWeather.Weather
+  commentId: T:SimpleWeather.Weather
+  parent: SimpleWeather
+  isExternal: true
+  href: SimpleWeather.Weather.html
+  name: Weather
+  nameWithType: Weather
+  fullName: SimpleWeather.Weather
+- uid: SimpleWeather.Weather.#ctor*
+  commentId: Overload:SimpleWeather.Weather.#ctor
+  isExternal: true
+  href: SimpleWeather.Weather.html#SimpleWeather_Weather__ctor_Newtonsoft_Json_Linq_JToken_
+  name: Weather
+  nameWithType: Weather.Weather
+  fullName: SimpleWeather.Weather.Weather
+  nameWithType.vb: Weather.New
+  fullName.vb: SimpleWeather.Weather.New
+  name.vb: New
+- uid: Newtonsoft.Json.Linq.JToken
+  commentId: T:Newtonsoft.Json.Linq.JToken
+  parent: Newtonsoft.Json.Linq
+  isExternal: true
+  name: JToken
+  nameWithType: JToken
+  fullName: Newtonsoft.Json.Linq.JToken
+- uid: Newtonsoft.Json.Linq
+  commentId: N:Newtonsoft.Json.Linq
+  isExternal: true
+  name: Newtonsoft.Json.Linq
+  nameWithType: Newtonsoft.Json.Linq
+  fullName: Newtonsoft.Json.Linq
+  spec.csharp:
+  - uid: Newtonsoft
+    name: Newtonsoft
+    isExternal: true
+  - name: .
+  - uid: Newtonsoft.Json
+    name: Json
+    isExternal: true
+  - name: .
+  - uid: Newtonsoft.Json.Linq
+    name: Linq
+    isExternal: true
+  spec.vb:
+  - uid: Newtonsoft
+    name: Newtonsoft
+    isExternal: true
+  - name: .
+  - uid: Newtonsoft.Json
+    name: Json
+    isExternal: true
+  - name: .
+  - uid: Newtonsoft.Json.Linq
+    name: Linq
+    isExternal: true
+- uid: SimpleWeather.Weather.GetIconUrl*
+  commentId: Overload:SimpleWeather.Weather.GetIconUrl
+  isExternal: true
+  href: SimpleWeather.Weather.html#SimpleWeather_Weather_GetIconUrl_SimpleWeather_WeatherIconResolution_
+  name: GetIconUrl
+  nameWithType: Weather.GetIconUrl
+  fullName: SimpleWeather.Weather.GetIconUrl
+- uid: SimpleWeather.WeatherIconResolution
+  commentId: T:SimpleWeather.WeatherIconResolution
+  parent: SimpleWeather
+  isExternal: true
+  href: SimpleWeather.WeatherIconResolution.html
+  name: WeatherIconResolution
+  nameWithType: WeatherIconResolution
+  fullName: SimpleWeather.WeatherIconResolution
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: SimpleWeather.Weather.ID*
+  commentId: Overload:SimpleWeather.Weather.ID
+  isExternal: true
+  href: SimpleWeather.Weather.html#SimpleWeather_Weather_ID
+  name: ID
+  nameWithType: Weather.ID
+  fullName: SimpleWeather.Weather.ID
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: SimpleWeather.Weather.Main*
+  commentId: Overload:SimpleWeather.Weather.Main
+  isExternal: true
+  href: SimpleWeather.Weather.html#SimpleWeather_Weather_Main
+  name: Main
+  nameWithType: Weather.Main
+  fullName: SimpleWeather.Weather.Main
+- uid: SimpleWeather.Weather.Description*
+  commentId: Overload:SimpleWeather.Weather.Description
+  isExternal: true
+  href: SimpleWeather.Weather.html#SimpleWeather_Weather_Description
+  name: Description
+  nameWithType: Weather.Description
+  fullName: SimpleWeather.Weather.Description
+- uid: SimpleWeather.Weather.Icon*
+  commentId: Overload:SimpleWeather.Weather.Icon
+  isExternal: true
+  href: SimpleWeather.Weather.html#SimpleWeather_Weather_Icon
+  name: Icon
+  nameWithType: Weather.Icon
+  fullName: SimpleWeather.Weather.Icon

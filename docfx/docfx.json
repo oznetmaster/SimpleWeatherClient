@@ -1,0 +1,38 @@
+{
+  "metadata": [
+    {
+      "src": [
+        {
+          "files": [ "SimpleWeather/SimpleWeather.csproj" ],
+          "cwd": ".."
+        }
+      ],
+      "dest": "api"
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": [ "api/**.yml" ]
+      },
+      {
+        "files": [ "articles/**.md" ]
+      },
+      {
+        "files": [ "toc.yml" ]
+      }
+    ],
+    "resource": [
+      {
+        "files": [ "images/**" ]
+      }
+    ],
+    "globalMetadata": {
+      "_appTitle": "SimpleWeather API",
+      "pdf": true
+    },
+    "template": [
+      "default"
+    ]
+  }
+}

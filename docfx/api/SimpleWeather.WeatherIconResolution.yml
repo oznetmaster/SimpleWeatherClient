@@ -1,0 +1,101 @@
+### YamlMime:ManagedReference
+items:
+- uid: SimpleWeather.WeatherIconResolution
+  commentId: T:SimpleWeather.WeatherIconResolution
+  id: WeatherIconResolution
+  parent: SimpleWeather
+  children:
+  - SimpleWeather.WeatherIconResolution.DoubleScale
+  - SimpleWeather.WeatherIconResolution.Quadruple
+  - SimpleWeather.WeatherIconResolution.Standard
+  langs:
+  - csharp
+  - vb
+  name: WeatherIconResolution
+  nameWithType: WeatherIconResolution
+  fullName: SimpleWeather.WeatherIconResolution
+  type: Enum
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Describes the pixel density variants supported by OpenWeather icon assets.
+  example: []
+  syntax:
+    content: public enum WeatherIconResolution
+    content.vb: Public Enum WeatherIconResolution
+- uid: SimpleWeather.WeatherIconResolution.Standard
+  commentId: F:SimpleWeather.WeatherIconResolution.Standard
+  id: Standard
+  parent: SimpleWeather.WeatherIconResolution
+  langs:
+  - csharp
+  - vb
+  name: Standard
+  nameWithType: WeatherIconResolution.Standard
+  fullName: SimpleWeather.WeatherIconResolution.Standard
+  type: Field
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Standard 1x icon (approximately 50x50 px).
+  example: []
+  syntax:
+    content: Standard = 1
+    return:
+      type: SimpleWeather.WeatherIconResolution
+- uid: SimpleWeather.WeatherIconResolution.DoubleScale
+  commentId: F:SimpleWeather.WeatherIconResolution.DoubleScale
+  id: DoubleScale
+  parent: SimpleWeather.WeatherIconResolution
+  langs:
+  - csharp
+  - vb
+  name: DoubleScale
+  nameWithType: WeatherIconResolution.DoubleScale
+  fullName: SimpleWeather.WeatherIconResolution.DoubleScale
+  type: Field
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: High-DPI 2x icon for Retina/HiDPI displays.
+  example: []
+  syntax:
+    content: DoubleScale = 2
+    return:
+      type: SimpleWeather.WeatherIconResolution
+- uid: SimpleWeather.WeatherIconResolution.Quadruple
+  commentId: F:SimpleWeather.WeatherIconResolution.Quadruple
+  id: Quadruple
+  parent: SimpleWeather.WeatherIconResolution
+  langs:
+  - csharp
+  - vb
+  name: Quadruple
+  nameWithType: WeatherIconResolution.Quadruple
+  fullName: SimpleWeather.WeatherIconResolution.Quadruple
+  type: Field
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Ultra-high-definition 4x icon.
+  example: []
+  syntax:
+    content: Quadruple = 4
+    return:
+      type: SimpleWeather.WeatherIconResolution
+references:
+- uid: SimpleWeather
+  commentId: N:SimpleWeather
+  isExternal: true
+  href: SimpleWeather.html
+  name: SimpleWeather
+  nameWithType: SimpleWeather
+  fullName: SimpleWeather
+- uid: SimpleWeather.WeatherIconResolution
+  commentId: T:SimpleWeather.WeatherIconResolution
+  parent: SimpleWeather
+  isExternal: true
+  href: SimpleWeather.WeatherIconResolution.html
+  name: WeatherIconResolution
+  nameWithType: WeatherIconResolution
+  fullName: SimpleWeather.WeatherIconResolution

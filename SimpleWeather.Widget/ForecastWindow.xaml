@@ -1,0 +1,107 @@
+<Window
+    x:Class="SimpleWeather.Widget.ForecastWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        <Border
+            CornerRadius="12"
+            Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}"
+            Padding="14">
+
+            <Grid RowSpacing="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <TextBlock
+                    Grid.Row="0"
+                    Text="{Binding Title}"
+                    FontSize="16"
+                    FontWeight="SemiBold"
+                    Foreground="White" />
+
+                <ListView
+                    Grid.Row="1"
+                    ItemsSource="{Binding Days}"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    SelectionMode="None">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="6,8" ColumnSpacing="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <Image
+                                    Grid.Column="0"
+                                    Width="26"
+                                    Height="26"
+                                    Margin="0,0,2,0"
+                                    Source="{Binding IconUrl}"
+                                    Stretch="Uniform" />
+
+                                <TextBlock
+                                    Grid.Column="1"
+                                    Text="{Binding DayLabel}"
+                                    Width="62"
+                                    FontSize="12"
+                                    FontWeight="SemiBold"
+                                    Foreground="White" />
+
+                                <TextBlock
+                                    Grid.Column="2"
+                                    Text="{Binding Description}"
+                                    FontSize="12"
+                                    Foreground="#E6FFFFFF"
+                                    TextTrimming="CharacterEllipsis" />
+
+                                <TextBlock
+                                    Grid.Column="3"
+                                    Text="{Binding HighLow}"
+                                    FontSize="12"
+                                    Foreground="#CCFFFFFF"
+                                    HorizontalAlignment="Right" />
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <Grid Grid.Row="2" ColumnSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock
+                        Grid.Column="0"
+                        Text="{Binding StatusText}"
+                        FontSize="11"
+                        Foreground="#CCFFFFFF"
+                        TextTrimming="CharacterEllipsis" />
+
+                    <TextBlock
+                        Grid.Column="1"
+                        HorizontalAlignment="Right"
+                        FontSize="9.5"
+                        Foreground="#80FFFFFF">
+                        <Run Text="Weather data by " />
+                        <Hyperlink NavigateUri="https://openweathermap.org/terms"
+                                   ToolTipService.ToolTip="OpenWeather license terms">
+                            <Run Text="OpenWeather" />
+                        </Hyperlink>
+                    </TextBlock>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

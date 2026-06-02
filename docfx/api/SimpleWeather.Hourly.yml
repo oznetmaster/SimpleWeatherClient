@@ -1,0 +1,1026 @@
+### YamlMime:ManagedReference
+items:
+- uid: SimpleWeather.Hourly
+  commentId: T:SimpleWeather.Hourly
+  id: Hourly
+  parent: SimpleWeather
+  children:
+  - SimpleWeather.Hourly.#ctor(Newtonsoft.Json.Linq.JToken)
+  - SimpleWeather.Hourly.Clouds
+  - SimpleWeather.Hourly.DT
+  - SimpleWeather.Hourly.DewPoint
+  - SimpleWeather.Hourly.FeelsLike
+  - SimpleWeather.Hourly.Humidity
+  - SimpleWeather.Hourly.PrecipitationProbability
+  - SimpleWeather.Hourly.Pressure
+  - SimpleWeather.Hourly.Rain
+  - SimpleWeather.Hourly.Snow
+  - SimpleWeather.Hourly.Temperature
+  - SimpleWeather.Hourly.Uvi
+  - SimpleWeather.Hourly.Visibility
+  - SimpleWeather.Hourly.Weather
+  - SimpleWeather.Hourly.WindDegree
+  - SimpleWeather.Hourly.WindDirectionLong
+  - SimpleWeather.Hourly.WindDirectionShort
+  - SimpleWeather.Hourly.WindGust
+  - SimpleWeather.Hourly.WindSpeed
+  langs:
+  - csharp
+  - vb
+  name: Hourly
+  nameWithType: Hourly
+  fullName: SimpleWeather.Hourly
+  type: Class
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Represents a single hourly forecast entry from the One Call API.
+  example: []
+  syntax:
+    content: public class Hourly
+    content.vb: Public Class Hourly
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+- uid: SimpleWeather.Hourly.#ctor(Newtonsoft.Json.Linq.JToken)
+  commentId: M:SimpleWeather.Hourly.#ctor(Newtonsoft.Json.Linq.JToken)
+  id: '#ctor(Newtonsoft.Json.Linq.JToken)'
+  parent: SimpleWeather.Hourly
+  langs:
+  - csharp
+  - vb
+  name: Hourly(JToken?)
+  nameWithType: Hourly.Hourly(JToken?)
+  fullName: SimpleWeather.Hourly.Hourly(Newtonsoft.Json.Linq.JToken?)
+  type: Constructor
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Initializes a new instance of the <xref href="SimpleWeather.Hourly" data-throw-if-not-resolved="false"></xref> class from JSON data.
+  example: []
+  syntax:
+    content: public Hourly(JToken? data)
+    parameters:
+    - id: data
+      type: Newtonsoft.Json.Linq.JToken
+      description: The JSON token that contains the hourly forecast.
+    content.vb: Public Sub New(data As JToken)
+  overload: SimpleWeather.Hourly.#ctor*
+  nameWithType.vb: Hourly.New(JToken)
+  fullName.vb: SimpleWeather.Hourly.New(Newtonsoft.Json.Linq.JToken)
+  name.vb: New(JToken)
+- uid: SimpleWeather.Hourly.DT
+  commentId: P:SimpleWeather.Hourly.DT
+  id: DT
+  parent: SimpleWeather.Hourly
+  langs:
+  - csharp
+  - vb
+  name: DT
+  nameWithType: Hourly.DT
+  fullName: SimpleWeather.Hourly.DT
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Time of the forecasted data, UTC
+  example: []
+  syntax:
+    content: public DateTime? DT { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.DateTime}
+    content.vb: Public ReadOnly Property DT As Date?
+  overload: SimpleWeather.Hourly.DT*
+- uid: SimpleWeather.Hourly.Temperature
+  commentId: P:SimpleWeather.Hourly.Temperature
+  id: Temperature
+  parent: SimpleWeather.Hourly
+  langs:
+  - csharp
+  - vb
+  name: Temperature
+  nameWithType: Hourly.Temperature
+  fullName: SimpleWeather.Hourly.Temperature
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Temperature
+  example: []
+  syntax:
+    content: public double? Temperature { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Double}
+    content.vb: Public ReadOnly Property Temperature As Double?
+  overload: SimpleWeather.Hourly.Temperature*
+- uid: SimpleWeather.Hourly.FeelsLike
+  commentId: P:SimpleWeather.Hourly.FeelsLike
+  id: FeelsLike
+  parent: SimpleWeather.Hourly
+  langs:
+  - csharp
+  - vb
+  name: FeelsLike
+  nameWithType: Hourly.FeelsLike
+  fullName: SimpleWeather.Hourly.FeelsLike
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Temperature. This accounts for the human perception of weather.
+  example: []
+  syntax:
+    content: public double? FeelsLike { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Double}
+    content.vb: Public ReadOnly Property FeelsLike As Double?
+  overload: SimpleWeather.Hourly.FeelsLike*
+- uid: SimpleWeather.Hourly.Pressure
+  commentId: P:SimpleWeather.Hourly.Pressure
+  id: Pressure
+  parent: SimpleWeather.Hourly
+  langs:
+  - csharp
+  - vb
+  name: Pressure
+  nameWithType: Hourly.Pressure
+  fullName: SimpleWeather.Hourly.Pressure
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Atmospheric pressure on the sea level, hPa
+  example: []
+  syntax:
+    content: public double? Pressure { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Double}
+    content.vb: Public ReadOnly Property Pressure As Double?
+  overload: SimpleWeather.Hourly.Pressure*
+- uid: SimpleWeather.Hourly.Humidity
+  commentId: P:SimpleWeather.Hourly.Humidity
+  id: Humidity
+  parent: SimpleWeather.Hourly
+  langs:
+  - csharp
+  - vb
+  name: Humidity
+  nameWithType: Hourly.Humidity
+  fullName: SimpleWeather.Hourly.Humidity
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Humidity, %
+  example: []
+  syntax:
+    content: public double? Humidity { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Double}
+    content.vb: Public ReadOnly Property Humidity As Double?
+  overload: SimpleWeather.Hourly.Humidity*
+- uid: SimpleWeather.Hourly.DewPoint
+  commentId: P:SimpleWeather.Hourly.DewPoint
+  id: DewPoint
+  parent: SimpleWeather.Hourly
+  langs:
+  - csharp
+  - vb
+  name: DewPoint
+  nameWithType: Hourly.DewPoint
+  fullName: SimpleWeather.Hourly.DewPoint
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Atmospheric temperature (varying according to pressure and humidity) below which water droplets begin to condense and dew can form.
+  example: []
+  syntax:
+    content: public double? DewPoint { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Double}
+    content.vb: Public ReadOnly Property DewPoint As Double?
+  overload: SimpleWeather.Hourly.DewPoint*
+- uid: SimpleWeather.Hourly.Uvi
+  commentId: P:SimpleWeather.Hourly.Uvi
+  id: Uvi
+  parent: SimpleWeather.Hourly
+  langs:
+  - csharp
+  - vb
+  name: Uvi
+  nameWithType: Hourly.Uvi
+  fullName: SimpleWeather.Hourly.Uvi
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: UV index
+  example: []
+  syntax:
+    content: public double? Uvi { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Double}
+    content.vb: Public ReadOnly Property Uvi As Double?
+  overload: SimpleWeather.Hourly.Uvi*
+- uid: SimpleWeather.Hourly.Clouds
+  commentId: P:SimpleWeather.Hourly.Clouds
+  id: Clouds
+  parent: SimpleWeather.Hourly
+  langs:
+  - csharp
+  - vb
+  name: Clouds
+  nameWithType: Hourly.Clouds
+  fullName: SimpleWeather.Hourly.Clouds
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Cloudiness, %
+  example: []
+  syntax:
+    content: public double? Clouds { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Double}
+    content.vb: Public ReadOnly Property Clouds As Double?
+  overload: SimpleWeather.Hourly.Clouds*
+- uid: SimpleWeather.Hourly.Visibility
+  commentId: P:SimpleWeather.Hourly.Visibility
+  id: Visibility
+  parent: SimpleWeather.Hourly
+  langs:
+  - csharp
+  - vb
+  name: Visibility
+  nameWithType: Hourly.Visibility
+  fullName: SimpleWeather.Hourly.Visibility
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Visibility in meters.
+  example: []
+  syntax:
+    content: public double? Visibility { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Double}
+    content.vb: Public ReadOnly Property Visibility As Double?
+  overload: SimpleWeather.Hourly.Visibility*
+- uid: SimpleWeather.Hourly.WindSpeed
+  commentId: P:SimpleWeather.Hourly.WindSpeed
+  id: WindSpeed
+  parent: SimpleWeather.Hourly
+  langs:
+  - csharp
+  - vb
+  name: WindSpeed
+  nameWithType: Hourly.WindSpeed
+  fullName: SimpleWeather.Hourly.WindSpeed
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: 'Wind speed. Default Unit: meter/sec'
+  example: []
+  syntax:
+    content: public double? WindSpeed { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Double}
+    content.vb: Public ReadOnly Property WindSpeed As Double?
+  overload: SimpleWeather.Hourly.WindSpeed*
+- uid: SimpleWeather.Hourly.WindGust
+  commentId: P:SimpleWeather.Hourly.WindGust
+  id: WindGust
+  parent: SimpleWeather.Hourly
+  langs:
+  - csharp
+  - vb
+  name: WindGust
+  nameWithType: Hourly.WindGust
+  fullName: SimpleWeather.Hourly.WindGust
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: 'Wind gust. Default Unit: meter/sec'
+  example: []
+  syntax:
+    content: public double? WindGust { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Double}
+    content.vb: Public ReadOnly Property WindGust As Double?
+  overload: SimpleWeather.Hourly.WindGust*
+- uid: SimpleWeather.Hourly.WindDegree
+  commentId: P:SimpleWeather.Hourly.WindDegree
+  id: WindDegree
+  parent: SimpleWeather.Hourly
+  langs:
+  - csharp
+  - vb
+  name: WindDegree
+  nameWithType: Hourly.WindDegree
+  fullName: SimpleWeather.Hourly.WindDegree
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Wind direction, degrees (meteorological)
+  example: []
+  syntax:
+    content: public double? WindDegree { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Double}
+    content.vb: Public ReadOnly Property WindDegree As Double?
+  overload: SimpleWeather.Hourly.WindDegree*
+- uid: SimpleWeather.Hourly.WindDirectionShort
+  commentId: P:SimpleWeather.Hourly.WindDirectionShort
+  id: WindDirectionShort
+  parent: SimpleWeather.Hourly
+  langs:
+  - csharp
+  - vb
+  name: WindDirectionShort
+  nameWithType: Hourly.WindDirectionShort
+  fullName: SimpleWeather.Hourly.WindDirectionShort
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Short wind direction represented by a string (N, E, S, W, etc.)
+  example: []
+  syntax:
+    content: public string? WindDirectionShort { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property WindDirectionShort As String
+  overload: SimpleWeather.Hourly.WindDirectionShort*
+- uid: SimpleWeather.Hourly.WindDirectionLong
+  commentId: P:SimpleWeather.Hourly.WindDirectionLong
+  id: WindDirectionLong
+  parent: SimpleWeather.Hourly
+  langs:
+  - csharp
+  - vb
+  name: WindDirectionLong
+  nameWithType: Hourly.WindDirectionLong
+  fullName: SimpleWeather.Hourly.WindDirectionLong
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Long wind direction represented by a string (North, East, South, West, etc.)
+  example: []
+  syntax:
+    content: public string? WindDirectionLong { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property WindDirectionLong As String
+  overload: SimpleWeather.Hourly.WindDirectionLong*
+- uid: SimpleWeather.Hourly.PrecipitationProbability
+  commentId: P:SimpleWeather.Hourly.PrecipitationProbability
+  id: PrecipitationProbability
+  parent: SimpleWeather.Hourly
+  langs:
+  - csharp
+  - vb
+  name: PrecipitationProbability
+  nameWithType: Hourly.PrecipitationProbability
+  fullName: SimpleWeather.Hourly.PrecipitationProbability
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Probability of precipitation in percents. The values of the parameter vary between 0 and 100
+  example: []
+  syntax:
+    content: public double? PrecipitationProbability { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Double}
+    content.vb: Public ReadOnly Property PrecipitationProbability As Double?
+  overload: SimpleWeather.Hourly.PrecipitationProbability*
+- uid: SimpleWeather.Hourly.Rain
+  commentId: P:SimpleWeather.Hourly.Rain
+  id: Rain
+  parent: SimpleWeather.Hourly
+  langs:
+  - csharp
+  - vb
+  name: Rain
+  nameWithType: Hourly.Rain
+  fullName: SimpleWeather.Hourly.Rain
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Gets the rainfall totals for the hour.
+  example: []
+  syntax:
+    content: public Rain? Rain { get; }
+    parameters: []
+    return:
+      type: SimpleWeather.Rain
+    content.vb: Public ReadOnly Property Rain As Rain
+  overload: SimpleWeather.Hourly.Rain*
+- uid: SimpleWeather.Hourly.Snow
+  commentId: P:SimpleWeather.Hourly.Snow
+  id: Snow
+  parent: SimpleWeather.Hourly
+  langs:
+  - csharp
+  - vb
+  name: Snow
+  nameWithType: Hourly.Snow
+  fullName: SimpleWeather.Hourly.Snow
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Gets the snowfall totals for the hour.
+  example: []
+  syntax:
+    content: public Snow? Snow { get; }
+    parameters: []
+    return:
+      type: SimpleWeather.Snow
+    content.vb: Public ReadOnly Property Snow As Snow
+  overload: SimpleWeather.Hourly.Snow*
+- uid: SimpleWeather.Hourly.Weather
+  commentId: P:SimpleWeather.Hourly.Weather
+  id: Weather
+  parent: SimpleWeather.Hourly
+  langs:
+  - csharp
+  - vb
+  name: Weather
+  nameWithType: Hourly.Weather
+  fullName: SimpleWeather.Hourly.Weather
+  type: Property
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Gets the descriptive weather information.
+  example: []
+  syntax:
+    content: public Weather? Weather { get; }
+    parameters: []
+    return:
+      type: SimpleWeather.Weather
+    content.vb: Public ReadOnly Property Weather As Weather
+  overload: SimpleWeather.Hourly.Weather*
+references:
+- uid: SimpleWeather
+  commentId: N:SimpleWeather
+  isExternal: true
+  href: SimpleWeather.html
+  name: SimpleWeather
+  nameWithType: SimpleWeather
+  fullName: SimpleWeather
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SimpleWeather.Hourly
+  commentId: T:SimpleWeather.Hourly
+  isExternal: true
+  href: SimpleWeather.Hourly.html
+  name: Hourly
+  nameWithType: Hourly
+  fullName: SimpleWeather.Hourly
+- uid: SimpleWeather.Hourly.#ctor*
+  commentId: Overload:SimpleWeather.Hourly.#ctor
+  isExternal: true
+  href: SimpleWeather.Hourly.html#SimpleWeather_Hourly__ctor_Newtonsoft_Json_Linq_JToken_
+  name: Hourly
+  nameWithType: Hourly.Hourly
+  fullName: SimpleWeather.Hourly.Hourly
+  nameWithType.vb: Hourly.New
+  fullName.vb: SimpleWeather.Hourly.New
+  name.vb: New
+- uid: Newtonsoft.Json.Linq.JToken
+  commentId: T:Newtonsoft.Json.Linq.JToken
+  parent: Newtonsoft.Json.Linq
+  isExternal: true
+  name: JToken
+  nameWithType: JToken
+  fullName: Newtonsoft.Json.Linq.JToken
+- uid: Newtonsoft.Json.Linq
+  commentId: N:Newtonsoft.Json.Linq
+  isExternal: true
+  name: Newtonsoft.Json.Linq
+  nameWithType: Newtonsoft.Json.Linq
+  fullName: Newtonsoft.Json.Linq
+  spec.csharp:
+  - uid: Newtonsoft
+    name: Newtonsoft
+    isExternal: true
+  - name: .
+  - uid: Newtonsoft.Json
+    name: Json
+    isExternal: true
+  - name: .
+  - uid: Newtonsoft.Json.Linq
+    name: Linq
+    isExternal: true
+  spec.vb:
+  - uid: Newtonsoft
+    name: Newtonsoft
+    isExternal: true
+  - name: .
+  - uid: Newtonsoft.Json
+    name: Json
+    isExternal: true
+  - name: .
+  - uid: Newtonsoft.Json.Linq
+    name: Linq
+    isExternal: true
+- uid: SimpleWeather.Hourly.DT*
+  commentId: Overload:SimpleWeather.Hourly.DT
+  isExternal: true
+  href: SimpleWeather.Hourly.html#SimpleWeather_Hourly_DT
+  name: DT
+  nameWithType: Hourly.DT
+  fullName: SimpleWeather.Hourly.DT
+- uid: System.Nullable{System.DateTime}
+  commentId: T:System.Nullable{System.DateTime}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.datetime
+  name: DateTime?
+  nameWithType: DateTime?
+  fullName: System.DateTime?
+  nameWithType.vb: Date?
+  fullName.vb: Date?
+  name.vb: Date?
+  spec.csharp:
+  - uid: System.DateTime
+    name: DateTime
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetime
+  - name: '?'
+  spec.vb:
+  - uid: System.DateTime
+    name: Date
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetime
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: SimpleWeather.Hourly.Temperature*
+  commentId: Overload:SimpleWeather.Hourly.Temperature
+  isExternal: true
+  href: SimpleWeather.Hourly.html#SimpleWeather_Hourly_Temperature
+  name: Temperature
+  nameWithType: Hourly.Temperature
+  fullName: SimpleWeather.Hourly.Temperature
+- uid: System.Nullable{System.Double}
+  commentId: T:System.Nullable{System.Double}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double?
+  nameWithType: double?
+  fullName: double?
+  nameWithType.vb: Double?
+  fullName.vb: Double?
+  name.vb: Double?
+  spec.csharp:
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '?'
+  spec.vb:
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '?'
+- uid: SimpleWeather.Hourly.FeelsLike*
+  commentId: Overload:SimpleWeather.Hourly.FeelsLike
+  isExternal: true
+  href: SimpleWeather.Hourly.html#SimpleWeather_Hourly_FeelsLike
+  name: FeelsLike
+  nameWithType: Hourly.FeelsLike
+  fullName: SimpleWeather.Hourly.FeelsLike
+- uid: SimpleWeather.Hourly.Pressure*
+  commentId: Overload:SimpleWeather.Hourly.Pressure
+  isExternal: true
+  href: SimpleWeather.Hourly.html#SimpleWeather_Hourly_Pressure
+  name: Pressure
+  nameWithType: Hourly.Pressure
+  fullName: SimpleWeather.Hourly.Pressure
+- uid: SimpleWeather.Hourly.Humidity*
+  commentId: Overload:SimpleWeather.Hourly.Humidity
+  isExternal: true
+  href: SimpleWeather.Hourly.html#SimpleWeather_Hourly_Humidity
+  name: Humidity
+  nameWithType: Hourly.Humidity
+  fullName: SimpleWeather.Hourly.Humidity
+- uid: SimpleWeather.Hourly.DewPoint*
+  commentId: Overload:SimpleWeather.Hourly.DewPoint
+  isExternal: true
+  href: SimpleWeather.Hourly.html#SimpleWeather_Hourly_DewPoint
+  name: DewPoint
+  nameWithType: Hourly.DewPoint
+  fullName: SimpleWeather.Hourly.DewPoint
+- uid: SimpleWeather.Hourly.Uvi*
+  commentId: Overload:SimpleWeather.Hourly.Uvi
+  isExternal: true
+  href: SimpleWeather.Hourly.html#SimpleWeather_Hourly_Uvi
+  name: Uvi
+  nameWithType: Hourly.Uvi
+  fullName: SimpleWeather.Hourly.Uvi
+- uid: SimpleWeather.Hourly.Clouds*
+  commentId: Overload:SimpleWeather.Hourly.Clouds
+  isExternal: true
+  href: SimpleWeather.Hourly.html#SimpleWeather_Hourly_Clouds
+  name: Clouds
+  nameWithType: Hourly.Clouds
+  fullName: SimpleWeather.Hourly.Clouds
+- uid: SimpleWeather.Hourly.Visibility*
+  commentId: Overload:SimpleWeather.Hourly.Visibility
+  isExternal: true
+  href: SimpleWeather.Hourly.html#SimpleWeather_Hourly_Visibility
+  name: Visibility
+  nameWithType: Hourly.Visibility
+  fullName: SimpleWeather.Hourly.Visibility
+- uid: SimpleWeather.Hourly.WindSpeed*
+  commentId: Overload:SimpleWeather.Hourly.WindSpeed
+  isExternal: true
+  href: SimpleWeather.Hourly.html#SimpleWeather_Hourly_WindSpeed
+  name: WindSpeed
+  nameWithType: Hourly.WindSpeed
+  fullName: SimpleWeather.Hourly.WindSpeed
+- uid: SimpleWeather.Hourly.WindGust*
+  commentId: Overload:SimpleWeather.Hourly.WindGust
+  isExternal: true
+  href: SimpleWeather.Hourly.html#SimpleWeather_Hourly_WindGust
+  name: WindGust
+  nameWithType: Hourly.WindGust
+  fullName: SimpleWeather.Hourly.WindGust
+- uid: SimpleWeather.Hourly.WindDegree*
+  commentId: Overload:SimpleWeather.Hourly.WindDegree
+  isExternal: true
+  href: SimpleWeather.Hourly.html#SimpleWeather_Hourly_WindDegree
+  name: WindDegree
+  nameWithType: Hourly.WindDegree
+  fullName: SimpleWeather.Hourly.WindDegree
+- uid: SimpleWeather.Hourly.WindDirectionShort*
+  commentId: Overload:SimpleWeather.Hourly.WindDirectionShort
+  isExternal: true
+  href: SimpleWeather.Hourly.html#SimpleWeather_Hourly_WindDirectionShort
+  name: WindDirectionShort
+  nameWithType: Hourly.WindDirectionShort
+  fullName: SimpleWeather.Hourly.WindDirectionShort
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: SimpleWeather.Hourly.WindDirectionLong*
+  commentId: Overload:SimpleWeather.Hourly.WindDirectionLong
+  isExternal: true
+  href: SimpleWeather.Hourly.html#SimpleWeather_Hourly_WindDirectionLong
+  name: WindDirectionLong
+  nameWithType: Hourly.WindDirectionLong
+  fullName: SimpleWeather.Hourly.WindDirectionLong
+- uid: SimpleWeather.Hourly.PrecipitationProbability*
+  commentId: Overload:SimpleWeather.Hourly.PrecipitationProbability
+  isExternal: true
+  href: SimpleWeather.Hourly.html#SimpleWeather_Hourly_PrecipitationProbability
+  name: PrecipitationProbability
+  nameWithType: Hourly.PrecipitationProbability
+  fullName: SimpleWeather.Hourly.PrecipitationProbability
+- uid: SimpleWeather.Hourly.Rain*
+  commentId: Overload:SimpleWeather.Hourly.Rain
+  isExternal: true
+  href: SimpleWeather.Hourly.html#SimpleWeather_Hourly_Rain
+  name: Rain
+  nameWithType: Hourly.Rain
+  fullName: SimpleWeather.Hourly.Rain
+- uid: SimpleWeather.Rain
+  commentId: T:SimpleWeather.Rain
+  parent: SimpleWeather
+  isExternal: true
+  href: SimpleWeather.Rain.html
+  name: Rain
+  nameWithType: Rain
+  fullName: SimpleWeather.Rain
+- uid: SimpleWeather.Hourly.Snow*
+  commentId: Overload:SimpleWeather.Hourly.Snow
+  isExternal: true
+  href: SimpleWeather.Hourly.html#SimpleWeather_Hourly_Snow
+  name: Snow
+  nameWithType: Hourly.Snow
+  fullName: SimpleWeather.Hourly.Snow
+- uid: SimpleWeather.Snow
+  commentId: T:SimpleWeather.Snow
+  parent: SimpleWeather
+  isExternal: true
+  href: SimpleWeather.Snow.html
+  name: Snow
+  nameWithType: Snow
+  fullName: SimpleWeather.Snow
+- uid: SimpleWeather.Hourly.Weather*
+  commentId: Overload:SimpleWeather.Hourly.Weather
+  isExternal: true
+  href: SimpleWeather.Hourly.html#SimpleWeather_Hourly_Weather
+  name: Weather
+  nameWithType: Hourly.Weather
+  fullName: SimpleWeather.Hourly.Weather
+- uid: SimpleWeather.Weather
+  commentId: T:SimpleWeather.Weather
+  parent: SimpleWeather
+  isExternal: true
+  href: SimpleWeather.Weather.html
+  name: Weather
+  nameWithType: Weather
+  fullName: SimpleWeather.Weather

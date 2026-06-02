@@ -1,0 +1,779 @@
+### YamlMime:ManagedReference
+items:
+- uid: SimpleWeather.GeoLocator
+  commentId: T:SimpleWeather.GeoLocator
+  id: GeoLocator
+  parent: SimpleWeather
+  children:
+  - SimpleWeather.GeoLocator.#ctor(System.String)
+  - SimpleWeather.GeoLocator.GetCitiesByNameAsync(System.String,System.String,System.String,System.Threading.CancellationToken)
+  - SimpleWeather.GeoLocator.GetCityNameByCoordinatesAsync(SimpleWeather.LatLong,System.Threading.CancellationToken)
+  - SimpleWeather.GeoLocator.GetCityNameByCoordinatesAsync(System.Double,System.Double,System.Threading.CancellationToken)
+  - SimpleWeather.GeoLocator.GetCoordinatesByCityNameAsync(System.String,System.String,System.String,System.Threading.CancellationToken)
+  - SimpleWeather.GeoLocator.GetCoordinatesByPostCodeAsync(System.String,System.String,System.Threading.CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: GeoLocator
+  nameWithType: GeoLocator
+  fullName: SimpleWeather.GeoLocator
+  type: Class
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Provides helper methods for interacting with the OpenWeather geocoding APIs.
+  example: []
+  syntax:
+    content: public class GeoLocator
+    content.vb: Public Class GeoLocator
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+- uid: SimpleWeather.GeoLocator.#ctor(System.String)
+  commentId: M:SimpleWeather.GeoLocator.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: SimpleWeather.GeoLocator
+  langs:
+  - csharp
+  - vb
+  name: GeoLocator(string?)
+  nameWithType: GeoLocator.GeoLocator(string?)
+  fullName: SimpleWeather.GeoLocator.GeoLocator(string?)
+  type: Constructor
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Provides helper methods for interacting with the OpenWeather geocoding APIs.
+  example: []
+  syntax:
+    content: public GeoLocator(string? apiKey = null)
+    parameters:
+    - id: apiKey
+      type: System.String
+      description: Optional API key used when issuing HTTP requests.
+    content.vb: Public Sub New(apiKey As String = Nothing)
+  overload: SimpleWeather.GeoLocator.#ctor*
+  nameWithType.vb: GeoLocator.New(String)
+  fullName.vb: SimpleWeather.GeoLocator.New(String)
+  name.vb: New(String)
+- uid: SimpleWeather.GeoLocator.GetCitiesByNameAsync(System.String,System.String,System.String,System.Threading.CancellationToken)
+  commentId: M:SimpleWeather.GeoLocator.GetCitiesByNameAsync(System.String,System.String,System.String,System.Threading.CancellationToken)
+  id: GetCitiesByNameAsync(System.String,System.String,System.String,System.Threading.CancellationToken)
+  parent: SimpleWeather.GeoLocator
+  langs:
+  - csharp
+  - vb
+  name: GetCitiesByNameAsync(string, string?, string?, CancellationToken)
+  nameWithType: GeoLocator.GetCitiesByNameAsync(string, string?, string?, CancellationToken)
+  fullName: SimpleWeather.GeoLocator.GetCitiesByNameAsync(string, string?, string?, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Retrieves up to five matching cities based on name, state, and country filters.
+  example: []
+  syntax:
+    content: public Task<List<string>> GetCitiesByNameAsync(string cityName, string? stateCode = null, string? countryCode = null, CancellationToken cancellationToken = default)
+    parameters:
+    - id: cityName
+      type: System.String
+      description: The city name to look up.
+    - id: stateCode
+      type: System.String
+      description: Optional ISO state code used for disambiguation.
+    - id: countryCode
+      type: System.String
+      description: Optional ISO country code used for disambiguation.
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: Token used to cancel the HTTP request.
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.List{System.String}}
+      description: A list of raw city payloads returned by the API.
+    content.vb: Public Function GetCitiesByNameAsync(cityName As String, stateCode As String = Nothing, countryCode As String = Nothing, cancellationToken As CancellationToken = Nothing) As Task(Of List(Of String))
+  overload: SimpleWeather.GeoLocator.GetCitiesByNameAsync*
+  nameWithType.vb: GeoLocator.GetCitiesByNameAsync(String, String, String, CancellationToken)
+  fullName.vb: SimpleWeather.GeoLocator.GetCitiesByNameAsync(String, String, String, System.Threading.CancellationToken)
+  name.vb: GetCitiesByNameAsync(String, String, String, CancellationToken)
+- uid: SimpleWeather.GeoLocator.GetCoordinatesByCityNameAsync(System.String,System.String,System.String,System.Threading.CancellationToken)
+  commentId: M:SimpleWeather.GeoLocator.GetCoordinatesByCityNameAsync(System.String,System.String,System.String,System.Threading.CancellationToken)
+  id: GetCoordinatesByCityNameAsync(System.String,System.String,System.String,System.Threading.CancellationToken)
+  parent: SimpleWeather.GeoLocator
+  langs:
+  - csharp
+  - vb
+  name: GetCoordinatesByCityNameAsync(string, string?, string?, CancellationToken)
+  nameWithType: GeoLocator.GetCoordinatesByCityNameAsync(string, string?, string?, CancellationToken)
+  fullName: SimpleWeather.GeoLocator.GetCoordinatesByCityNameAsync(string, string?, string?, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Retrieves the first set of coordinates that matches the supplied city filters.
+  example: []
+  syntax:
+    content: public Task<LatLong?> GetCoordinatesByCityNameAsync(string cityName, string? stateCode = null, string? countryCode = null, CancellationToken cancellationToken = default)
+    parameters:
+    - id: cityName
+      type: System.String
+      description: The city name to look up.
+    - id: stateCode
+      type: System.String
+      description: Optional ISO state code used for disambiguation.
+    - id: countryCode
+      type: System.String
+      description: Optional ISO country code used for disambiguation.
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: Token used to cancel the HTTP request.
+    return:
+      type: System.Threading.Tasks.Task{System.Nullable{SimpleWeather.LatLong}}
+      description: A <xref href="SimpleWeather.LatLong" data-throw-if-not-resolved="false"></xref> when a city is found; otherwise <code>null</code>.
+    content.vb: Public Function GetCoordinatesByCityNameAsync(cityName As String, stateCode As String = Nothing, countryCode As String = Nothing, cancellationToken As CancellationToken = Nothing) As Task(Of LatLong?)
+  overload: SimpleWeather.GeoLocator.GetCoordinatesByCityNameAsync*
+  nameWithType.vb: GeoLocator.GetCoordinatesByCityNameAsync(String, String, String, CancellationToken)
+  fullName.vb: SimpleWeather.GeoLocator.GetCoordinatesByCityNameAsync(String, String, String, System.Threading.CancellationToken)
+  name.vb: GetCoordinatesByCityNameAsync(String, String, String, CancellationToken)
+- uid: SimpleWeather.GeoLocator.GetCoordinatesByPostCodeAsync(System.String,System.String,System.Threading.CancellationToken)
+  commentId: M:SimpleWeather.GeoLocator.GetCoordinatesByPostCodeAsync(System.String,System.String,System.Threading.CancellationToken)
+  id: GetCoordinatesByPostCodeAsync(System.String,System.String,System.Threading.CancellationToken)
+  parent: SimpleWeather.GeoLocator
+  langs:
+  - csharp
+  - vb
+  name: GetCoordinatesByPostCodeAsync(string, string, CancellationToken)
+  nameWithType: GeoLocator.GetCoordinatesByPostCodeAsync(string, string, CancellationToken)
+  fullName: SimpleWeather.GeoLocator.GetCoordinatesByPostCodeAsync(string, string, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Retrieves coordinates by postal or ZIP code.
+  example: []
+  syntax:
+    content: public Task<LatLong?> GetCoordinatesByPostCodeAsync(string postCode, string countryCode, CancellationToken cancellationToken = default)
+    parameters:
+    - id: postCode
+      type: System.String
+      description: The postal or ZIP code.
+    - id: countryCode
+      type: System.String
+      description: The ISO country code the postal code belongs to.
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: Token used to cancel the HTTP request.
+    return:
+      type: System.Threading.Tasks.Task{System.Nullable{SimpleWeather.LatLong}}
+      description: A <xref href="SimpleWeather.LatLong" data-throw-if-not-resolved="false"></xref> when a match is found; otherwise <code>null</code>.
+    content.vb: Public Function GetCoordinatesByPostCodeAsync(postCode As String, countryCode As String, cancellationToken As CancellationToken = Nothing) As Task(Of LatLong?)
+  overload: SimpleWeather.GeoLocator.GetCoordinatesByPostCodeAsync*
+  nameWithType.vb: GeoLocator.GetCoordinatesByPostCodeAsync(String, String, CancellationToken)
+  fullName.vb: SimpleWeather.GeoLocator.GetCoordinatesByPostCodeAsync(String, String, System.Threading.CancellationToken)
+  name.vb: GetCoordinatesByPostCodeAsync(String, String, CancellationToken)
+- uid: SimpleWeather.GeoLocator.GetCityNameByCoordinatesAsync(SimpleWeather.LatLong,System.Threading.CancellationToken)
+  commentId: M:SimpleWeather.GeoLocator.GetCityNameByCoordinatesAsync(SimpleWeather.LatLong,System.Threading.CancellationToken)
+  id: GetCityNameByCoordinatesAsync(SimpleWeather.LatLong,System.Threading.CancellationToken)
+  parent: SimpleWeather.GeoLocator
+  langs:
+  - csharp
+  - vb
+  name: GetCityNameByCoordinatesAsync(LatLong, CancellationToken)
+  nameWithType: GeoLocator.GetCityNameByCoordinatesAsync(LatLong, CancellationToken)
+  fullName: SimpleWeather.GeoLocator.GetCityNameByCoordinatesAsync(SimpleWeather.LatLong, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Looks up the city name for the supplied coordinate pair.
+  example: []
+  syntax:
+    content: public Task<string?> GetCityNameByCoordinatesAsync(LatLong latLong, CancellationToken cancellationToken = default)
+    parameters:
+    - id: latLong
+      type: SimpleWeather.LatLong
+      description: The latitude and longitude to reverse geocode.
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: Token used to cancel the HTTP request.
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+      description: The city name when available; otherwise <code>null</code>.
+    content.vb: Public Function GetCityNameByCoordinatesAsync(latLong As LatLong, cancellationToken As CancellationToken = Nothing) As Task(Of String)
+  overload: SimpleWeather.GeoLocator.GetCityNameByCoordinatesAsync*
+- uid: SimpleWeather.GeoLocator.GetCityNameByCoordinatesAsync(System.Double,System.Double,System.Threading.CancellationToken)
+  commentId: M:SimpleWeather.GeoLocator.GetCityNameByCoordinatesAsync(System.Double,System.Double,System.Threading.CancellationToken)
+  id: GetCityNameByCoordinatesAsync(System.Double,System.Double,System.Threading.CancellationToken)
+  parent: SimpleWeather.GeoLocator
+  langs:
+  - csharp
+  - vb
+  name: GetCityNameByCoordinatesAsync(double, double, CancellationToken)
+  nameWithType: GeoLocator.GetCityNameByCoordinatesAsync(double, double, CancellationToken)
+  fullName: SimpleWeather.GeoLocator.GetCityNameByCoordinatesAsync(double, double, System.Threading.CancellationToken)
+  type: Method
+  assemblies:
+  - SimpleWeather
+  namespace: SimpleWeather
+  summary: Looks up the city name for the supplied latitude/longitude pair.
+  example: []
+  syntax:
+    content: public Task<string?> GetCityNameByCoordinatesAsync(double lat, double lon, CancellationToken cancellationToken = default)
+    parameters:
+    - id: lat
+      type: System.Double
+      description: The latitude to reverse geocode.
+    - id: lon
+      type: System.Double
+      description: The longitude to reverse geocode.
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: Token used to cancel the HTTP request.
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+      description: The city name when available; otherwise <code>null</code>.
+    content.vb: Public Function GetCityNameByCoordinatesAsync(lat As Double, lon As Double, cancellationToken As CancellationToken = Nothing) As Task(Of String)
+  overload: SimpleWeather.GeoLocator.GetCityNameByCoordinatesAsync*
+  nameWithType.vb: GeoLocator.GetCityNameByCoordinatesAsync(Double, Double, CancellationToken)
+  fullName.vb: SimpleWeather.GeoLocator.GetCityNameByCoordinatesAsync(Double, Double, System.Threading.CancellationToken)
+  name.vb: GetCityNameByCoordinatesAsync(Double, Double, CancellationToken)
+references:
+- uid: SimpleWeather
+  commentId: N:SimpleWeather
+  isExternal: true
+  href: SimpleWeather.html
+  name: SimpleWeather
+  nameWithType: SimpleWeather
+  fullName: SimpleWeather
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SimpleWeather.GeoLocator.#ctor*
+  commentId: Overload:SimpleWeather.GeoLocator.#ctor
+  isExternal: true
+  href: SimpleWeather.GeoLocator.html#SimpleWeather_GeoLocator__ctor_System_String_
+  name: GeoLocator
+  nameWithType: GeoLocator.GeoLocator
+  fullName: SimpleWeather.GeoLocator.GeoLocator
+  nameWithType.vb: GeoLocator.New
+  fullName.vb: SimpleWeather.GeoLocator.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: SimpleWeather.GeoLocator.GetCitiesByNameAsync*
+  commentId: Overload:SimpleWeather.GeoLocator.GetCitiesByNameAsync
+  isExternal: true
+  href: SimpleWeather.GeoLocator.html#SimpleWeather_GeoLocator_GetCitiesByNameAsync_System_String_System_String_System_String_System_Threading_CancellationToken_
+  name: GetCitiesByNameAsync
+  nameWithType: GeoLocator.GetCitiesByNameAsync
+  fullName: SimpleWeather.GeoLocator.GetCitiesByNameAsync
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.List{System.String}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.List{System.String}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<List<string>>
+  nameWithType: Task<List<string>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.List<string>>
+  nameWithType.vb: Task(Of List(Of String))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of String))
+  name.vb: Task(Of List(Of String))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  - name: )
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: SimpleWeather.LatLong
+  commentId: T:SimpleWeather.LatLong
+  parent: SimpleWeather
+  isExternal: true
+  href: SimpleWeather.LatLong.html
+  name: LatLong
+  nameWithType: LatLong
+  fullName: SimpleWeather.LatLong
+- uid: SimpleWeather.GeoLocator.GetCoordinatesByCityNameAsync*
+  commentId: Overload:SimpleWeather.GeoLocator.GetCoordinatesByCityNameAsync
+  isExternal: true
+  href: SimpleWeather.GeoLocator.html#SimpleWeather_GeoLocator_GetCoordinatesByCityNameAsync_System_String_System_String_System_String_System_Threading_CancellationToken_
+  name: GetCoordinatesByCityNameAsync
+  nameWithType: GeoLocator.GetCoordinatesByCityNameAsync
+  fullName: SimpleWeather.GeoLocator.GetCoordinatesByCityNameAsync
+- uid: System.Threading.Tasks.Task{System.Nullable{SimpleWeather.LatLong}}
+  commentId: T:System.Threading.Tasks.Task{System.Nullable{SimpleWeather.LatLong}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<LatLong?>
+  nameWithType: Task<LatLong?>
+  fullName: System.Threading.Tasks.Task<SimpleWeather.LatLong?>
+  nameWithType.vb: Task(Of LatLong?)
+  fullName.vb: System.Threading.Tasks.Task(Of SimpleWeather.LatLong?)
+  name.vb: Task(Of LatLong?)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: SimpleWeather.LatLong
+    name: LatLong
+    isExternal: true
+    href: SimpleWeather.LatLong.html
+  - name: '?'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: SimpleWeather.LatLong
+    name: LatLong
+    isExternal: true
+    href: SimpleWeather.LatLong.html
+  - name: '?'
+  - name: )
+- uid: SimpleWeather.GeoLocator.GetCoordinatesByPostCodeAsync*
+  commentId: Overload:SimpleWeather.GeoLocator.GetCoordinatesByPostCodeAsync
+  isExternal: true
+  href: SimpleWeather.GeoLocator.html#SimpleWeather_GeoLocator_GetCoordinatesByPostCodeAsync_System_String_System_String_System_Threading_CancellationToken_
+  name: GetCoordinatesByPostCodeAsync
+  nameWithType: GeoLocator.GetCoordinatesByPostCodeAsync
+  fullName: SimpleWeather.GeoLocator.GetCoordinatesByPostCodeAsync
+- uid: SimpleWeather.GeoLocator.GetCityNameByCoordinatesAsync*
+  commentId: Overload:SimpleWeather.GeoLocator.GetCityNameByCoordinatesAsync
+  isExternal: true
+  href: SimpleWeather.GeoLocator.html#SimpleWeather_GeoLocator_GetCityNameByCoordinatesAsync_SimpleWeather_LatLong_System_Threading_CancellationToken_
+  name: GetCityNameByCoordinatesAsync
+  nameWithType: GeoLocator.GetCityNameByCoordinatesAsync
+  fullName: SimpleWeather.GeoLocator.GetCityNameByCoordinatesAsync
+- uid: System.Threading.Tasks.Task{System.String}
+  commentId: T:System.Threading.Tasks.Task{System.String}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<string>
+  nameWithType: Task<string>
+  fullName: System.Threading.Tasks.Task<string>
+  nameWithType.vb: Task(Of String)
+  fullName.vb: System.Threading.Tasks.Task(Of String)
+  name.vb: Task(Of String)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
