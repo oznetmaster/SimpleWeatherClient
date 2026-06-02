@@ -75,7 +75,8 @@ Compared with the original upstream project, this repository currently differs i
 
 If you are looking for the actual API surface documentation for the `SimpleWeather` library, start here:
 
-- [API Documentation](docs/api.md)
+- [Published API Documentation Site](https://oznetmaster.github.io/SimpleWeatherClient/)
+- [API Documentation Guide](docs/api.md)
 
 Additional repository and contributor documentation:
 
@@ -87,7 +88,7 @@ Additional repository and contributor documentation:
 - [Releases and Packages](docs/releases.md)
 
 The repository docs in `docs/` are for contributors and GitHub readers.
-The generated API/reference documentation is built from XML comments and DocFX assets under `docfx/`.
+The generated API/reference documentation is built from XML comments and DocFX assets under `docfx/` and published to GitHub Pages.
 
 ## Requirements
 

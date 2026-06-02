@@ -7,6 +7,12 @@ This repository contains two different kinds of documentation:
 
 If you are looking for the actual API surface documentation for the `SimpleWeather` library, the generated API reference is the important part.
 
+## Published API Documentation Site
+
+The generated API documentation is published here:
+
+- https://oznetmaster.github.io/SimpleWeatherClient/
+
 ## API Reference Source
 
 The generated API documentation is based on:
@@ -49,5 +55,3 @@ The best public documentation setup for this repository is:
 - `README.md` as the GitHub landing page
 - `docs/*.md` for contributor and usage guidance
 - DocFX published through GitHub Pages for the actual API reference site
-
-Once GitHub Pages is wired up, this page should link directly to the published DocFX site URL.
