@@ -4,7 +4,9 @@ Welcome to the published API documentation for **SimpleWeatherClient**.
 
 ## Start Here
 
+- [Getting Started](articles/getting-started.md)
 - [Overview](articles/overview.md)
+- [Key Types](articles/key-types.md)
 - [API Reference](api/toc.yml)
 
 ## About This Site
