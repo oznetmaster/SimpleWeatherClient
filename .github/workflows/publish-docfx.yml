@@ -45,6 +45,10 @@ jobs:
       - name: Build DocFX site
         run: dotnet tool run docfx build .\docfx\docfx.json --output .\docfx-site
 
+      - name: Post-process API page layout
+        shell: pwsh
+        run: .\docfx\postprocess-api-layout.ps1 -SiteRoot .\docfx-site
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
