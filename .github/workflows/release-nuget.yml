@@ -16,6 +16,8 @@ jobs:
     env:
       PROJECT_PATH: .\SimpleWeather\SimpleWeather.csproj
       ARTIFACT_DIR: ${{ github.workspace }}\artifacts
+      RELEASE_ASSET_GLOB_NUPKG: artifacts/*.nupkg
+      RELEASE_ASSET_GLOB_SNUPKG: artifacts/*.snupkg
 
     permissions:
       contents: write
@@ -88,8 +90,8 @@ jobs:
         with:
           tag_name: ${{ steps.version.outputs.raw_version }}
           files: |
-            ${{ env.ARTIFACT_DIR }}/*.nupkg
-            ${{ env.ARTIFACT_DIR }}/*.snupkg
+            ${{ env.RELEASE_ASSET_GLOB_NUPKG }}
+            ${{ env.RELEASE_ASSET_GLOB_SNUPKG }}
 
       - name: Publish symbol package to NuGet
         if: ${{ github.event_name == 'release' }}
