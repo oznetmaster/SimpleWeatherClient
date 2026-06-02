@@ -38,7 +38,8 @@
       "pdf": true
     },
     "template": [
-      "default"
+      "default",
+      "modern"
     ]
   }
 }
