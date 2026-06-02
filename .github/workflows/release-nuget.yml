@@ -1,0 +1,96 @@
+name: Release NuGet Package
+
+on:
+  release:
+	types: [published]
+  workflow_dispatch:
+	inputs:
+	  version:
+		description: Version or tag to publish, for example 1.2.3 or v1.2.3
+		required: true
+		type: string
+
+jobs:
+  pack-and-publish:
+	runs-on: windows-latest
+	env:
+	  PROJECT_PATH: .\SimpleWeather\SimpleWeather.csproj
+	  ARTIFACT_DIR: ${{ github.workspace }}\artifacts
+
+	permissions:
+	  contents: read
+
+	steps:
+	  - name: Checkout
+		uses: actions/checkout@v4
+		with:
+		  fetch-depth: 0
+
+	  - name: Setup .NET
+		uses: actions/setup-dotnet@v4
+		with:
+		  dotnet-version: |
+			10.0.x
+
+	  - name: Determine package version
+		id: version
+		shell: pwsh
+		run: |
+		  $rawVersion = switch ('${{ github.event_name }}') {
+			  'workflow_dispatch' { '${{ inputs.version }}'; break }
+			  'release' { '${{ github.event.release.tag_name }}'; break }
+			  default { '' }
+		  }
+		  if ([string]::IsNullOrWhiteSpace($rawVersion)) {
+			  throw 'No release tag or manual version was provided.'
+		  }
+
+		  $packageVersion = $rawVersion.Trim()
+		  if ($packageVersion.StartsWith('v', [System.StringComparison]::OrdinalIgnoreCase)) {
+			  $packageVersion = $packageVersion.Substring(1)
+		  }
+
+		  if ($packageVersion -notmatch '^\d+\.\d+\.\d+(?:[-+][0-9A-Za-z\.-]+)?$') {
+			  throw "Version '$packageVersion' is not a supported NuGet semantic version."
+		  }
+
+		  "raw_version=$rawVersion" >> $env:GITHUB_OUTPUT
+		  "package_version=$packageVersion" >> $env:GITHUB_OUTPUT
+
+	  - name: Restore
+		run: dotnet restore .\SimpleWeather.sln
+
+	  - name: Build Release
+		run: dotnet build .\SimpleWeather.sln -c Release --no-restore -p:ContinuousIntegrationBuild=true
+
+	  - name: Pack SimpleWeatherClient
+		shell: pwsh
+		run: |
+		  New-Item -ItemType Directory -Path "${{ env.ARTIFACT_DIR }}" -Force | Out-Null
+		  dotnet pack ${{ env.PROJECT_PATH }} -c Release --no-build -o "${{ env.ARTIFACT_DIR }}" /p:ContinuousIntegrationBuild=true /p:Version=${{ steps.version.outputs.package_version }} /p:PackageVersion=${{ steps.version.outputs.package_version }}
+
+	  - name: Publish package to NuGet
+		if: ${{ github.event_name == 'release' }}
+		shell: pwsh
+		run: |
+		  $packages = Get-ChildItem -Path "${{ env.ARTIFACT_DIR }}" -Filter '*.nupkg' | Where-Object { $_.Name -notlike '*.symbols.nupkg' }
+		  if (-not $packages) {
+			  throw 'No NuGet package was produced.'
+		  }
+
+		  foreach ($package in $packages) {
+			  dotnet nuget push $package.FullName --api-key "${{ secrets.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+		  }
+
+	  - name: Publish symbol package to NuGet
+		if: ${{ github.event_name == 'release' }}
+		shell: pwsh
+		run: |
+		  $packages = Get-ChildItem -Path "${{ env.ARTIFACT_DIR }}" -Filter '*.snupkg'
+		  if (-not $packages) {
+			  throw 'No symbol package was produced.'
+		  }
+
+		  foreach ($package in $packages) {
+			  dotnet nuget push $package.FullName --api-key "${{ secrets.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+		  }

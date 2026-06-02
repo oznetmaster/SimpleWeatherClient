@@ -19,14 +19,27 @@
 
       <!-- Migrated from AssemblyInfo.cs -->
       <AssemblyTitle>SimpleWeather</AssemblyTitle>
-      <Description></Description>
+      <Description>Dual-targeted OpenWeather client library with .NET Framework 4.7.2 and .NET 10 support, adapted from the original Banovvv/SimpleWeather project.</Description>
       <Company>Neil Colvin</Company>
-      <Product>SimpleWeather</Product>
+      <Product>SimpleWeatherClient</Product>
       <Copyright>Copyright © 2026 Neil Colvin</Copyright>
       <AssemblyVersion>1.0.0.0</AssemblyVersion>
       <FileVersion>1.0.0.0</FileVersion>
       <ComVisible>false</ComVisible>
       <Platforms>AnyCPU</Platforms>
+      <PackageId>SimpleWeatherClient</PackageId>
+      <PackageTags>weather;openweather;forecast;desktop;net472;net10</PackageTags>
+      <Authors>Neil Colvin</Authors>
+      <PackageProjectUrl>https://github.com/oznetmaster/SimpleWeatherClient</PackageProjectUrl>
+      <RepositoryUrl>https://github.com/oznetmaster/SimpleWeatherClient.git</RepositoryUrl>
+      <RepositoryType>git</RepositoryType>
+      <PackageReadmeFile>README.md</PackageReadmeFile>
+      <PackageLicenseExpression>MIT</PackageLicenseExpression>
+      <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+      <IncludeSymbols>true</IncludeSymbols>
+      <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+      <PublishRepositoryUrl>true</PublishRepositoryUrl>
+      <EmbedUntrackedSources>true</EmbedUntrackedSources>
   </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework)' == 'net472'">
 	  <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -74,6 +87,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="build\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\README.md" Pack="true" PackagePath="\" Link="README.md" />
   </ItemGroup>
 
   <Target Name="GenerateDocumentationPdf" AfterTargets="Build" Condition="'$(Configuration)' == 'Release' and '$(TargetFramework)' == 'net472' and '$(IsBuildingProject)' == 'true'">
