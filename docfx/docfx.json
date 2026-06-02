@@ -28,6 +28,9 @@
     "resource": [
       {
         "files": [ "images/**" ]
+      },
+      {
+        "files": [ "styles/**" ]
       }
     ],
     "globalMetadata": {
