@@ -54,6 +54,7 @@ Compared with the original upstream project, this repository currently differs i
 - `SimpleWeather.Desktop/` - WPF desktop app
 - `SimpleWeather.Widget/` - WinUI widget client
 - `SimpleWeatherTest/` - console test application
+- `docs/` - repo-facing markdown documentation
 - `docfx/` - API documentation assets and generated content
 
 ## Features
@@ -69,6 +70,24 @@ Compared with the original upstream project, this repository currently differs i
 - weather lookup from Windows UI applications
 - shared use of the `SimpleWeather` library
 - local, non-published API-key fallback support for development use
+
+## Documentation
+
+If you are looking for the actual API surface documentation for the `SimpleWeather` library, start here:
+
+- [API Documentation](docs/api.md)
+
+Additional repository and contributor documentation:
+
+- [Overview](docs/overview.md)
+- [Configuration](docs/configuration.md)
+- [Library](docs/library.md)
+- [Desktop Application](docs/desktop.md)
+- [Widget Application](docs/widget.md)
+- [Releases and Packages](docs/releases.md)
+
+The repository docs in `docs/` are for contributors and GitHub readers.
+The generated API/reference documentation is built from XML comments and DocFX assets under `docfx/`.
 
 ## Requirements
 
@@ -122,18 +141,10 @@ Or build from Visual Studio.
 
 Before running applications that call the OpenWeather service, make sure a valid API key is available through one of the supported local configuration paths.
 
-## Documentation
-
-The `SimpleWeather` project has XML documentation enabled, and this repository includes DocFX content for generated API documentation.
-
-This makes it practical to publish both:
-- a GitHub-friendly README for project overview
-- generated API docs for library consumers
-
 ## Planned Publishing Workflow
 
-This repository is being prepared for:
-- GitHub publication under a new repository name
+This repository is set up for:
+- GitHub publication under the `SimpleWeatherClient` name
 - automated NuGet package creation
 - release-based package publishing
 
