@@ -40,7 +40,7 @@ jobs:
         run: dotnet tool restore
 
       - name: Generate DocFX metadata
-        run: dotnet tool run docfx metadata .\docfx\docfx.json --logLevel Error --property TargetFramework=net472;Configuration=Release
+        run: dotnet tool run docfx metadata .\docfx\docfx.json --logLevel Error --property "TargetFramework=net472;Configuration=Release"
 
       - name: Build DocFX site
         run: dotnet tool run docfx build .\docfx\docfx.json --output .\docfx-site
