@@ -19,6 +19,9 @@
         "files": [ "articles/**.md" ]
       },
       {
+        "files": [ "index.md" ]
+      },
+      {
         "files": [ "toc.yml" ]
       }
     ],
