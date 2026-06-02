@@ -5,6 +5,15 @@ article.content.wrap.api-enhanced-layout {
   align-items: start;
 }
 
+@media (min-width: 641px) {
+  article.content.wrap.api-enhanced-layout {
+	display: grid !important;
+	grid-template-columns: 280px minmax(0, 1fr) !important;
+	gap: 24px !important;
+	align-items: start;
+  }
+}
+
 .api-sidebar {
   position: sticky;
   top: 24px;
@@ -61,9 +70,9 @@ article.content.wrap.api-enhanced-layout {
   min-width: 0;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 640px) {
   article.content.wrap.api-enhanced-layout {
-	grid-template-columns: 1fr;
+	grid-template-columns: 1fr !important;
   }
 
   .api-sidebar {
