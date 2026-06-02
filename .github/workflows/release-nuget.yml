@@ -1,8 +1,9 @@
 name: Release NuGet Package
 
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - 'v*'
   workflow_dispatch:
     inputs:
       version:
@@ -10,17 +11,15 @@ on:
         required: true
         type: string
 
+permissions:
+  contents: write
+
 jobs:
   pack-and-publish:
     runs-on: windows-latest
     env:
       PROJECT_PATH: .\SimpleWeather\SimpleWeather.csproj
       ARTIFACT_DIR: ${{ github.workspace }}\artifacts
-      RELEASE_ASSET_GLOB_NUPKG: artifacts/*.nupkg
-      RELEASE_ASSET_GLOB_SNUPKG: artifacts/*.snupkg
-
-    permissions:
-      contents: write
 
     steps:
       - name: Checkout
@@ -40,7 +39,7 @@ jobs:
         run: |
           $rawVersion = switch ('${{ github.event_name }}') {
               'workflow_dispatch' { '${{ inputs.version }}'; break }
-              'release' { '${{ github.event.release.tag_name }}'; break }
+              'push' { '${{ github.ref_name }}'; break }
               default { '' }
           }
           if ([string]::IsNullOrWhiteSpace($rawVersion)) {
@@ -72,7 +71,6 @@ jobs:
           dotnet pack ${{ env.PROJECT_PATH }} -c Release --no-build -o "${{ env.ARTIFACT_DIR }}" /p:ContinuousIntegrationBuild=true /p:Version=${{ steps.version.outputs.package_version }} /p:PackageVersion=${{ steps.version.outputs.package_version }}
 
       - name: Publish package to NuGet
-        if: ${{ github.event_name == 'release' }}
         shell: pwsh
         run: |
           $packages = Get-ChildItem -Path "${{ env.ARTIFACT_DIR }}" -Filter '*.nupkg' | Where-Object { $_.Name -notlike '*.symbols.nupkg' }
@@ -84,17 +82,7 @@ jobs:
               dotnet nuget push $package.FullName --api-key "${{ secrets.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
           }
 
-      - name: Upload packages to GitHub release
-        if: ${{ github.event_name == 'release' }}
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: ${{ steps.version.outputs.raw_version }}
-          files: |
-            ${{ env.RELEASE_ASSET_GLOB_NUPKG }}
-            ${{ env.RELEASE_ASSET_GLOB_SNUPKG }}
-
       - name: Publish symbol package to NuGet
-        if: ${{ github.event_name == 'release' }}
         shell: pwsh
         run: |
           $packages = Get-ChildItem -Path "${{ env.ARTIFACT_DIR }}" -Filter '*.snupkg'
@@ -105,3 +93,15 @@ jobs:
           foreach ($package in $packages) {
               dotnet nuget push $package.FullName --api-key "${{ secrets.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
           }
+
+      - name: Create GitHub release from tag
+        if: github.event_name == 'push'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.version.outputs.raw_version }}
+          name: ${{ steps.version.outputs.raw_version }}
+          generate_release_notes: true
+          prerelease: ${{ contains(steps.version.outputs.package_version, '-') }}
+          files: |
+            artifacts/*.nupkg
+            artifacts/*.snupkg
