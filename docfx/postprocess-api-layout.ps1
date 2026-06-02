@@ -12,7 +12,7 @@ $singleline = [System.Text.RegularExpressions.RegexOptions]::Singleline
 $files = Get-ChildItem -Path $apiDirectory -Filter '*.html' -File
 foreach ($file in $files) {
 	$html = Get-Content $file.FullName -Raw
-	$articleMatch = [regex]::Match($html, '<article class="content wrap" id="_content" data-uid="(?<uid>[^"]+)">(?<body>.*?)</article>', $singleline)
+	$articleMatch = [regex]::Match($html, '<article class="content wrap(?: api-enhanced-layout)?" id="_content" data-uid="(?<uid>[^"]+)">(?<body>.*?)</article>', $singleline)
 	if (-not $articleMatch.Success) {
 		continue
 	}
@@ -40,13 +40,13 @@ foreach ($file in $files) {
 		$items = foreach ($itemMatch in $itemMatches) {
 			$href = $itemMatch.Groups['href'].Value
 			$text = [regex]::Replace($itemMatch.Groups['text'].Value, '<.*?>', '').Trim()
-			"<li><a href=`"$href`">$text</a></li>"
+			"<li style=`"margin-top:6px;`"><a href=`"$href`" style=`"display:block;text-decoration:none;color:#337ab7;word-break:break-word;`">$text</a></li>"
 		}
 
 		$sidebarSections.Add(@"
-<div class="api-sidebar-group">
-  <div class="api-sidebar-group-title">$title</div>
-  <ul class="api-sidebar-list">
+<div class="api-sidebar-group" style="margin-top:16px;">
+  <div class="api-sidebar-group-title" style="font-size:0.85rem;font-weight:700;text-transform:uppercase;color:#666;margin-bottom:8px;">$title</div>
+  <ul class="api-sidebar-list" style="list-style:none;padding:0;margin:0;">
     $($items -join "`n    ")
   </ul>
 </div>
@@ -58,18 +58,18 @@ foreach ($file in $files) {
 	}
 
 	$replacement = @"
-<article class="content wrap api-enhanced-layout" id="_content" data-uid="$uid">
-  <nav class="api-sidebar" aria-label="API page navigation">
-    <div class="api-sidebar-title">Index</div>
+<article class="content wrap api-enhanced-layout" id="_content" data-uid="$uid" style="display:grid;grid-template-columns:280px minmax(0,1fr);gap:24px;align-items:start;">
+  <nav class="api-sidebar" aria-label="API page navigation" style="position:sticky;top:24px;max-height:calc(100vh - 48px);overflow:auto;padding:16px;border:1px solid #ddd;border-radius:8px;background:#fafafa;">
+    <div class="api-sidebar-title" style="font-size:1.1rem;font-weight:600;margin-bottom:12px;">Index</div>
     $($sidebarSections -join "`n    ")
   </nav>
-  <div class="api-main">
+  <div class="api-main" style="min-width:0;">
     $header
     $bodyWithoutHeader
   </div>
 </article>
 "@
 
-	$updatedHtml = [regex]::Replace($html, '<article class="content wrap" id="_content" data-uid="[^"]+">.*?</article>', [System.Text.RegularExpressions.MatchEvaluator]{ param($m) $replacement }, $singleline)
+	$updatedHtml = [regex]::Replace($html, '<article class="content wrap(?: api-enhanced-layout)?" id="_content" data-uid="[^"]+">.*?</article>', [System.Text.RegularExpressions.MatchEvaluator]{ param($m) $replacement }, $singleline)
 	Set-Content -Path $file.FullName -Value $updatedHtml -NoNewline
 }
