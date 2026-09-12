@@ -1,4 +1,5 @@
-﻿// Copyright (c)2022 Ivan Gechev
+// Copyright (c) 2026 Neil Colvin.
+// Copyright (c)2022 Ivan Gechev
 // Copyright (c)2025 Nivloc Enterprises Ltd
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 // This file is adapted from Banovvv/SimpleWeather (https://github.com/Banovvv/SimpleWeather)
@@ -21,18 +22,23 @@ public class WeatherController : IDisposable
 	private readonly string _currentWeatherBaseUrl = "https://api.openweathermap.org/data/2.5/";
 	private readonly string? _apiKey;
 	private HttpClient? _client;
+	private readonly HttpMessageHandler _handler;
 	private OpenWeatherCapabilities? _capabilities;
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="WeatherController"/> class.
 	/// </summary>
 	/// <param name="apiKey">Optional OpenWeather API key used for authenticated requests.</param>
-	public WeatherController (string? apiKey = null)
+	public WeatherController (string? apiKey = null) : this (apiKey, new HttpClientHandler ())
 		{
-		// Use fully qualified name for ConfigurationManager
+		}
+
+	internal WeatherController (string? apiKey, HttpMessageHandler handler)
+		{
 		_apiKey = apiKey;
 
-		_client = new HttpClient ();
+		_handler = handler ?? throw new ArgumentNullException (nameof (handler));
+		_client = new HttpClient (handler);
 		_client.DefaultRequestHeaders.Accept.Add (new MediaTypeWithQualityHeaderValue ("application/json"));
 		_client.Timeout = TimeSpan.FromMilliseconds (5000);
 		}
@@ -50,7 +56,7 @@ public class WeatherController : IDisposable
 		{
 		try
 			{
-			var geoLocator = new GeoLocator (_apiKey);
+			var geoLocator = CreateGeoLocator ();
 			LatLong? latlong = await geoLocator.GetCoordinatesByCityNameAsync (cityName, stateCode, countryCode, cancellationToken).ConfigureAwait (false)
 					?? throw new InvalidOperationException ($"Could not find coordinates for city: {cityName}, {stateCode}, {countryCode}");
 			return await GetCurrentWeatherAsync (latlong.Value, units, cancellationToken).ConfigureAwait (false);
@@ -71,10 +77,10 @@ public class WeatherController : IDisposable
 	/// <returns>A <see cref="CurrentWeather"/> object for the specified coordinates</returns>
 	public async Task<CurrentWeather> GetCurrentWeatherAsync (double lat, double lon, string units = "metric", CancellationToken cancellationToken = default)
 		{
-		var oneCallUri = new Uri ($"{_oneCallBaseUrl}onecall?lat={lat}&lon={lon}&exclude=minutely,hourly,daily&appid={_apiKey}&units={units}");
-		var currentUri = new Uri ($"{_currentWeatherBaseUrl}weather?lat={lat}&lon={lon}&appid={_apiKey}&units={units}");
+		var oneCallUri = new Uri (FormattableString.Invariant ($"{_oneCallBaseUrl}onecall?lat={lat}&lon={lon}&exclude=minutely,hourly,daily&appid={Uri.EscapeDataString (_apiKey ?? "")}&units={Uri.EscapeDataString (units)}"));
+		var currentUri = new Uri (FormattableString.Invariant ($"{_currentWeatherBaseUrl}weather?lat={lat}&lon={lon}&appid={Uri.EscapeDataString (_apiKey ?? "")}&units={Uri.EscapeDataString (units)}"));
 
-		(HttpResponseMessage? oneCallResponse, var oneCallContent) = await GetAsyncWithContent (oneCallUri, cancellationToken).ConfigureAwait (false);
+		(ResponseInfo oneCallResponse, var oneCallContent) = await GetAsyncWithContent (oneCallUri, cancellationToken).ConfigureAwait (false);
 		if (oneCallResponse.IsSuccessStatusCode && !IsAuthFailure (oneCallResponse.StatusCode, oneCallContent))
 			{
 			return new CurrentWeather (oneCallContent);
@@ -83,7 +89,7 @@ public class WeatherController : IDisposable
 		// If the key does not have access to One Call, fall back to the free current weather endpoint.
 		if (IsAuthFailure (oneCallResponse.StatusCode, oneCallContent))
 			{
-			(HttpResponseMessage? currentResponse, var currentContent) = await GetAsyncWithContent (currentUri, cancellationToken).ConfigureAwait (false);
+			(ResponseInfo currentResponse, var currentContent) = await GetAsyncWithContent (currentUri, cancellationToken).ConfigureAwait (false);
 			if (currentResponse.IsSuccessStatusCode && !IsAuthFailure (currentResponse.StatusCode, currentContent))
 				{
 				return new CurrentWeather (currentContent);
@@ -123,7 +129,7 @@ public class WeatherController : IDisposable
 		{
 		try
 			{
-			var geoLocator = new GeoLocator (_apiKey);
+			var geoLocator = CreateGeoLocator ();
 			LatLong? latlong = await geoLocator.GetCoordinatesByCityNameAsync (cityName, stateCode, countryCode, cancellationToken).ConfigureAwait (false)
 					?? throw new InvalidOperationException ($"Could not find coordinates for city: {cityName}, {stateCode}, {countryCode}");
 			return await GetWeatherForecastAsync (latlong.Value, units, cancellationToken).ConfigureAwait (false);
@@ -144,10 +150,10 @@ public class WeatherController : IDisposable
 	/// <returns>A <see cref="WeatherForecast"/> object for the specified coordinates</returns>
 	public async Task<WeatherForecast> GetWeatherForecastAsync (double lat, double lon, string units = "metric", CancellationToken cancellationToken = default)
 		{
-		var oneCallUri = new Uri ($"{_oneCallBaseUrl}onecall?lat={lat}&lon={lon}&exclude=current,minutely,alerts&appid={_apiKey}&units={units}");
-		var forecast5Uri = new Uri ($"{_currentWeatherBaseUrl}forecast?lat={lat}&lon={lon}&appid={_apiKey}&units={units}");
+		var oneCallUri = new Uri (FormattableString.Invariant ($"{_oneCallBaseUrl}onecall?lat={lat}&lon={lon}&exclude=current,minutely,alerts&appid={Uri.EscapeDataString (_apiKey ?? "")}&units={Uri.EscapeDataString (units)}"));
+		var forecast5Uri = new Uri (FormattableString.Invariant ($"{_currentWeatherBaseUrl}forecast?lat={lat}&lon={lon}&appid={Uri.EscapeDataString (_apiKey ?? "")}&units={Uri.EscapeDataString (units)}"));
 
-		(HttpResponseMessage? oneCallResponse, var oneCallContent) = await GetAsyncWithContent (oneCallUri, cancellationToken).ConfigureAwait (false);
+		(ResponseInfo oneCallResponse, var oneCallContent) = await GetAsyncWithContent (oneCallUri, cancellationToken).ConfigureAwait (false);
 		if (oneCallResponse.IsSuccessStatusCode && !IsAuthFailure (oneCallResponse.StatusCode, oneCallContent))
 			{
 			return new WeatherForecast (oneCallContent);
@@ -155,7 +161,7 @@ public class WeatherController : IDisposable
 
 		if (IsAuthFailure (oneCallResponse.StatusCode, oneCallContent))
 			{
-			(HttpResponseMessage? forecastResponse, var forecastContent) = await GetAsyncWithContent (forecast5Uri, cancellationToken).ConfigureAwait (false);
+			(ResponseInfo forecastResponse, var forecastContent) = await GetAsyncWithContent (forecast5Uri, cancellationToken).ConfigureAwait (false);
 			if (forecastResponse.IsSuccessStatusCode && !IsAuthFailure (forecastResponse.StatusCode, forecastContent))
 				{
 				return new WeatherForecast (forecastContent);
@@ -192,7 +198,7 @@ public class WeatherController : IDisposable
 	/// <returns>A <see cref="CurrentWeather"/> object for the specified postal/zip code</returns>
 	public async Task<CurrentWeather> GetCurrentWeatherByPostCodeAsync (string postCode, string countryCode, string units = "metric", CancellationToken cancellationToken = default)
 		{
-		var geoLocator = new GeoLocator (_apiKey);
+		var geoLocator = CreateGeoLocator ();
 		LatLong? latlong = await geoLocator.GetCoordinatesByPostCodeAsync (postCode, countryCode, cancellationToken).ConfigureAwait (false) 
 				?? throw new InvalidOperationException ($"Could not find coordinates for postal/zip code: {postCode}, {countryCode}");
 		return await GetCurrentWeatherAsync (latlong.Value, units, cancellationToken).ConfigureAwait (false);
@@ -208,7 +214,7 @@ public class WeatherController : IDisposable
 	/// <returns>A <see cref="WeatherForecast"/> object for the specified postal/zip code</returns>
 	public async Task<WeatherForecast> GetWeatherForecastByPostCodeAsync (string postCode, string countryCode, string units = "metric", CancellationToken cancellationToken = default)
 		{
-		var geoLocator = new GeoLocator (_apiKey);
+		var geoLocator = CreateGeoLocator ();
 		LatLong? latlong = await geoLocator.GetCoordinatesByPostCodeAsync (postCode, countryCode, cancellationToken).ConfigureAwait (false) 
 				?? throw new InvalidOperationException ($"Could not find coordinates for postal/zip code: {postCode}, {countryCode}");
 		return await GetWeatherForecastAsync (latlong.Value, units, cancellationToken).ConfigureAwait (false);
@@ -233,6 +239,7 @@ public class WeatherController : IDisposable
 	/// <returns>A task representing the asynchronous operation whose result is an <see cref="OpenWeatherCapabilities"/> instance indicating the available capabilities.</returns>
 	public async Task<OpenWeatherCapabilities> ProbeCapabilitiesAsync (CancellationToken cancellationToken = default)
 		{
+		ThrowIfDisposed ();
 		if (_capabilities != null)
 			{
 			return _capabilities;
@@ -241,8 +248,8 @@ public class WeatherController : IDisposable
 		// Prefer One Call when available.
 		var probeLat = 0d;
 		var probeLon = 0d;
-		var oneCallUri = new Uri ($"{_oneCallBaseUrl}onecall?lat={probeLat}&lon={probeLon}&exclude=minutely&appid={_apiKey}&units=metric");
-		(HttpResponseMessage? resp, var body) = await GetAsyncWithContent (oneCallUri, cancellationToken).ConfigureAwait (false);
+		var oneCallUri = new Uri (FormattableString.Invariant ($"{_oneCallBaseUrl}onecall?lat={probeLat}&lon={probeLon}&exclude=minutely&appid={Uri.EscapeDataString (_apiKey ?? "")}&units=metric"));
+		(ResponseInfo resp, var body) = await GetAsyncWithContent (oneCallUri, cancellationToken).ConfigureAwait (false);
 
 		if (resp.IsSuccessStatusCode && !IsAuthFailure (resp.StatusCode, body))
 			{
@@ -261,11 +268,35 @@ public class WeatherController : IDisposable
 		return _capabilities;
 		}
 
-	private async Task<(HttpResponseMessage Response, string Content)> GetAsyncWithContent (Uri uri, CancellationToken cancellationToken)
+	private GeoLocator CreateGeoLocator ()
 		{
-		HttpResponseMessage response = await _client!.GetAsync (uri, cancellationToken).ConfigureAwait (false);
+		ThrowIfDisposed ();
+		return new GeoLocator (_apiKey, () => new HttpClient (_handler, false));
+		}
+
+	private async Task<(ResponseInfo Response, string Content)> GetAsyncWithContent (Uri uri, CancellationToken cancellationToken)
+		{
+		ThrowIfDisposed ();
+		using HttpResponseMessage response = await _client!.GetAsync (uri, cancellationToken).ConfigureAwait (false);
 		var content = await ReadContentAsStringAsync (response.Content, cancellationToken).ConfigureAwait (false);
-		return (response, content);
+		return (new ResponseInfo (response.StatusCode, response.ReasonPhrase), content);
+		}
+
+	private void ThrowIfDisposed ()
+		{
+#if NET10_0_OR_GREATER
+		ObjectDisposedException.ThrowIf (_client == null, this);
+#else
+		if (_client == null)
+			throw new ObjectDisposedException (nameof (WeatherController));
+#endif
+		}
+
+	private sealed class ResponseInfo (HttpStatusCode statusCode, string? reasonPhrase)
+		{
+		internal HttpStatusCode StatusCode { get; } = statusCode;
+		internal string? ReasonPhrase { get; } = reasonPhrase;
+		internal bool IsSuccessStatusCode => (int)StatusCode is >= 200 and <= 299;
 		}
 
 	private static Task<string> ReadContentAsStringAsync (HttpContent content, CancellationToken cancellationToken)

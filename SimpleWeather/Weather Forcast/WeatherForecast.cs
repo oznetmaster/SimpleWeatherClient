@@ -1,4 +1,5 @@
-﻿// Copyright (c) 2022 Ivan Gechev
+// Copyright (c) 2026 Neil Colvin.
+// Copyright (c) 2022 Ivan Gechev
 // Copyright (c) 2025 Nivloc Enterprises Ltd
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 // This file is adapted from Banovvv/SimpleWeather (https://github.com/Banovvv/SimpleWeather)
@@ -17,6 +18,7 @@ namespace SimpleWeather;
 /// </summary>
 public class WeatherForecast
 	{
+	private readonly int _timezoneOffsetSeconds;
 	/// <summary>
 	/// Initializes a new instance of the <see cref="WeatherForecast"/> class from a JSON response.
 	/// </summary>
@@ -33,7 +35,8 @@ public class WeatherForecast
             Latitude = OptDouble (coord, "lat");
             Longitude = OptDouble (coord, "lon");
             Timezone = city?.SelectToken ("name")?.ToString ();
-            TimezoneOffset = (OptInt (city, "timezone") ?? 0) / 3600;
+            _timezoneOffsetSeconds = OptInt (city, "timezone") ?? 0;
+            TimezoneOffset = _timezoneOffsetSeconds / 3600;
 
             foreach (JToken item in list)
                 {
@@ -81,7 +84,7 @@ public class WeatherForecast
 		foreach (JToken item in list)
 			{
 			var dtUnix = OptDouble (item, "dt") ?? 0;
-            DateTime dt = DateTimeOffset.FromUnixTimeSeconds ((long)dtUnix).ToOffset (TimeSpan.FromHours (TimezoneOffset)).Date;
+            DateTime dt = DateTimeOffset.FromUnixTimeSeconds ((long)dtUnix).ToOffset (TimeSpan.FromSeconds (_timezoneOffsetSeconds)).Date;
 			if (!groups.TryGetValue (dt, out List<JToken>? bucket))
 				{
 				bucket = [];
@@ -103,6 +106,7 @@ public class WeatherForecast
 			double? max = null;
 			double popMax = 0;
 			JToken? chosenWeather = null;
+			double closestToNoon = double.MaxValue;
 
 			foreach (JToken item in bucket)
 				{
@@ -126,24 +130,16 @@ public class WeatherForecast
 
 				// Choose the forecast closest to midday as representative weather.
 				var dtUnix = (long)(OptDouble (item, "dt") ?? 0);
-                DateTimeOffset local = DateTimeOffset.FromUnixTimeSeconds (dtUnix).ToOffset (TimeSpan.FromHours (TimezoneOffset));
-				if (chosenWeather == null)
+                DateTimeOffset local = DateTimeOffset.FromUnixTimeSeconds (dtUnix).ToOffset (TimeSpan.FromSeconds (_timezoneOffsetSeconds));
+				double minutesFromNoon = Math.Abs ((local.TimeOfDay - TimeSpan.FromHours (12)).TotalMinutes);
+				if (item.SelectToken ("weather") is JToken weather && minutesFromNoon < closestToNoon)
 					{
-					chosenWeather = item.SelectToken ("weather");
-					}
-				else
-					{
-					// Very small heuristic: replace if closer to 12:00.
-					var chosenDtUnix = (long)(OptDouble (bucket[0], "dt") ?? 0);
-                    DateTimeOffset chosenLocal = DateTimeOffset.FromUnixTimeSeconds (chosenDtUnix).ToOffset (TimeSpan.FromHours (TimezoneOffset));
-					if (Math.Abs ((local.TimeOfDay - TimeSpan.FromHours (12)).TotalMinutes) < Math.Abs ((chosenLocal.TimeOfDay - TimeSpan.FromHours (12)).TotalMinutes))
-						{
-						chosenWeather = item.SelectToken ("weather");
-						}
+					chosenWeather = weather;
+					closestToNoon = minutesFromNoon;
 					}
 				}
 
-			var dayUnix = new DateTimeOffset (kvp.Key, TimeSpan.FromHours (TimezoneOffset)).ToUnixTimeSeconds ();
+			var dayUnix = new DateTimeOffset (kvp.Key, TimeSpan.FromSeconds (_timezoneOffsetSeconds)).ToUnixTimeSeconds ();
 			var dailyObj = new JObject
 				{
 				["dt"] = dayUnix,

@@ -7,6 +7,7 @@ This repository contains:
 - a WPF desktop client
 - a WinUI widget client
 - a small console-based test harness
+- an NUnit test suite with offline tests and opt-in live OpenWeather checks
 
 > Website: https://openweathermap.org/
 
@@ -54,6 +55,7 @@ Compared with the original upstream project, this repository currently differs i
 - `SimpleWeather.Desktop/` - WPF desktop app
 - `SimpleWeather.Widget/` - WinUI widget client
 - `SimpleWeatherTest/` - console test application
+- `SimpleWeather.Tests/` - NUnit tests for .NET Framework 4.7.2 and .NET 10
 - `docs/` - repo-facing markdown documentation
 - `docfx/` - API documentation assets and generated content
 
@@ -86,6 +88,9 @@ Additional repository and contributor documentation:
 - [Desktop Application](docs/desktop.md)
 - [Widget Application](docs/widget.md)
 - [Releases and Packages](docs/releases.md)
+- [Automated and Live Tests](docs/testing.md)
+- [Changelog](CHANGELOG.md)
+- [v1.0.3 Release Notes](docs/release-notes/v1.0.3.md)
 
 The repository docs in `docs/` are for contributors and GitHub readers.
 The generated API/reference documentation is built from XML comments and DocFX assets under `docfx/` and published to GitHub Pages.
@@ -142,7 +147,17 @@ Or build from Visual Studio.
 
 Before running applications that call the OpenWeather service, make sure a valid API key is available through one of the supported local configuration paths.
 
-## Planned Publishing Workflow
+## Automated Tests
+
+Run the offline NUnit suite without OpenWeather credentials:
+
+```powershell
+dotnet test .\SimpleWeather.Tests\SimpleWeather.Tests.csproj --settings .\SimpleWeather.Tests\unit.runsettings
+```
+
+The separate **Live** fixture can use your OpenWeather account and current data. It requires private `LiveTestSettings.json` settings and an explicit enable flag. See [testing instructions](docs/testing.md) for Visual Studio, command-line use, local exclusions, and settings supplied by external runners.
+
+## Publishing Workflow
 
 This repository is set up for:
 - GitHub publication under the `SimpleWeatherClient` name

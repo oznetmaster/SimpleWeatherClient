@@ -1,8 +1,9 @@
-﻿// Copyright (c) 2022 Ivan Gechev
+// Copyright (c) 2022 Ivan Gechev
 // Copyright (c) 2026 Neil Colvin
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 // This file is adapted from Banovvv/SimpleWeather (https://github.com/Banovvv/SimpleWeather)
 
+using System.Globalization;
 using Newtonsoft.Json.Linq;
 
 namespace SimpleWeather;
@@ -37,8 +38,13 @@ internal static class Utility
 	/// <param name="data">The JSON token that contains the data.</param>
 	/// <param name="element">The JSON path of the desired attribute.</param>
 	/// <returns>The parsed double value or <c>null</c> if it cannot be parsed.</returns>
-	internal static double? OptDouble (JToken? data, string element) => 
-		data == null ? null : double.TryParse (data.SelectToken (element)?.ToString (), out var result) ? result : null;
+	internal static double? OptDouble (JToken? data, string element)
+		{
+		JToken? token = data?.SelectToken (element);
+		if (token?.Type is JTokenType.Integer or JTokenType.Float)
+			return token.Value<double> ();
+		return double.TryParse (token?.ToString (), NumberStyles.Float, CultureInfo.InvariantCulture, out var result) ? result : null;
+		}
 
 	/// <summary>
 	/// Attempts to read a JSON token as an <see cref="int"/> returning <c>null</c> when parsing fails.

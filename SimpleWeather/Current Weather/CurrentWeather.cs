@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2022 Ivan Gechev
+// Copyright (c) 2022 Ivan Gechev
 // Copyright (c) 2026 Neil Colvin
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 // This file is adapted from Banovvv/SimpleWeather (https://github.com/Banovvv/SimpleWeather)
@@ -44,15 +44,21 @@ public class CurrentWeather
 		Coordinates = GeoUtils.GetCoordinatesFromJToken (data.SelectToken ("coord") ?? data);
 		Main = new Main (root.SelectToken ("main") ?? root);
 		Visibility = OptDouble (root, "visibility") ?? OptDouble (data, "visibility");
-		Wind = new Wind (root.SelectToken ("wind"));
+		Wind = new Wind (root.SelectToken ("wind") ?? new JObject
+			{
+			["speed"] = root["wind_speed"],
+			["deg"] = root["wind_deg"],
+			["gust"] = root["wind_gust"]
+			});
 		Clouds = new Clouds (root.SelectToken ("clouds"));
 		Rain = new Rain (root.SelectToken ("rain"));
 		Snow = new Snow (root.SelectToken ("snow"));
-		Sys = new Sys (root.SelectToken ("sys") ?? data.SelectToken ("sys"));
+		Sys = new Sys (root.SelectToken ("sys") ?? data.SelectToken ("sys") ?? root);
 		Weather = new Weather (root.SelectToken ("weather"));
 
 		TimezoneOffset = (OptInt (data, "timezone_offset") ?? OptInt (data, "timezone") ?? 0) / 3600;
 		Timezone = data.SelectToken ("timezone")?.ToString ();
+		Base = data.SelectToken ("base")?.ToString ();
 		CityID = OptInt (data, "id");
 		City = data.SelectToken ("name")?.ToString ();
 		}

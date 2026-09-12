@@ -13,10 +13,13 @@ This avoids conflict with the existing `SimpleWeather` package identity.
 ## Release Workflow
 
 The GitHub Actions release workflow:
-- restores and builds the solution
+- verifies that `docs/release-notes/v<version>.md` exists
+- restores and builds the library and NUnit test project
+- runs offline tests for net472 and net10.0 before packaging
 - packs the `SimpleWeather` library project
 - publishes the `.nupkg` package to NuGet
 - publishes the `.snupkg` symbol package to NuGet
+- creates the GitHub release using the reviewed release notes and attaches both packages
 
 ## Version Source
 
@@ -45,10 +48,13 @@ For public usage, the Release configuration now generates portable PDB files so 
 
 ## Suggested Release Flow
 
-1. Ensure the package and workflow changes are pushed to `main`
-2. Create a GitHub release with a tag such as `v1.0.0`
-3. Publish the release
-4. Let GitHub Actions build, pack, and publish the package to NuGet
+1. Update `CHANGELOG.md` with a dated version entry and add `docs/release-notes/v<version>.md`.
+2. Validate the tests and ensure private live settings are locally excluded and absent from release files.
+3. Commit and push the release changes to `main`.
+4. Create and push the matching tag, such as `v1.0.3`.
+5. Let GitHub Actions validate, build, test, package, publish to NuGet, and create the GitHub release.
+
+See the [changelog](../CHANGELOG.md) and [v1.0.3 release notes](release-notes/v1.0.3.md).
 
 ## Manual Testing
 

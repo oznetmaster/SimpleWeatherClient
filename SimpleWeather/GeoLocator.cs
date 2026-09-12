@@ -1,8 +1,11 @@
-﻿// Copyright (c) 2025 Nivloc Enterprises Ltd
+// Copyright (c) 2026 Neil Colvin.
+// Copyright (c) 2025 Nivloc Enterprises Ltd
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,9 +17,22 @@ namespace SimpleWeather;
 /// <summary>
 /// Provides helper methods for interacting with the OpenWeather geocoding APIs.
 /// </summary>
-/// <param name="apiKey">Optional API key used when issuing HTTP requests.</param>
-public class GeoLocator (string? apiKey = null)
+public class GeoLocator
 	{
+	private readonly string? apiKey;
+	private readonly Func<HttpClient> _createClient;
+
+	/// <summary>Creates a geocoding client.</summary>
+	/// <param name="apiKey">Optional OpenWeather API key.</param>
+	public GeoLocator (string? apiKey = null) : this (apiKey, () => new HttpClient ())
+		{
+		}
+
+	internal GeoLocator (string? apiKey, Func<HttpClient> createClient)
+		{
+		this.apiKey = apiKey;
+		_createClient = createClient ?? throw new ArgumentNullException (nameof (createClient));
+		}
 	private const string BASE_URL = $"https://api.openweathermap.org/geo/1.0/";
 
 	private static Task<string> ReadContentAsStringAsync (HttpContent content, CancellationToken cancellationToken)
@@ -57,9 +73,9 @@ public class GeoLocator (string? apiKey = null)
 			query += $",{countryCode}";
 			}
 
-		var baseAddress = new Uri ($"{BASE_URL}direct?q={query}&limit=5&appid={apiKey}");
-		using var client = new HttpClient ();
-		HttpResponseMessage response = await client.GetAsync (baseAddress, cancellationToken).ConfigureAwait (false);
+		var baseAddress = new Uri ($"{BASE_URL}direct?q={Uri.EscapeDataString (query)}&limit=5&appid={Uri.EscapeDataString (apiKey ?? "")}");
+		using var client = _createClient ();
+		using HttpResponseMessage response = await client.GetAsync (baseAddress, cancellationToken).ConfigureAwait (false);
 		if (!response.IsSuccessStatusCode)
 			{
 #if NET10_0_OR_GREATER
@@ -70,8 +86,8 @@ public class GeoLocator (string? apiKey = null)
 			}
 
 		var jsonContent = await ReadContentAsStringAsync (response.Content, cancellationToken).ConfigureAwait (false);
-		List<string>? cities = JsonConvert.DeserializeObject<List<string>> (jsonContent);
-		return cities ?? [];
+		Newtonsoft.Json.Linq.JObject[]? cities = JsonConvert.DeserializeObject<Newtonsoft.Json.Linq.JObject[]> (jsonContent);
+		return cities?.Select (city => city.ToString (Formatting.None)).ToList () ?? [];
 		}
 
 	/// <summary>
@@ -100,9 +116,9 @@ public class GeoLocator (string? apiKey = null)
 			query += $",{countryCode}";
 			}
 
-		var url = $"{BASE_URL}direct?q={query}&limit=1&appid={apiKey}";
-		using var client = new HttpClient ();
-		HttpResponseMessage response = await client.GetAsync (url, cancellationToken).ConfigureAwait (false);
+		var url = $"{BASE_URL}direct?q={Uri.EscapeDataString (query)}&limit=1&appid={Uri.EscapeDataString (apiKey ?? "")}";
+		using var client = _createClient ();
+		using HttpResponseMessage response = await client.GetAsync (url, cancellationToken).ConfigureAwait (false);
 		if (!response.IsSuccessStatusCode)
 			{
 #if NET10_0_OR_GREATER
@@ -117,7 +133,7 @@ public class GeoLocator (string? apiKey = null)
 		if (results != null && results.Length > 0)
 			{
 			Dictionary<string, object> firstResult = results[0];
-			return new LatLong ((double)(firstResult["lat"] ?? 0), (double)(firstResult["lon"] ?? 0));
+			return new LatLong (Convert.ToDouble (firstResult["lat"] ?? 0, CultureInfo.InvariantCulture), Convert.ToDouble (firstResult["lon"] ?? 0, CultureInfo.InvariantCulture));
 			}
 
 		return null;
@@ -142,9 +158,9 @@ public class GeoLocator (string? apiKey = null)
 			throw new ArgumentException ("Country code cannot be null or empty.", nameof (countryCode));
 			}
 
-		var url = $"{BASE_URL}zip?zip={postCode},{countryCode}&appid={apiKey}";
-		using var client = new HttpClient ();
-		HttpResponseMessage response = await client.GetAsync (url, cancellationToken).ConfigureAwait (false);
+		var url = $"{BASE_URL}zip?zip={Uri.EscapeDataString (postCode + "," + countryCode)}&appid={Uri.EscapeDataString (apiKey ?? "")}";
+		using var client = _createClient ();
+		using HttpResponseMessage response = await client.GetAsync (url, cancellationToken).ConfigureAwait (false);
 		if (!response.IsSuccessStatusCode)
 			{
 #if NET10_0_OR_GREATER
@@ -156,7 +172,7 @@ public class GeoLocator (string? apiKey = null)
 
 		var jsonContent = await ReadContentAsStringAsync (response.Content, cancellationToken).ConfigureAwait (false);
 		Dictionary<string, object>? results = JsonConvert.DeserializeObject<Dictionary<string, object>> (jsonContent);
-		return results != null && results.Count > 0 ? new LatLong ((double)(results["lat"] ?? 0), (double)(results["lon"] ?? 0)) : null;
+		return results != null && results.Count > 0 ? new LatLong (Convert.ToDouble (results["lat"] ?? 0, CultureInfo.InvariantCulture), Convert.ToDouble (results["lon"] ?? 0, CultureInfo.InvariantCulture)) : null;
 		}
 
     /// <summary>
@@ -177,9 +193,9 @@ public class GeoLocator (string? apiKey = null)
     /// <returns>The city name when available; otherwise <c>null</c>.</returns>
     public async Task<string?> GetCityNameByCoordinatesAsync (double lat, double lon, CancellationToken cancellationToken = default)
 		{
-		var url = $"{BASE_URL}reverse?lat={lat}&lon={lon}&limit=1&appid={apiKey}";
-		using var client = new HttpClient ();
-		HttpResponseMessage response = await client.GetAsync (url, cancellationToken).ConfigureAwait (false);
+		var url = FormattableString.Invariant ($"{BASE_URL}reverse?lat={lat}&lon={lon}&limit=1&appid={Uri.EscapeDataString (apiKey ?? "")}");
+		using var client = _createClient ();
+		using HttpResponseMessage response = await client.GetAsync (url, cancellationToken).ConfigureAwait (false);
 		if (!response.IsSuccessStatusCode)
 			{
 #if NET10_0_OR_GREATER

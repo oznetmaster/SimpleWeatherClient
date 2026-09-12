@@ -58,11 +58,20 @@ jobs:
           "raw_version=$rawVersion" >> $env:GITHUB_OUTPUT
           "package_version=$packageVersion" >> $env:GITHUB_OUTPUT
 
+      - name: Check release notes
+        shell: pwsh
+        run: |
+          $notesPath = "docs/release-notes/v${{ steps.version.outputs.package_version }}.md"
+          if (!(Test-Path -LiteralPath $notesPath)) { throw "Missing release notes: $notesPath" }
+
       - name: Restore
-        run: dotnet restore .\SimpleWeather.sln
+        run: dotnet restore .\SimpleWeather.Tests\SimpleWeather.Tests.csproj
 
       - name: Build Release
-        run: dotnet build .\SimpleWeather.sln -c Release --no-restore -p:ContinuousIntegrationBuild=true
+        run: dotnet build .\SimpleWeather.Tests\SimpleWeather.Tests.csproj -c Release --no-restore -p:ContinuousIntegrationBuild=true -p:Version=${{ steps.version.outputs.package_version }}
+
+      - name: Test offline before packaging
+        run: dotnet test .\SimpleWeather.Tests\SimpleWeather.Tests.csproj -c Release --no-build --settings .\SimpleWeather.Tests\unit.runsettings
 
       - name: Pack SimpleWeatherClient
         shell: pwsh
@@ -80,6 +89,7 @@ jobs:
 
           foreach ($package in $packages) {
               dotnet nuget push $package.FullName --api-key "${{ secrets.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+              if ($LASTEXITCODE -ne 0) { throw "NuGet publication failed." }
           }
 
       - name: Publish symbol package to NuGet
@@ -92,6 +102,7 @@ jobs:
 
           foreach ($package in $packages) {
               dotnet nuget push $package.FullName --api-key "${{ secrets.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+              if ($LASTEXITCODE -ne 0) { throw "NuGet publication failed." }
           }
 
       - name: Create GitHub release from tag
@@ -100,7 +111,7 @@ jobs:
         with:
           tag_name: ${{ steps.version.outputs.raw_version }}
           name: ${{ steps.version.outputs.raw_version }}
-          generate_release_notes: true
+          body_path: docs/release-notes/v${{ steps.version.outputs.package_version }}.md
           prerelease: ${{ contains(steps.version.outputs.package_version, '-') }}
           files: |
             artifacts/*.nupkg

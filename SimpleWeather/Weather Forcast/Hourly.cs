@@ -1,4 +1,5 @@
-﻿// Copyright (c) 2022 Ivan Gechev
+// Copyright (c) 2026 Neil Colvin.
+// Copyright (c) 2022 Ivan Gechev
 // Copyright (c) 2025 Nivloc Enterprises Ltd
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 // This file is adapted from Banovvv/SimpleWeather (https://github.com/Banovvv/SimpleWeather)
@@ -24,22 +25,23 @@ public class Hourly
 		{
 		if (data != null)
 			{
+			JToken readings = data.SelectToken ("main") ?? data;
 			// DateTime
 			DT = UnixToDateTime (OptDouble (data, "dt"));
-			Temperature = OptDouble (data, "temp");
-			FeelsLike = OptDouble (data, "feels_like");
-			Pressure = OptDouble (data, "pressure");
-			Humidity = OptDouble (data, "humidity");
+			Temperature = OptDouble (readings, "temp");
+			FeelsLike = OptDouble (readings, "feels_like");
+			Pressure = OptDouble (readings, "pressure");
+			Humidity = OptDouble (readings, "humidity");
 			DewPoint = OptDouble (data, "dew_point");
 			Uvi = OptDouble (data, "uvi");
-			Clouds = OptDouble (data, "clouds");
+			Clouds = OptDouble (data.SelectToken ("clouds"), "all") ?? OptDouble (data, "clouds");
 			Visibility = OptDouble (data, "visibility");
-			WindSpeed = OptDouble (data, "wind_speed");
+			WindSpeed = OptDouble (data, "wind_speed") ?? OptDouble (data.SelectToken ("wind"), "speed");
+			WindDegree = OptDouble (data, "wind_deg") ?? OptDouble (data.SelectToken ("wind"), "deg");
 			WindDirectionShort = Wind.GetWindDirectionShort (WindDegree);
 			WindDirectionLong = Wind.GetWindDirectionLong (WindDegree);
-			WindGust = OptDouble (data, "wind_gust");
-			WindDegree = OptDouble (data, "wind_deg");
-			PrecipitationProbability = Math.Round (OptDouble (data, "pop") ?? 0 * 100);
+			WindGust = OptDouble (data, "wind_gust") ?? OptDouble (data.SelectToken ("wind"), "gust");
+			PrecipitationProbability = Math.Round ((OptDouble (data, "pop") ?? 0) * 100);
 			Rain = new Rain (data.SelectToken ("rain"));
 			Snow = new Snow (data.SelectToken ("snow"));
 			Weather = new Weather (data.SelectToken ("weather"));
