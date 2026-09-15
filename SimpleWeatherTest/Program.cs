@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2022 Ivan Gechev
+// Copyright (c) 2022 Ivan Gechev
 // Copyright (c) 2026 Neil Colvin
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 // This file is adapted from Banovvv/SimpleWeather (https://github.com/Banovvv/SimpleWeather)
@@ -7,7 +7,23 @@ using SimpleWeather;
 
 using System;
 using System.Configuration;
+using System.Globalization;
 using System.IO;
+
+if ((args.Length != 2 && args.Length != 4) ||
+	!double.TryParse (args[0], NumberStyles.Float, CultureInfo.InvariantCulture, out double latitude) ||
+	!double.TryParse (args[1], NumberStyles.Float, CultureInfo.InvariantCulture, out double longitude) ||
+	double.IsNaN (latitude) || double.IsNaN (longitude) ||
+	latitude < -90 || latitude > 90 || longitude < -180 || longitude > 180 ||
+	(args.Length == 4 && (string.IsNullOrWhiteSpace (args[2]) || string.IsNullOrWhiteSpace (args[3]))))
+	{
+	Console.WriteLine ("Usage: SimpleWeatherTest <latitude> <longitude> [<postcode> <country-code>]");
+	Console.WriteLine ("Use decimal points for coordinates. No weather requests are made without valid coordinates.");
+	Environment.ExitCode = 2;
+	return;
+	}
+
+var coordinates = new LatLong (latitude, longitude);
 
 // Read API key from App.config first, then fall back to the solution-local or AppData key files.
 var apiKey = ResolveApiKey ();
@@ -18,10 +34,10 @@ if (string.IsNullOrWhiteSpace (apiKey))
 	}
 
 var weatherController = new WeatherController (apiKey);
-CurrentWeather? currentWeather = await weatherController.GetCurrentWeatherAsync (new LatLong (-32.07019, 115.95726), units: "metric");
-WeatherForecast weatherForecast = await weatherController.GetWeatherForecastAsync (new LatLong (-32.07019, 115.95726));
+CurrentWeather? currentWeather = await weatherController.GetCurrentWeatherAsync (coordinates, units: "metric");
+WeatherForecast weatherForecast = await weatherController.GetWeatherForecastAsync (coordinates);
 var geoLocator = new GeoLocator (apiKey);
-var city = await geoLocator.GetCityNameByCoordinatesAsync (new LatLong (-32.07019, 115.95726));
+var city = await geoLocator.GetCityNameByCoordinatesAsync (coordinates);
 
 Console.WriteLine ($"The current weather in {city} ({currentWeather?.Coordinates.Latitude:F6}, {currentWeather?.Coordinates.Longitude:F6}) is {Math.Round (currentWeather?.Main?.Temperature ?? 0)}°C degrees with {currentWeather?.Weather?.Description}.\n");
 
@@ -41,8 +57,11 @@ foreach (Daily day in weatherForecast.Daily)
 	Console.WriteLine ($"The moon phase will be: {day.MoonPhase}\n");
 	}
 
-CurrentWeather cw = await weatherController.GetCurrentWeatherByPostCodeAsync ("6108", "AU", "metric");
-Console.WriteLine ($"The current weather in {city} ({cw.Coordinates.Latitude:F6}, {cw.Coordinates.Longitude:F6}) is {Math.Round (cw.Main?.Temperature ?? 0)}°C degrees with {cw.Weather?.Description}.\n");
+if (args.Length == 4)
+	{
+	CurrentWeather cw = await weatherController.GetCurrentWeatherByPostCodeAsync (args[2], args[3], "metric");
+	Console.WriteLine ($"The current weather for postcode {args[2]} ({cw.Coordinates.Latitude:F6}, {cw.Coordinates.Longitude:F6}) is {Math.Round (cw.Main?.Temperature ?? 0)}°C degrees with {cw.Weather?.Description}.\n");
+	}
 
 static string? ResolveApiKey ()
 	{
@@ -89,4 +108,3 @@ static System.Collections.Generic.IEnumerable<string> EnumerateLocalApiKeyFilePa
 	yield return Path.GetFullPath (Path.Combine (AppContext.BaseDirectory, "..", "..", "..", ".local", "openweather-api-key.txt"));
 	yield return Path.Combine (Environment.GetFolderPath (Environment.SpecialFolder.ApplicationData), "SimpleWeather", "desktop-api-key.txt");
 	}
-

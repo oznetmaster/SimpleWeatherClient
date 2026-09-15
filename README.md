@@ -147,6 +147,14 @@ Or build from Visual Studio.
 
 Before running applications that call the OpenWeather service, make sure a valid API key is available through one of the supported local configuration paths.
 
+Supply the console's location as arguments, using decimal points for coordinates:
+
+```powershell
+dotnet run --project .\SimpleWeatherTest -- 51.5074 -0.1278
+```
+
+An optional postcode and country code add a postcode lookup, for example `51.5074 -0.1278 "SW1A 1AA" GB`. Missing or invalid coordinates display usage and exit before contacting OpenWeather. No personal location is embedded in the console sample.
+
 ## Automated Tests
 
 Run the offline NUnit suite without OpenWeather credentials:

@@ -1,5 +1,11 @@
 # Changelog
 
+## Test and desktop development updates - 2026-09-15 (no library release)
+
+- Update the test SDK and Windows widget dependencies.
+- Accept coordinates and an optional postcode/country in the console instead of embedding a developer's location. Invalid arguments exit before any weather request.
+- The released library API and runtime code remain unchanged at 1.0.3.
+
 ## [1.0.3] - 2026-09-12
 
 ### Added
