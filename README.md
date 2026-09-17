@@ -1,5 +1,8 @@
 # SimpleWeatherClient
 
+For shipped changes, see the [changelog](CHANGELOG.md). Test, CI and build history is recorded separately in [development and validation history](DEVELOPMENT-HISTORY.md).
+
+
 SimpleWeatherClient is a Windows solution built around the `SimpleWeather` library for working with the OpenWeather APIs.
 
 This repository contains:
