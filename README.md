@@ -114,7 +114,9 @@ This repository is set up so a tracked `App.config` can contain only placeholder
 
 A valid **OpenWeather API key is required**, including for the free service. There is no separate SimpleWeatherClient key. See [OpenWeather's API key guidance](https://docs.openweather.co.uk/faq).
 
-A paid One Call subscription is optional. If the key does not have access to One Call, the library falls back to OpenWeather's free current-weather and five-day forecast endpoints using the same key. Those endpoints provide less information than One Call; fields and forecast coverage depend on the endpoint available to the account. This fallback does not provide anonymous access or make an invalid key usable.
+This release supports **One Call API 3.0** when the API key's account has the corresponding subscription. That subscription is optional: if the key does not have access to One Call 3.0, the library falls back to OpenWeather's free current-weather and five-day forecast endpoints using the same key. Those endpoints provide less information than One Call 3.0; fields and forecast coverage depend on the endpoint available to the account. This fallback does not provide anonymous access or make an invalid key usable.
+
+**One Call API 4.0 is not supported by this release.** Access to One Call 4.0 does not establish access to the 3.0 endpoints used here.
 
 ### API key lookup order
 
