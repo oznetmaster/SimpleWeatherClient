@@ -11,6 +11,11 @@ See the [product changelog](CHANGELOG.md) for shipped changes. This document pre
 
 <!-- development-history -->
 
+## Version 2 preparation - 2026-09-21 (not yet released)
+
+- Build all support applications in CI, alongside the offline .NET Framework 4.7.2 and .NET 10 suites. The solution's Any CPU release configuration maps the x64-only widget to x64.
+- Exercise typed response deserialization, service selection, combined snapshots and daily-only request counts with synthetic HTTP responses. Live account tests remain opt-in and private settings remain excluded.
+
 ## Offline release workflow option - 2026-09-15 (no package release)
 
 - Allow an explicit manual release when local hardware or the self-hosted runner is unavailable, with the reason and exact source recorded in the workflow summary.

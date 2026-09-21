@@ -2,6 +2,23 @@
 
 This changelog records shipped features, fixes, compatibility and runtime dependency changes. See [development and validation history](DEVELOPMENT-HISTORY.md) for tests, CI, build tooling and work not yet released.
 
+## [2.0.0] - 2026-09-21
+
+### Added
+
+- One Call 4.0 current weather and paginated daily/hourly forecasts, preserving existing 3.0 and free-endpoint support.
+- Per-controller selection of automatic, 3.0, 4.0 or free service using the same account key; explicit choices report access denial without changing services.
+- Combined current-weather/forecast snapshots, using one request on 3.0 and allowing hourly data to be omitted to reduce 4.0 usage.
+
+### Changed
+
+- Remove the unused log4net dependency and the console sample's unused Newtonsoft dependencies.
+- The console sample retrieves current conditions and daily forecasts together. The widget omits unused hourly forecast requests and uses the returned daily readings to determine its display length.
+- Replace Newtonsoft.Json with attribute-mapped System.Text.Json response models. Remove public JToken constructors and the JToken coordinate helper; provide serializer-independent FromJson factories and GetCoordinatesFromJson.
+- See the [2.0 migration guide](docs/migration-v2.md) for constructor replacements, exception types and deployment guidance.
+
+See [release notes](docs/release-notes/v2.0.0.md) for subscription and request-count details.
+
 ## [1.0.3] - 2026-09-12
 
 ### Changed
@@ -27,3 +44,4 @@ This changelog records shipped features, fixes, compatibility and runtime depend
 Public constructor and method signatures are unchanged. These fixes correct previously incorrect returned values.
 
 [1.0.3]: https://github.com/oznetmaster/SimpleWeatherClient/compare/v1.0.2...v1.0.3
+[2.0.0]: https://github.com/oznetmaster/SimpleWeatherClient/compare/v1.0.3...v2.0.0

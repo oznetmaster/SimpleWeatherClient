@@ -34,7 +34,7 @@ public sealed class GeoLocatorTests
 		http.Reply ("[{\"name\":\"München\",\"lat\":48,\"lon\":11,\"local_names\":{\"ja\":\"ミュンヘン\"}},{\"name\":\"Other\",\"lat\":49.5,\"lon\":12.5}]");
 		var cities = await http.Locator ().GetCitiesByNameAsync ("München");
 		Assert.That (cities, Has.Count.EqualTo (2));
-		Assert.That (JObject.Parse (cities[0])["local_names"]!["ja"]!.Value<string> (), Is.EqualTo ("ミュンヘン"));
+		Assert.That (JsonTest.ParseObject (cities[0])["local_names"]!["ja"]!.GetValue<string> (), Is.EqualTo ("ミュンヘン"));
 		Assert.That (http.Contents[0].Disposed, Is.True);
 		}
 	[TestCase (false, "55", "-3")]
@@ -102,7 +102,7 @@ public sealed class GeoLocatorTests
 		{
 		using var http = new ScriptedWeather ();
 		http.Reply ("not-json");
-		Assert.CatchAsync<Newtonsoft.Json.JsonException> (() => http.Locator ().GetCoordinatesByCityNameAsync ("Synthetic City"));
+		Assert.CatchAsync<System.Text.Json.JsonException> (() => http.Locator ().GetCoordinatesByCityNameAsync ("Synthetic City"));
 		}
 	}
 

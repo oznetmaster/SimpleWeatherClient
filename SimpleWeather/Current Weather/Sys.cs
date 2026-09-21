@@ -1,14 +1,14 @@
-﻿// Copyright (c) 2022 Ivan Gechev
+// Copyright (c) 2026 Neil Colvin.
+// Copyright (c) 2022 Ivan Gechev
 // Copyright (c) 2025 Nivloc Enterprises Ltd
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 // This file is adapted from Banovvv/SimpleWeather (https://github.com/Banovvv/SimpleWeather)
 
-using Newtonsoft.Json.Linq;
 
 using System;
 using System.Globalization;
 
-using static SimpleWeather.Utility;
+
 
 namespace SimpleWeather;
 
@@ -17,22 +17,21 @@ namespace SimpleWeather;
 /// </summary>
 public class Sys
 	{
-	/// <summary>
-	/// Initializes a new instance of the <see cref="Sys"/> class from JSON data.
-	/// </summary>
-	/// <param name="data">The JSON token that contains the system information.</param>
-	public Sys (JToken? data)
+	/// <summary>Creates this model from its OpenWeather JSON fragment.</summary>
+	/// <param name="json">The JSON fragment, or null for an empty model.</param>
+	/// <returns>The parsed weather model.</returns>
+	public static Sys FromJson (string? json) => new (ResponseJson.ReadOptional<SysResponse> (json));
+
+	internal Sys (SysResponse? data)
 		{
-		if (data != null)
-			{
-			Type = OptInt (data, "type");
-			ID = OptInt (data, "id");
-			Country = data.SelectToken ("country")?.ToString ();
-			Sunrise = UnixToDateTime (OptDouble (data, "sunrise"));
-			Sunset = UnixToDateTime (OptDouble (data, "sunset"));
-			SunriseTime = DateTimeToSimpleTime (Sunrise);
-			SunsetTime = DateTimeToSimpleTime (Sunset);
-			}
+		if (data == null) return;
+		Type = (int?)data.Type;
+		ID = (int?)data.ID;
+		Country = data.Country;
+		Sunrise = UnixToDateTime (data.Sunrise);
+		Sunset = UnixToDateTime (data.Sunset);
+		SunriseTime = DateTimeToSimpleTime (Sunrise);
+		SunsetTime = DateTimeToSimpleTime (Sunset);
 		}
 
 	/// <summary>

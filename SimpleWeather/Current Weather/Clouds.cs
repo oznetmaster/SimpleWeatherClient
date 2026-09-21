@@ -1,11 +1,11 @@
-﻿// Copyright (c) 2022 Ivan Gechev
+// Copyright (c) 2026 Neil Colvin.
+// Copyright (c) 2022 Ivan Gechev
 // Copyright (c) 2025 Nivloc Enterprises Ltd
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 // This file is adapted from Banovvv/SimpleWeather (https://github.com/Banovvv/SimpleWeather)
 
 using System.Globalization;
 
-using Newtonsoft.Json.Linq;
 
 namespace SimpleWeather;
 
@@ -14,29 +14,14 @@ namespace SimpleWeather;
 /// </summary>
 public class Clouds
 	{
-	/// <summary>
-	/// Initializes a new <see cref="Clouds"/> instance from the supplied JSON token.
-	/// </summary>
-	/// <param name="data">The JSON fragment that contains the cloudiness value.</param>
-	public Clouds (JToken? data)
+	/// <summary>Creates this model from its OpenWeather JSON fragment.</summary>
+	/// <param name="json">The JSON fragment, or null for an empty model.</param>
+	/// <returns>The parsed weather model.</returns>
+	public static Clouds FromJson (string? json) => new (ResponseJson.ReadCloudiness (json));
+
+	internal Clouds (double? data)
 		{
-		if (data == null)
-			{
-			return;
-			}
-
-		// One Call may provide `clouds` as a number; Current Weather provides `{ "all": <percent> }`.
-		JToken? token = data.Type switch
-			{
-			JTokenType.Object => data["all"],
-			JTokenType.Integer or JTokenType.Float or JTokenType.String => data,
-			_ => null
-			};
-
-		if (token != null && double.TryParse (token.ToString (), NumberStyles.Any, CultureInfo.InvariantCulture, out var value))
-			{
-			Cloudiness = value;
-			}
+		Cloudiness = data;
 		}
 
 	/// <summary>

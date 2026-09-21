@@ -3,9 +3,9 @@
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 // This file is adapted from Banovvv/SimpleWeather (https://github.com/Banovvv/SimpleWeather)
 
-using Newtonsoft.Json.Linq;
 
-using static SimpleWeather.Utility;
+
+
 
 namespace SimpleWeather;
 
@@ -18,49 +18,31 @@ public class CurrentWeather
 	/// Initializes a new instance of the <see cref="CurrentWeather"/> class from a JSON response.
 	/// </summary>
 	/// <param name="jsonResponse">The raw JSON returned by the weather API.</param>
-	public CurrentWeather (string jsonResponse)
+	public CurrentWeather (string jsonResponse) : this (ResponseJson.Read<WeatherResponse> (jsonResponse)) { }
+
+	internal CurrentWeather (WeatherResponse data)
 		{
-		var data = JObject.Parse (jsonResponse);
-
-		// Current Weather API can return cod as string.
-		var statusCode = OptInt (data, "cod");
-		if (!statusCode.HasValue)
+		if (int.TryParse (data.StatusCode, out int status) && status != 200)
 			{
-			if (int.TryParse (data.SelectToken ("cod")?.ToString (), out var scParsed))
-				{
-				statusCode = scParsed;
-				}
-			}
-
-		if (statusCode.HasValue && statusCode.Value != 200)
-			{
-			StatusCode = statusCode;
+			StatusCode = status;
 			return;
 			}
-
-		// One Call uses a `current` object; Current Weather uses top-level fields.
-		JToken root = data.SelectToken ("current") ?? data;
-
-		Coordinates = GeoUtils.GetCoordinatesFromJToken (data.SelectToken ("coord") ?? data);
-		Main = new Main (root.SelectToken ("main") ?? root);
-		Visibility = OptDouble (root, "visibility") ?? OptDouble (data, "visibility");
-		Wind = new Wind (root.SelectToken ("wind") ?? new JObject
-			{
-			["speed"] = root["wind_speed"],
-			["deg"] = root["wind_deg"],
-			["gust"] = root["wind_gust"]
-			});
-		Clouds = new Clouds (root.SelectToken ("clouds"));
-		Rain = new Rain (root.SelectToken ("rain"));
-		Snow = new Snow (root.SelectToken ("snow"));
-		Sys = new Sys (root.SelectToken ("sys") ?? data.SelectToken ("sys") ?? root);
-		Weather = new Weather (root.SelectToken ("weather"));
-
-		TimezoneOffset = (OptInt (data, "timezone_offset") ?? OptInt (data, "timezone") ?? 0) / 3600;
-		Timezone = data.SelectToken ("timezone")?.ToString ();
-		Base = data.SelectToken ("base")?.ToString ();
-		CityID = OptInt (data, "id");
-		City = data.SelectToken ("name")?.ToString ();
+		InstantResponse root = data.Current ?? data;
+		Coordinates = new LatLong (data.Coordinates?.Latitude ?? data.Latitude ?? 0, data.Coordinates?.Longitude ?? data.Longitude ?? 0);
+		Main = new Main (root.Main ?? root);
+		Visibility = root.Visibility ?? data.Visibility;
+		Wind = new Wind (root.Wind ?? new WindResponse { Speed = root.WindSpeed, Degree = root.WindDegree, Gust = root.WindGust });
+		Clouds = new Clouds (root.Clouds);
+		Rain = new Rain (root.Rain);
+		Snow = new Snow (root.Snow);
+		Sys = new Sys (root.Sys ?? data.Sys ?? new SysResponse { Sunrise = root.Sunrise, Sunset = root.Sunset });
+		Weather = new Weather (root.Weather);
+		int offset = int.TryParse (data.Timezone, out int parsedOffset) ? parsedOffset : 0;
+		TimezoneOffset = (int)(data.TimezoneOffset ?? offset) / 3600;
+		Timezone = data.Timezone;
+		Base = data.Base;
+		CityID = data.CityID;
+		City = data.CityName;
 		}
 
 	/// <summary>

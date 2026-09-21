@@ -1,11 +1,11 @@
-﻿// Copyright (c) 2022 Ivan Gechev
+// Copyright (c) 2026 Neil Colvin.
+// Copyright (c) 2022 Ivan Gechev
 // Copyright (c) 2025 Nivloc Enterprises Ltd
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 // This file is adapted from Banovvv/SimpleWeather (https://github.com/Banovvv/SimpleWeather)
 
-using Newtonsoft.Json.Linq;
 
-using static SimpleWeather.Utility;
+
 
 namespace SimpleWeather;
 
@@ -14,24 +14,23 @@ namespace SimpleWeather;
 /// </summary>
 public class Main
 	{
-	/// <summary>
-	/// Initializes a new instance of the <see cref="Main"/> class from JSON data.
-	/// </summary>
-	/// <param name="data">The JSON token that contains the main weather metrics.</param>
-	public Main (JToken? data)
+	/// <summary>Creates this model from its OpenWeather JSON fragment.</summary>
+	/// <param name="json">The JSON fragment, or null for an empty model.</param>
+	/// <returns>The parsed weather model.</returns>
+	public static Main FromJson (string? json) => new (ResponseJson.ReadOptional<MainResponse> (json));
+
+	internal Main (MainResponse? data)
 		{
-		if (data != null)
-			{
-			Temperature = OptDouble (data, "temp");
-			FeelsLike = OptDouble (data, "feels_like");
-			TemperatureMin = OptDouble (data, "temp_min");
-			TemperatureMax = OptDouble (data, "temp_max");
-			Pressure = OptDouble (data, "pressure");
-			Humidity = OptDouble (data, "humidity");
-			SeaLevel = OptDouble (data, "sea_level");
-			GroundLevel = OptDouble (data, "grnd_level");
-			DewPoint = OptDouble (data, "dew_point");
-			}
+		if (data == null) return;
+		Temperature = data.Temperature;
+		FeelsLike = data.FeelsLike;
+		TemperatureMin = data.TemperatureMin;
+		TemperatureMax = data.TemperatureMax;
+		Pressure = data.Pressure;
+		Humidity = data.Humidity;
+		SeaLevel = data.SeaLevel;
+		GroundLevel = data.GroundLevel;
+		DewPoint = data.DewPoint;
 		}
 
 	/// <summary>

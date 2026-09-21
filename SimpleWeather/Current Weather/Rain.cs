@@ -1,11 +1,11 @@
-﻿// Copyright (c) 2022 Ivan Gechev
+// Copyright (c) 2026 Neil Colvin.
+// Copyright (c) 2022 Ivan Gechev
 // Copyright (c) 2025 Nivloc Enterprises Ltd
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 // This file is adapted from Banovvv/SimpleWeather (https://github.com/Banovvv/SimpleWeather)
 
-using Newtonsoft.Json.Linq;
 
-using static SimpleWeather.Utility;
+
 
 namespace SimpleWeather;
 
@@ -14,17 +14,16 @@ namespace SimpleWeather;
 /// </summary>
 public class Rain
 	{
-	/// <summary>
-	/// Initializes a new instance of the <see cref="Rain"/> class from JSON data.
-	/// </summary>
-	/// <param name="data">The JSON token containing rain volume metrics.</param>
-	public Rain (JToken? data)
+	/// <summary>Creates this model from its OpenWeather JSON fragment.</summary>
+	/// <param name="json">The JSON fragment, or null for an empty model.</param>
+	/// <returns>The parsed weather model.</returns>
+	public static Rain FromJson (string? json) => new (ResponseJson.ReadOptional<PrecipitationResponse> (json));
+
+	internal Rain (PrecipitationResponse? data)
 		{
-		if (data != null)
-			{
-			OneHour = OptDouble (data, "1h");
-			ThreeHours = OptDouble (data, "3h");
-			}
+		if (data == null) return;
+		OneHour = data.OneHour;
+		ThreeHours = data.ThreeHours;
 		}
 	/// <summary>
 	/// Rain volume for the last 1 hour, mm

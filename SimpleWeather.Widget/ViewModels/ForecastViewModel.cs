@@ -11,7 +11,6 @@ namespace SimpleWeather.Widget.ViewModels;
 public sealed partial class ForecastViewModel : INotifyPropertyChanged, IDisposable
 	{
 	private const int FORECAST_MAX_DAYS_PAID = 7;
-	private const int FORECAST_MAX_DAYS_FREE = 5;
 	private static readonly TimeSpan _minRefreshInterval = TimeSpan.FromMinutes (30);
 	private readonly DispatcherQueue _dispatcherQueue;
 	private readonly DispatcherQueueTimer _timer;
@@ -39,7 +38,7 @@ public sealed partial class ForecastViewModel : INotifyPropertyChanged, IDisposa
 	public DateTime LastRefreshTimeUtc { get; private set; } = DateTime.MinValue;
 
 	public string DisplayName { get; private set; } = "";
-	public int ForecastDaysCount { get; private set; } = FORECAST_MAX_DAYS_FREE;
+	public int ForecastDaysCount { get; private set; }
 
 	internal WidgetSettingsStore SettingsStore { get; }
 
@@ -130,9 +129,9 @@ public sealed partial class ForecastViewModel : INotifyPropertyChanged, IDisposa
 			StatusText = "Updating...";
 			OnPropertyChanged (nameof (StatusText));
 
-			WeatherForecast forecast = await _weatherController.GetWeatherForecastAsync (settings.City, settings.State, settings.Country, settings.Units, CancellationToken.None).ConfigureAwait (false);
+			WeatherForecast forecast = await _weatherController.GetWeatherForecastAsync (settings.City, includeHourly: false, settings.State, settings.Country, settings.Units, CancellationToken.None).ConfigureAwait (false);
 
-			ForecastDaysCount = forecast.Current is null ? FORECAST_MAX_DAYS_FREE : FORECAST_MAX_DAYS_PAID;
+			ForecastDaysCount = Math.Min (forecast.Daily.Count, FORECAST_MAX_DAYS_PAID);
 			OnPropertyChanged (nameof (ForecastDaysCount));
 
 			ForecastDayItem[] dayItems = [.. forecast.Daily
@@ -317,7 +316,7 @@ public sealed partial class ForecastViewModel : INotifyPropertyChanged, IDisposa
 					};
 
 			var rounded = Math.Round (t.Value, 0, MidpointRounding.AwayFromZero);
-			return $"{rounded:0}°{suffix}";
+			return $"{rounded:0}Â°{suffix}";
 			}
 		}
 	}

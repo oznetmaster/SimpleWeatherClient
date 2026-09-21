@@ -1,4 +1,5 @@
-﻿// Copyright (c) 2022 Ivan Gechev
+// Copyright (c) 2026 Neil Colvin.
+// Copyright (c) 2022 Ivan Gechev
 // Copyright (c) 2025 Nivloc Enterprises Ltd
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 // This file is adapted from Banovvv/SimpleWeather (https://github.com/Banovvv/SimpleWeather)
@@ -6,9 +7,8 @@
 using System;
 using System.Globalization;
 
-using Newtonsoft.Json.Linq;
 
-using static SimpleWeather.Utility;
+
 
 namespace SimpleWeather;
 
@@ -17,34 +17,34 @@ namespace SimpleWeather;
 /// </summary>
 public class Current
 	{
-	/// <summary>
-	/// Initializes a new instance of the <see cref="Current"/> class from JSON data.
-	/// </summary>
-	/// <param name="data">The JSON token that contains the current weather values.</param>
-	public Current (JToken? data)
+	/// <summary>Creates this model from its OpenWeather JSON fragment.</summary>
+	/// <param name="json">The JSON fragment, or null for an empty model.</param>
+	/// <returns>The parsed weather model.</returns>
+	public static Current FromJson (string? json) => new (ResponseJson.ReadOptional<InstantResponse> (json));
+
+	internal Current (InstantResponse? data)
 		{
-		if (data != null)
-			{
-			DT = UnixToDateTime (double.Parse (data.SelectToken ("dt")?.ToString () ?? "0", CultureInfo.InvariantCulture));
-			Sunrise = UnixToDateTime (double.Parse (data.SelectToken ("sunrise")?.ToString () ?? "0", CultureInfo.InvariantCulture));
-			Sunset = UnixToDateTime (double.Parse (data.SelectToken ("sunset")?.ToString () ?? "0", CultureInfo.InvariantCulture));
-			Temperature = OptDouble (data, "temp");
-			FeelsLike = OptDouble (data, "feels_like");
-			Pressure = OptDouble (data, "pressure");
-			Humidity = OptDouble (data, "humidity");
-			DewPoint = OptDouble (data, "dew_point");
-			Clouds = OptDouble (data, "clouds");
-			Uvi = OptDouble (data, "uvi");
-			Visibility = OptDouble (data, "visibility");
-			WindSpeed = OptDouble (data, "wind_speed");
-			WindGust = OptDouble (data, "wind_gust");
-			WindDegree = OptDouble (data, "wind_deg");
-			WindDirectionShort = Wind.GetWindDirectionShort (WindDegree);
-			WindDirectionLong = Wind.GetWindDirectionLong (WindDegree);
-			Rain = new Rain (data.SelectToken ("rain"));
-			Snow = new Snow (data.SelectToken ("snow"));
-			Weather = new Weather (data.SelectToken ("weather"));
-			}
+		if (data == null) return;
+		DT = UnixToDateTime (data.DT ?? 0);
+		Sunrise = UnixToDateTime (data.Sunrise ?? 0);
+		Sunset = UnixToDateTime (data.Sunset ?? 0);
+		MainResponse readings = data.Main ?? data;
+		Temperature = readings.Temperature;
+		FeelsLike = readings.FeelsLike;
+		Pressure = readings.Pressure;
+		Humidity = readings.Humidity;
+		DewPoint = data.DewPoint;
+		Uvi = data.Uvi;
+		Clouds = data.Clouds;
+		Visibility = data.Visibility;
+		WindSpeed = data.WindSpeed ?? data.Wind?.Speed;
+		WindDegree = data.WindDegree ?? data.Wind?.Degree;
+		WindGust = data.WindGust ?? data.Wind?.Gust;
+		WindDirectionShort = Wind.GetWindDirectionShort (WindDegree);
+		WindDirectionLong = Wind.GetWindDirectionLong (WindDegree);
+		Rain = new Rain (data.Rain);
+		Snow = new Snow (data.Snow);
+		Weather = new Weather (data.Weather);
 		}
 
 	/// <summary>

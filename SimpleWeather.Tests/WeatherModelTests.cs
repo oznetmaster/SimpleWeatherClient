@@ -72,9 +72,9 @@ public sealed class WeatherModelTests
 	[TestCase (1, 100)]
 	public void PrecipitationProbability_UsesPercent (double probability, double percent)
 		{
-		var json = new JObject { ["pop"] = probability };
-		Assert.That (new Hourly (json).PrecipitationProbability, Is.EqualTo (percent));
-		Assert.That (new Daily (json).PrecipitationProbability, Is.EqualTo (percent));
+		var json = new JsonObject { ["pop"] = probability };
+		Assert.That (Hourly.FromJson (json.ToJsonString ()).PrecipitationProbability, Is.EqualTo (percent));
+		Assert.That (Daily.FromJson (json.ToJsonString ()).PrecipitationProbability, Is.EqualTo (percent));
 		}
 
 	[TestCase ("en-US")]
@@ -83,7 +83,7 @@ public sealed class WeatherModelTests
 	public void JsonNumbers_AreIndependentOfCurrentCulture (string culture)
 		{
 		using var scope = new CultureScope (culture);
-		var main = new Main (JObject.Parse ("{\"temp\":12.5,\"feels_like\":\"11.25\"}"));
+		var main = Main.FromJson ("{\"temp\":12.5,\"feels_like\":\"11.25\"}");
 		Assert.That (main.Temperature, Is.EqualTo (12.5));
 		Assert.That (main.FeelsLike, Is.EqualTo (11.25));
 		}
@@ -94,7 +94,7 @@ public sealed class WeatherModelTests
 	[TestCase ("{\"temp\":\"unavailable\"}")]
 	public void MissingOrUnavailableMeasurements_RemainNull (string? json)
 		{
-		Assert.That (new Main (json == null ? null : JObject.Parse (json)).Temperature, Is.Null);
+		Assert.That (Main.FromJson (json).Temperature, Is.Null);
 		}
 
 	[TestCase ("{}", "Hourly")]
@@ -116,8 +116,8 @@ public sealed class WeatherModelTests
 	[Test]
 	public void Forecast5_DailySummaryUsesExtremesAndClosestToNoon ()
 		{
-		var list = new JArray (Entry (6, 5, 10, 0.1, 500), Entry (12, 8, 18, 0.8, 800), Entry (15, 7, 14, 0.3, 801));
-		var forecast = new WeatherForecast (new JObject { ["city"] = new JObject { ["timezone"] = 0 }, ["list"] = list }.ToString ());
+		var list = new JsonArray (Entry (6, 5, 10, 0.1, 500), Entry (12, 8, 18, 0.8, 800), Entry (15, 7, 14, 0.3, 801));
+		var forecast = new WeatherForecast (new JsonObject { ["city"] = new JsonObject { ["timezone"] = 0 }, ["list"] = list }.ToString ());
 		Daily day = forecast.Daily.Single ();
 		Assert.That (day.Temperature!.Min, Is.EqualTo (5));
 		Assert.That (day.Temperature.Max, Is.EqualTo (18));
@@ -131,7 +131,7 @@ public sealed class WeatherModelTests
 		var first = Entry (18, 5, 10, 0, 800);
 		first["dt"] = new DateTimeOffset (2026, 1, 1, 18, 45, 0, TimeSpan.Zero).ToUnixTimeSeconds ();
 		var second = Entry (21, 5, 10, 0, 800);
-		var forecast = new WeatherForecast (new JObject { ["city"] = new JObject { ["timezone"] = 19800 }, ["list"] = new JArray (first, second) }.ToString ());
+		var forecast = new WeatherForecast (new JsonObject { ["city"] = new JsonObject { ["timezone"] = 19800 }, ["list"] = new JsonArray (first, second) }.ToString ());
 		Assert.That (forecast.Daily, Has.Count.EqualTo (1), "Both entries fall on January 2 at UTC+05:30.");
 		}
 
@@ -150,7 +150,7 @@ public sealed class WeatherModelTests
 	[TestCase ("null", null)]
 	public void HourlyClouds_AcceptFlatNestedAndUnavailableValues (string cloudJson, double? expected)
 		{
-		var hour = new Hourly (new JObject { ["clouds"] = JToken.Parse (cloudJson) });
+		var hour = Hourly.FromJson (new JsonObject { ["clouds"] = JsonNode.Parse (cloudJson) }.ToJsonString ());
 		Assert.That (hour.Clouds, Is.EqualTo (expected));
 		}
 
@@ -162,7 +162,7 @@ public sealed class WeatherModelTests
 		Assert.That (alert.Event, Is.EqualTo ("Wind"));
 		Assert.That (alert.Description, Is.EqualTo ("Synthetic test alert"));
 		Assert.That (alert.End - alert.Start, Is.EqualTo (TimeSpan.FromHours (1)));
-		Assert.That (JArray.Parse (alert.Tags!).Values<string> (), Is.EqualTo (new[] { "Wind" }));
+		Assert.That (JsonTest.ParseArray (alert.Tags!).Select (value => value!.GetValue<string> ()), Is.EqualTo (new[] { "Wind" }));
 		}
 
 	[TestCase (WeatherIconResolution.Standard, "02d.png")]
@@ -170,7 +170,7 @@ public sealed class WeatherModelTests
 	[TestCase (WeatherIconResolution.Quadruple, "02d@4x.png")]
 	public void WeatherIcon_UsesRequestedResolutionAndFirstCondition (WeatherIconResolution resolution, string image)
 		{
-		var weather = new Weather (JArray.Parse ("[{\"id\":801,\"icon\":\"02d\"},{\"id\":800,\"icon\":\"01d\"}]"));
+		var weather = Weather.FromJson (JsonTest.ParseArray ("[{\"id\":801,\"icon\":\"02d\"},{\"id\":800,\"icon\":\"01d\"}]").ToJsonString ());
 		Assert.That (weather.ID, Is.EqualTo (801));
 		Assert.That (weather.GetIconUrl (resolution), Is.EqualTo ("https://openweathermap.org/img/wn/" + image));
 		}
@@ -180,11 +180,11 @@ public sealed class WeatherModelTests
 	[TestCase ("  ")]
 	public void MissingWeatherIcon_DoesNotProduceBrokenUrl (string? icon) => Assert.That (new Weather { Icon = icon }.GetIconUrl (), Is.Null);
 
-	private static JObject Entry (int hour, double min, double max, double pop, int weatherId) => new ()
+	private static JsonObject Entry (int hour, double min, double max, double pop, int weatherId) => new ()
 		{
 		["dt"] = new DateTimeOffset (2026, 1, 1, hour, 0, 0, TimeSpan.Zero).ToUnixTimeSeconds (),
-		["main"] = new JObject { ["temp_min"] = min, ["temp_max"] = max },
+		["main"] = new JsonObject { ["temp_min"] = min, ["temp_max"] = max },
 		["pop"] = pop,
-		["weather"] = new JArray (new JObject { ["id"] = weatherId })
+		["weather"] = new JsonArray (new JsonObject { ["id"] = weatherId })
 		};
 	}

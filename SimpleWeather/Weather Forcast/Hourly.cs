@@ -6,9 +6,8 @@
 
 using System;
 
-using Newtonsoft.Json.Linq;
 
-using static SimpleWeather.Utility;  
+
 
 namespace SimpleWeather;
 
@@ -17,35 +16,33 @@ namespace SimpleWeather;
 /// </summary>
 public class Hourly
 	{
-	/// <summary>
-	/// Initializes a new instance of the <see cref="Hourly"/> class from JSON data.
-	/// </summary>
-	/// <param name="data">The JSON token that contains the hourly forecast.</param>
-	public Hourly (JToken? data)
+	/// <summary>Creates this model from its OpenWeather JSON fragment.</summary>
+	/// <param name="json">The JSON fragment, or null for an empty model.</param>
+	/// <returns>The parsed weather model.</returns>
+	public static Hourly FromJson (string? json) => new (ResponseJson.ReadOptional<InstantResponse> (json));
+
+	internal Hourly (InstantResponse? data)
 		{
-		if (data != null)
-			{
-			JToken readings = data.SelectToken ("main") ?? data;
-			// DateTime
-			DT = UnixToDateTime (OptDouble (data, "dt"));
-			Temperature = OptDouble (readings, "temp");
-			FeelsLike = OptDouble (readings, "feels_like");
-			Pressure = OptDouble (readings, "pressure");
-			Humidity = OptDouble (readings, "humidity");
-			DewPoint = OptDouble (data, "dew_point");
-			Uvi = OptDouble (data, "uvi");
-			Clouds = OptDouble (data.SelectToken ("clouds"), "all") ?? OptDouble (data, "clouds");
-			Visibility = OptDouble (data, "visibility");
-			WindSpeed = OptDouble (data, "wind_speed") ?? OptDouble (data.SelectToken ("wind"), "speed");
-			WindDegree = OptDouble (data, "wind_deg") ?? OptDouble (data.SelectToken ("wind"), "deg");
-			WindDirectionShort = Wind.GetWindDirectionShort (WindDegree);
-			WindDirectionLong = Wind.GetWindDirectionLong (WindDegree);
-			WindGust = OptDouble (data, "wind_gust") ?? OptDouble (data.SelectToken ("wind"), "gust");
-			PrecipitationProbability = Math.Round ((OptDouble (data, "pop") ?? 0) * 100);
-			Rain = new Rain (data.SelectToken ("rain"));
-			Snow = new Snow (data.SelectToken ("snow"));
-			Weather = new Weather (data.SelectToken ("weather"));
-			}
+		if (data == null) return;
+		DT = UnixToDateTime (data.DT ?? 0);
+		MainResponse readings = data.Main ?? data;
+		Temperature = readings.Temperature;
+		FeelsLike = readings.FeelsLike;
+		Pressure = readings.Pressure;
+		Humidity = readings.Humidity;
+		DewPoint = data.DewPoint;
+		Uvi = data.Uvi;
+		Clouds = data.Clouds;
+		Visibility = data.Visibility;
+		WindSpeed = data.WindSpeed ?? data.Wind?.Speed;
+		WindDegree = data.WindDegree ?? data.Wind?.Degree;
+		WindGust = data.WindGust ?? data.Wind?.Gust;
+		WindDirectionShort = Wind.GetWindDirectionShort (WindDegree);
+		WindDirectionLong = Wind.GetWindDirectionLong (WindDegree);
+		PrecipitationProbability = Math.Round ((data.PrecipitationProbability ?? 0) * 100);
+		Rain = new Rain (data.Rain);
+		Snow = new Snow (data.Snow);
+		Weather = new Weather (data.Weather);
 		}
 
 	/// <summary>

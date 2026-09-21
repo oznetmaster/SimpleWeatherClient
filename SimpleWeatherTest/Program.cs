@@ -33,15 +33,16 @@ if (string.IsNullOrWhiteSpace (apiKey))
 	return;
 	}
 
-var weatherController = new WeatherController (apiKey);
-CurrentWeather? currentWeather = await weatherController.GetCurrentWeatherAsync (coordinates, units: "metric");
-WeatherForecast weatherForecast = await weatherController.GetWeatherForecastAsync (coordinates);
+using var weatherController = new WeatherController (apiKey);
+WeatherSnapshot snapshot = await weatherController.GetWeatherSnapshotAsync (coordinates, includeHourly: false);
+CurrentWeather currentWeather = snapshot.CurrentWeather;
+WeatherForecast weatherForecast = snapshot.Forecast;
 var geoLocator = new GeoLocator (apiKey);
 var city = await geoLocator.GetCityNameByCoordinatesAsync (coordinates);
 
 Console.WriteLine ($"The current weather in {city} ({currentWeather?.Coordinates.Latitude:F6}, {currentWeather?.Coordinates.Longitude:F6}) is {Math.Round (currentWeather?.Main?.Temperature ?? 0)}°C degrees with {currentWeather?.Weather?.Description}.\n");
 
-Console.WriteLine ("The weather forecast for the next 7 days is:\n");
+Console.WriteLine ($"The weather forecast contains {weatherForecast.Daily.Count} daily readings:\n");
 
 foreach (Daily day in weatherForecast.Daily)
 	{

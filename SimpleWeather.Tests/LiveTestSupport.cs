@@ -2,13 +2,14 @@
 // Licensed under the MIT License. See LICENSE in the repository root.
 
 using System.IO;
-using Newtonsoft.Json;
+using System.Text.Json;
 
 namespace SimpleWeather.Tests;
 
 internal sealed class LiveTestSettings
 	{
 	public bool Enabled { get; set; }
+	public bool EnableOneCall4Tests { get; set; }
 	public string? ApiKey { get; set; }
 	public double? Latitude { get; set; }
 	public double? Longitude { get; set; }
@@ -53,7 +54,7 @@ internal static class LiveTestSupport
 			{
 			try
 				{
-				settings = JsonConvert.DeserializeObject<LiveTestSettings> (File.ReadAllText (path));
+				settings = JsonSerializer.Deserialize<LiveTestSettings> (File.ReadAllText (path), new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 				}
 			catch (JsonException)
 				{

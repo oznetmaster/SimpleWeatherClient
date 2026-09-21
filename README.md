@@ -114,9 +114,13 @@ This repository is set up so a tracked `App.config` can contain only placeholder
 
 A valid **OpenWeather API key is required**, including for the free service. There is no separate SimpleWeatherClient key. See [OpenWeather's API key guidance](https://docs.openweather.co.uk/faq).
 
-This release supports **One Call API 3.0** when the API key's account has the corresponding subscription. That subscription is optional: if the key does not have access to One Call 3.0, the library falls back to OpenWeather's free current-weather and five-day forecast endpoints using the same key. Those endpoints provide less information than One Call 3.0; fields and forecast coverage depend on the endpoint available to the account. This fallback does not provide anonymous access or make an invalid key usable.
+The library prefers **One Call API 3.0** for accounts that already have access. When that service denies access, it tries **One Call API 4.0**, then OpenWeather's free current-weather and five-day forecast endpoints if 4.0 also denies access. The same account key is used throughout; each service still requires the appropriate account access. Timeouts, rate limits and server errors do not trigger this fallback. Free endpoints provide less information and shorter forecast coverage; fallback does not provide anonymous access or make an invalid key usable.
 
-**One Call API 4.0 is not supported by this release.** Access to One Call 4.0 does not establish access to the 3.0 endpoints used here.
+Existing 3.0 customers do not need to migrate. OpenWeather states that 3.0 remains available and recommends 4.0 for new integrations; 4.0 has a separate subscription. See its [migration guide](https://openweathermap.org/api/one-call-3-migration). Support for 4.0 and the combined snapshot API starts in version 2.0.0; older releases support 3.0 and free endpoints only.
+
+**Request costs differ.** `GetWeatherSnapshotAsync` retrieves current conditions and forecasts together: one successful 3.0 request, or normally five 4.0 requests for current weather, eight daily forecasts and 48 hourly forecasts. Set `includeHourly: false` when hourly data is unused: this normally reduces 4.0 to two requests. A denied 3.0 probe precedes the 4.0 route; geocoding is separate. See [request counts and polling guidance](docs/library.md#request-counts-and-polling). The library does not impose a polling interval or account-wide quota.
+
+You can instead select `OpenWeatherService.OneCall3`, `OneCall4`, or `Free` in the new constructor overload. Each controller uses its own selection; all may share the same account key. Explicit selection bypasses other services completely and reports access denial rather than silently falling back. [Service-selection examples](docs/library.md#selecting-a-service) explain this and the request-count differences.
 
 ### API key lookup order
 
@@ -203,3 +207,7 @@ See:
 The publish/release workflows support an explicit manual override when the processor or local self-hosted GitHub Actions runner is unavailable. Select `skip_hardware_checks` and provide a single-line `hardware_skip_reason`. Use the workflow's normal source and version controls. The override applies only to that invocation and is recorded with the exact source revision in its warning and job summary; it does not create a passing hardware-test result.
 
 GitHub-hosted validation remains mandatory for the checked-out source, and the normal build, tests and packaging steps still run. Wait for the configured hosted workflows to pass, or run them on the same source revision first. None of these hosted checks needs the local runner or processor. Automatic tag/release-triggered runs retain the normal hardware checks; use a manual invocation of the updated release workflow when an offline override is needed.
+
+## Upgrading to 2.0
+
+The package name and namespace are unchanged. See the [migration guide](docs/migration-v2.md) for the removal of public Newtonsoft types, serializer-independent model factories and net472 deployment requirements.

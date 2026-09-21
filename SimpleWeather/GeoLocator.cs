@@ -10,7 +10,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Newtonsoft.Json;
+using System.Text.Json;
 
 namespace SimpleWeather;
 
@@ -86,8 +86,9 @@ public class GeoLocator
 			}
 
 		var jsonContent = await ReadContentAsStringAsync (response.Content, cancellationToken).ConfigureAwait (false);
-		Newtonsoft.Json.Linq.JObject[]? cities = JsonConvert.DeserializeObject<Newtonsoft.Json.Linq.JObject[]> (jsonContent);
-		return cities?.Select (city => city.ToString (Formatting.None)).ToList () ?? [];
+		// This legacy API promises complete raw city payloads, including unknown fields.
+		using JsonDocument cities = JsonDocument.Parse (jsonContent);
+		return cities.RootElement.ValueKind == JsonValueKind.Null ? [] : cities.RootElement.EnumerateArray ().Select (city => city.GetRawText ()).ToList ();
 		}
 
 	/// <summary>
@@ -129,11 +130,11 @@ public class GeoLocator
 			}
 
 		var jsonContent = await ReadContentAsStringAsync (response.Content, cancellationToken).ConfigureAwait (false);
-		Dictionary<string, object>[]? results = JsonConvert.DeserializeObject<Dictionary<string, object>[]> (jsonContent);
+		LocationResponse[]? results = ResponseJson.ReadOptional<LocationResponse[]> (jsonContent);
 		if (results != null && results.Length > 0)
 			{
-			Dictionary<string, object> firstResult = results[0];
-			return new LatLong (Convert.ToDouble (firstResult["lat"] ?? 0, CultureInfo.InvariantCulture), Convert.ToDouble (firstResult["lon"] ?? 0, CultureInfo.InvariantCulture));
+			LocationResponse firstResult = results[0];
+			return new LatLong (firstResult.Latitude ?? 0, firstResult.Longitude ?? 0);
 			}
 
 		return null;
@@ -171,8 +172,8 @@ public class GeoLocator
 			}
 
 		var jsonContent = await ReadContentAsStringAsync (response.Content, cancellationToken).ConfigureAwait (false);
-		Dictionary<string, object>? results = JsonConvert.DeserializeObject<Dictionary<string, object>> (jsonContent);
-		return results != null && results.Count > 0 ? new LatLong (Convert.ToDouble (results["lat"] ?? 0, CultureInfo.InvariantCulture), Convert.ToDouble (results["lon"] ?? 0, CultureInfo.InvariantCulture)) : null;
+		LocationResponse? result = ResponseJson.ReadOptional<LocationResponse> (jsonContent);
+		return result?.Latitude != null && result.Longitude != null ? new LatLong (result.Latitude.Value, result.Longitude.Value) : null;
 		}
 
     /// <summary>
@@ -206,43 +207,26 @@ public class GeoLocator
 			}
 
 		var jsonContent = await ReadContentAsStringAsync (response.Content, cancellationToken).ConfigureAwait (false);
-		Dictionary<string, object>[]? results = JsonConvert.DeserializeObject<Dictionary<string, object>[]> (jsonContent);
+		LocationResponse[]? results = ResponseJson.ReadOptional<LocationResponse[]> (jsonContent);
 		if (results != null && results.Length > 0)
 			{
-			Dictionary<string, object> firstResult = results[0];
-			return firstResult["name"]?.ToString ();
+			LocationResponse firstResult = results[0];
+			return firstResult.Name;
 			}
 
 		return null;
 		}
 	}
 
-// Use ValueTuple for coordinates
-/// <summary>
-/// Contains helpers for extracting coordinate data from JSON payloads.
-/// </summary>
+/// <summary>Provides serializer-independent coordinate conversion.</summary>
 public static class GeoUtils
 	{
-	/// <summary>
-	/// Converts a JSON token containing <c>lat</c> and <c>lon</c> fields into a <see cref="LatLong"/> instance.
-	/// </summary>
-	/// <param name="data">The JSON token that includes latitude and longitude.</param>
-	/// <returns>The converted <see cref="LatLong"/> value.</returns>
-	/// <exception cref="ArgumentNullException">Thrown when <paramref name="data"/> is <c>null</c>.</exception>
-	public static LatLong GetCoordinatesFromJToken (Newtonsoft.Json.Linq.JToken data)
+	/// <summary>Reads latitude and longitude from an OpenWeather JSON object.</summary>
+	/// <param name="json">A JSON object containing lat and lon.</param>
+	/// <returns>The coordinates, defaulting missing values to zero.</returns>
+	public static LatLong GetCoordinatesFromJson (string json)
 		{
-#if NET10_0_OR_GREATER
-		ArgumentNullException.ThrowIfNull (data);
-#else
-		if (data == null)
-			{
-			throw new ArgumentNullException (nameof (data));
-			}
-#endif
-
-		var latitude = (double)(data["lat"] ?? 0);
-		var longitude = (double)(data["lon"] ?? 0);
-		return new LatLong (latitude, longitude);
+		CoordinatesResponse data = ResponseJson.Read<CoordinatesResponse> (json);
+		return new LatLong (data.Latitude ?? 0, data.Longitude ?? 0);
 		}
 	}
-

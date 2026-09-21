@@ -1,4 +1,5 @@
-﻿// Copyright (c) 2022 Ivan Gechev
+// Copyright (c) 2026 Neil Colvin.
+// Copyright (c) 2022 Ivan Gechev
 // Copyright (c) 2025 Nivloc Enterprises Ltd
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 // This file is adapted from Banovvv/SimpleWeather (https://github.com/Banovvv/SimpleWeather)
@@ -6,7 +7,6 @@
 using System.Globalization;
 using System.Linq;
 
-using Newtonsoft.Json.Linq;
 
 namespace SimpleWeather;
 
@@ -34,19 +34,19 @@ public enum WeatherIconResolution
 /// </summary>
 public class Weather
 	{
-	/// <summary>
-	/// Initializes a new instance of the <see cref="Weather"/> class from a JSON token.
-	/// </summary>
-	/// <param name="data">The JSON array that contains the weather description.</param>
-	public Weather (JToken? data)
+	/// <summary>Creates this model from its OpenWeather JSON fragment.</summary>
+	/// <param name="json">The JSON fragment, or null for an empty model.</param>
+	/// <returns>The parsed weather model.</returns>
+	public static Weather FromJson (string? json) => new (ResponseJson.ReadOptional<ConditionResponse[]> (json));
+
+	internal Weather (ConditionResponse[]? data)
 		{
-		if (data != null)
-			{
-			ID = int.Parse (data.FirstOrDefault ()?.SelectToken ("id")?.ToString () ?? "0", CultureInfo.InvariantCulture);
-			Main = data.FirstOrDefault ()?.SelectToken ("main")?.ToString () ?? string.Empty;
-			Description = data.FirstOrDefault ()?.SelectToken ("description")?.ToString () ?? string.Empty;
-			Icon = data.FirstOrDefault ()?.SelectToken ("icon")?.ToString () ?? string.Empty;
-			}
+		if (data == null) return;
+		ConditionResponse? first = data.FirstOrDefault ();
+		ID = first?.ID ?? 0;
+		Main = first?.Main ?? string.Empty;
+		Description = first?.Description ?? string.Empty;
+		Icon = first?.Icon ?? string.Empty;
 		}
 
 	/// <summary>

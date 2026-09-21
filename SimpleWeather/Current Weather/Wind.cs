@@ -1,11 +1,11 @@
-﻿// Copyright (c) 2022 Ivan Gechev
+// Copyright (c) 2026 Neil Colvin.
+// Copyright (c) 2022 Ivan Gechev
 // Copyright (c) 2025 Nivloc Enterprises Ltd
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 // This file is adapted from Banovvv/SimpleWeather (https://github.com/Banovvv/SimpleWeather)
 
-using Newtonsoft.Json.Linq;
 
-using static SimpleWeather.Utility;
+
 
 namespace SimpleWeather;
 
@@ -14,21 +14,20 @@ namespace SimpleWeather;
 	/// </summary>
 	public class Wind
 		{
-		/// <summary>
-		/// Initializes a new instance of the <see cref="Wind"/> class from JSON data.
-		/// </summary>
-		/// <param name="data">The JSON token containing wind metrics.</param>
-		public Wind (JToken? data)
-			{
-			if (data != null)
-				{
-				Speed = OptDouble (data, "speed");
-				Degree = OptDouble (data, "deg");
-				Gust = OptDouble (data, "gust");
-				WindDirectionShort = GetWindDirectionShort (Degree);
-				WindDirectionLong = GetWindDirectionLong (Degree);
-				}
-			}
+	/// <summary>Creates this model from its OpenWeather JSON fragment.</summary>
+	/// <param name="json">The JSON fragment, or null for an empty model.</param>
+	/// <returns>The parsed weather model.</returns>
+	public static Wind FromJson (string? json) => new (ResponseJson.ReadOptional<WindResponse> (json));
+
+	internal Wind (WindResponse? data)
+		{
+		if (data == null) return;
+		Speed = data.Speed;
+		Degree = data.Degree;
+		Gust = data.Gust;
+		WindDirectionShort = GetWindDirectionShort (Degree);
+		WindDirectionLong = GetWindDirectionLong (Degree);
+		}
 		/// <summary>
 		/// Wind speed. Default Unit: meter/sec
 		/// </summary>

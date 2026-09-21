@@ -67,10 +67,10 @@ public sealed class LiveOpenWeatherTests
 		Assert.That (cities, Is.Not.Empty);
 		foreach (string city in cities)
 			{
-			var payload = JObject.Parse (city);
+			var payload = JsonTest.ParseObject (city);
 			Assert.That (payload["name"], Is.Not.Null);
-			Assert.That (payload["lat"]!.Value<double> (), Is.InRange (-90, 90));
-			Assert.That (payload["lon"]!.Value<double> (), Is.InRange (-180, 180));
+			Assert.That (payload["lat"]!.GetValue<double> (), Is.InRange (-90, 90));
+			Assert.That (payload["lon"]!.GetValue<double> (), Is.InRange (-180, 180));
 			}
 		}
 	}

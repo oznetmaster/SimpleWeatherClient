@@ -1,4 +1,5 @@
-﻿// Copyright (c) 2022 Ivan Gechev
+// Copyright (c) 2026 Neil Colvin.
+// Copyright (c) 2022 Ivan Gechev
 // Copyright (c) 2025 Nivloc Enterprises Ltd
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 // This file is adapted from Banovvv/SimpleWeather (https://github.com/Banovvv/SimpleWeather)
@@ -6,7 +7,6 @@
 using System;
 using System.Globalization;
 
-using Newtonsoft.Json.Linq;
 
 namespace SimpleWeather;
 
@@ -15,21 +15,20 @@ namespace SimpleWeather;
 /// </summary>
 public class Alerts
 	{
-	/// <summary>
-	/// Initializes a new instance of the <see cref="Alerts"/> class from JSON data.
-	/// </summary>
-	/// <param name="data">The JSON token that contains the alert information.</param>
-	public Alerts (JToken? data)
+	/// <summary>Creates this model from its OpenWeather JSON fragment.</summary>
+	/// <param name="json">The JSON fragment, or null for an empty model.</param>
+	/// <returns>The parsed weather model.</returns>
+	public static Alerts FromJson (string? json) => new (ResponseJson.ReadOptional<AlertResponse> (json));
+
+	internal Alerts (AlertResponse? data)
 		{
-		if (data != null)
-			{
-			SenderName = data.SelectToken ("sender_name")?.ToString ();
-			Event = data.SelectToken ("event")?.ToString ();
-			Start = UnixToDateTime (double.Parse (data.SelectToken ("start")?.ToString () ?? "0", CultureInfo.InvariantCulture));
-			End = UnixToDateTime (double.Parse (data.SelectToken ("end")?.ToString () ?? "0", CultureInfo.InvariantCulture));
-			Description = data.SelectToken ("description")?.ToString ();
-			Tags = data.SelectToken ("tags")?.ToString ();
-			}
+		if (data == null) return;
+		SenderName = data.SenderName;
+		Event = data.Event;
+		Start = UnixToDateTime (data.Start ?? 0);
+		End = UnixToDateTime (data.End ?? 0);
+		Description = data.Description;
+		Tags = data.Tags == null ? null : System.Text.Json.JsonSerializer.Serialize (data.Tags);
 		}
 
 	/// <summary>

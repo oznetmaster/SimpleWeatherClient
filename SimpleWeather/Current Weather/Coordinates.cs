@@ -1,11 +1,10 @@
-﻿// Copyright (c) 2022 Ivan Gechev
+// Copyright (c) 2022 Ivan Gechev
 // Copyright (c) 2026 Neil Colvin
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 // This file is adapted from Banovvv/SimpleWeather (https://github.com/Banovvv/SimpleWeather)
 
-using Newtonsoft.Json.Linq;
 
-using static SimpleWeather.Utility;
+
 
 namespace SimpleWeather;
 
@@ -14,17 +13,16 @@ namespace SimpleWeather;
 /// </summary>
 public class Coordinates
 	{
-	/// <summary>
-	/// Initializes a new instance of the <see cref="Coordinates"/> class from raw JSON data.
-	/// </summary>
-	/// <param name="data">The JSON token containing the coordinate fields.</param>
-	public Coordinates (JToken data)
+	/// <summary>Creates this model from its OpenWeather JSON fragment.</summary>
+	/// <param name="json">The JSON fragment, or null for an empty model.</param>
+	/// <returns>The parsed weather model.</returns>
+	public static Coordinates FromJson (string? json) => new (ResponseJson.ReadOptional<CoordinatesResponse> (json));
+
+	internal Coordinates (CoordinatesResponse? data)
 		{
-		if (data != null)
-			{
-			Longitude = OptDouble (data, "lon");
-			Latitude = OptDouble (data, "lat");
-			}
+		if (data == null) return;
+		Latitude = data.Latitude;
+		Longitude = data.Longitude;
 		}
 
 	/// <summary>

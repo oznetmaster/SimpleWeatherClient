@@ -39,8 +39,8 @@ public sealed class LiveTestSettingsTests
 	[TestCase ("units", "\"unknown\"")]
 	public void InvalidEnabledSettings_AreRejected (string field, string json)
 		{
-		JObject settings = WriteValidSettings (true);
-		settings[field] = JToken.Parse (json);
+		JsonObject settings = WriteValidSettings (true);
+		settings[field] = JsonNode.Parse (json);
 		File.WriteAllText (SettingsPath, settings.ToString ());
 		Assert.That (() => LiveTestSupport.LoadForRun (SettingsPath, ""), Throws.TypeOf<InvalidDataException> ());
 		}
@@ -59,9 +59,9 @@ public sealed class LiveTestSettingsTests
 		Exception? exception = Assert.ThrowsAsync<InvalidOperationException> (() => LiveTestSupport.Request (() => Task.FromException<string> (new HttpRequestException ("https://example.invalid/?appid=synthetic-secret"))));
 		Assert.That (exception!.ToString (), Does.Not.Contain ("synthetic-secret"));
 		}
-	private JObject WriteValidSettings (bool enabled)
+	private JsonObject WriteValidSettings (bool enabled)
 		{
-		var settings = new JObject { ["enabled"] = enabled, ["apiKey"] = "synthetic-key", ["latitude"] = 51.5, ["longitude"] = -0.1, ["units"] = "metric" };
+		var settings = new JsonObject { ["enabled"] = enabled, ["apiKey"] = "synthetic-key", ["latitude"] = 51.5, ["longitude"] = -0.1, ["units"] = "metric" };
 		File.WriteAllText (SettingsPath, settings.ToString ());
 		return settings;
 		}

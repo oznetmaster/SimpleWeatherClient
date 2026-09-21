@@ -6,6 +6,8 @@
 
 The desktop application provides a Windows UI over the shared `SimpleWeather` library for interactive weather lookups.
 
+It requests current conditions only, with a five-minute automatic refresh interval and a manual Refresh button. It uses automatic service selection (3.0, then 4.0, then free after access denial) and does not request hourly or daily forecasts. City lookups also require geocoding requests. See [request counts and polling](library.md#request-counts-and-polling).
+
 ## Framework
 
 The desktop application targets:

@@ -37,11 +37,13 @@ public sealed class WeatherControllerTests
 		{
 		using var http = new ScriptedWeather ();
 		http.Reply (body, (HttpStatusCode)status);
+		http.Reply (body, (HttpStatusCode)status);
 		http.Reply (forecast ? Payloads.FreeForecast : Payloads.FreeCurrent);
 		using var controller = new WeatherController ("synthetic-key", http);
 		await Fetch (controller, forecast);
-		Assert.That (http.Requests, Has.Count.EqualTo (2));
-		Assert.That (http.Requests[1].AbsolutePath, Is.EqualTo (forecast ? "/data/2.5/forecast" : "/data/2.5/weather"));
+		Assert.That (http.Requests, Has.Count.EqualTo (3));
+		Assert.That (http.Requests[1].AbsolutePath, Does.StartWith ("/data/4.0/onecall/"));
+		Assert.That (http.Requests[2].AbsolutePath, Is.EqualTo (forecast ? "/data/2.5/forecast" : "/data/2.5/weather"));
 		Assert.That (http.Contents.All (content => content.Disposed), Is.True);
 		}
 	[TestCase (false, 401)]
@@ -51,6 +53,7 @@ public sealed class WeatherControllerTests
 	public void BothEndpointsDenyAccess_ReportsAuthenticationFailure (bool forecast, int status)
 		{
 		using var http = new ScriptedWeather ();
+		http.Reply ("{}", HttpStatusCode.Unauthorized);
 		http.Reply ("{}", HttpStatusCode.Unauthorized);
 		http.Reply ("{}", (HttpStatusCode)status);
 		using var controller = new WeatherController ("synthetic-key", http);
@@ -148,11 +151,12 @@ public sealed class WeatherControllerTests
 		{
 		using var http = new ScriptedWeather ();
 		http.Reply ("{}", (HttpStatusCode)status);
+		if (status is 401 or 403) http.Reply ("{}", (HttpStatusCode)status);
 		using var controller = new WeatherController ("synthetic-key", http);
 		var first = await controller.ProbeCapabilitiesAsync ();
 		Assert.That (first.Has (OpenWeatherFeatures.OneCall), Is.EqualTo (oneCall));
 		Assert.That (await controller.ProbeCapabilitiesAsync (), Is.SameAs (first));
-		Assert.That (http.Requests, Has.Count.EqualTo (1));
+		Assert.That (http.Requests, Has.Count.EqualTo (status is 401 or 403 ? 2 : 1));
 		}
 	[Test]
 	public async Task DisposedController_RejectsCachedCapabilityProbe ()
@@ -173,7 +177,7 @@ public sealed class WeatherControllerTests
 		using var http = new ScriptedWeather ();
 		http.Reply ("not-json");
 		using var controller = new WeatherController ("synthetic-key", http);
-		Assert.CatchAsync<Newtonsoft.Json.JsonException> (() => Fetch (controller, forecast));
+		Assert.CatchAsync<System.Text.Json.JsonException> (() => Fetch (controller, forecast));
 		Assert.That (http.Contents.Single ().Disposed, Is.True);
 		Assert.That (http.Requests, Has.Count.EqualTo (1));
 		}

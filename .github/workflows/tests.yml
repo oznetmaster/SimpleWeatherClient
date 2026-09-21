@@ -11,6 +11,16 @@ permissions:
   contents: read
 
 jobs:
+  build-apps:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - name: Build library, console, desktop and widget
+        run: dotnet build SimpleWeather.sln -c Release -p:Platform=x64
+
   test:
     runs-on: windows-latest
     strategy:

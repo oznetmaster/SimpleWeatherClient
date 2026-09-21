@@ -24,6 +24,12 @@ That includes values such as:
 
 The widget’s settings are local application data, not repository content.
 
+## Weather service and request usage
+
+The widget uses automatic service selection: One Call 3.0, then One Call 4.0, then the free endpoints, advancing only when access is denied. An API key with access to the chosen service is required. Current weather and the forecast window refresh independently.
+
+The forecast window displays up to seven returned daily readings and requests no hourly pages. Its 30-minute timer refreshes only while visible; opening an expired forecast can also refresh it. The current-weather interval is configured separately in Settings. Geocoding and automatic service probes add requests; see [request counts and polling](library.md#request-counts-and-polling).
+
 ## Running
 
 Build the solution and run `SimpleWeather.Widget` on a supported Windows environment.

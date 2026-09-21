@@ -19,7 +19,7 @@ The suite checks:
 - Current and forecast response models, optional measurements, precipitation percentages, wind direction, daily summaries and fractional time zone offsets.
 - Private live settings, opt-in behavior and omission of secrets from live request failure messages.
 
-Offline HTTP tests use synthetic JSON and an internal message handler. They never contact OpenWeather or use a real account. The public library constructors and method signatures remain unchanged.
+Offline HTTP tests use synthetic JSON and an internal message handler. They never contact OpenWeather or use a real account. Existing public constructors and method signatures are preserved; the combined snapshot method is an additional API.
 
 ## Live OpenWeather tests
 
@@ -45,6 +45,16 @@ Live tests are disabled by default. They are not marked `Explicit`: once enabled
 
 The existing applications store their key in `.local/openweather-api-key.txt` or `%AppData%\SimpleWeather\desktop-api-key.txt`; use the same account key in the private live settings. No new OpenWeather account or token is required. Changes to that saved key are not automatically copied into the live settings.
 
+### One Call 4.0 subscription checks
+
+`LiveOneCall4Tests` is additionally disabled unless NUnit parameter `EnableOneCall4Tests` is `true`. Use `SimpleWeather.Tests/live-onecall4.runsettings` with the same private settings file and an account subscribed to 4.0. Its three read-only tests check current weather, paginated forecasts, and a daily/current snapshot using exactly two successful 4.0 requests. They select `OpenWeatherService.OneCall4` explicitly, including when the account also has 3.0 access. Requests are real, with no fallback to another service. They consume account quota.
+
+External runners can instead set `enableOneCall4Tests: true` in their private `LiveTestSettings.json`. The NUnit parameter takes precedence when present. The overall live-test enable flag must also be on; the extra setting never enables live tests by itself.
+
+```powershell
+dotnet test .\SimpleWeather.Tests\SimpleWeather.Tests.csproj -f net10.0 --settings .\SimpleWeather.Tests\live-onecall4.runsettings --filter FullyQualifiedName~LiveOneCall4Tests
+```
+
 ### Visual Studio
 
 Open `SimpleWeather.sln` and use Test Explorer. Normal runs skip the live fixture unless the private JSON enables it. For a temporary live opt-in, choose `SimpleWeather.Tests/live.runsettings` through **Test > Configure Run Settings > Select Solution Wide runsettings File**, then run the live fixture. Switch to `unit.runsettings` afterwards to force live tests off, even when the JSON says `enabled: true`.
@@ -59,4 +69,4 @@ The private settings file is **not copied to build or publish output and is not 
 
 ## Continuous integration
 
-The Tests workflow runs both frameworks on Windows with `unit.runsettings`. The release workflow also runs the offline suite before packaging. Neither workflow requires account credentials or executes live tests. The test project is not a NuGet package.
+The Tests workflow runs both frameworks on Windows with `unit.runsettings` and separately builds the complete solution in Release/x64, including the console, WPF desktop app and WinUI widget. The release workflow also runs the offline suite before packaging. Neither workflow requires account credentials or executes live tests. The test project is not a NuGet package.

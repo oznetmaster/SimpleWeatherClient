@@ -8,7 +8,8 @@ global using System.Net;
 global using System.Net.Http;
 global using System.Threading;
 global using System.Threading.Tasks;
-global using Newtonsoft.Json.Linq;
+global using System.Text.Json.Nodes;
+global using System.Text.Json;
 global using NUnit.Framework;
 
 namespace SimpleWeather.Tests;
@@ -75,4 +76,9 @@ internal static class Payloads
 	internal const string FreeForecast = """
 		{"cod":"200","city":{"name":"Synthetic City","timezone":3600,"coord":{"lat":55.5,"lon":-3.25}},"list":[{"dt":1700000000,"main":{"temp":12.5,"feels_like":11.25,"temp_min":10,"temp_max":15,"pressure":1012,"humidity":73},"wind":{"speed":4.5,"deg":90,"gust":6.5},"clouds":{"all":25},"pop":0.65,"weather":[{"id":801,"main":"Clouds","icon":"02d"}]}]}
 		""";
+	}
+internal static class JsonTest
+	{
+	internal static JsonObject ParseObject (string json) => JsonNode.Parse (json)!.AsObject ();
+	internal static JsonArray ParseArray (string json) => JsonNode.Parse (json)!.AsArray ();
 	}
