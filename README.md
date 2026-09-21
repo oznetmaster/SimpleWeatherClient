@@ -110,6 +110,12 @@ To build and run the full solution on Windows, you will typically want:
 
 This repository is set up so a tracked `App.config` can contain only placeholders while local development still works.
 
+### Free account and API key
+
+A valid **OpenWeather API key is required**, including for the free service. There is no separate SimpleWeatherClient key. See [OpenWeather's API key guidance](https://docs.openweather.co.uk/faq).
+
+A paid One Call subscription is optional. If the key does not have access to One Call, the library falls back to OpenWeather's free current-weather and five-day forecast endpoints using the same key. Those endpoints provide less information than One Call; fields and forecast coverage depend on the endpoint available to the account. This fallback does not provide anonymous access or make an invalid key usable.
+
 ### API key lookup order
 
 The desktop app and test app check for an OpenWeather API key in this order:
