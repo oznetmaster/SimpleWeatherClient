@@ -61,7 +61,7 @@ public sealed class OneCall4Tests
 		}
 
 	[Test]
-	public void SelectedServiceDenialNeverFallsBack (
+	public async System.Threading.Tasks.Task SelectedServiceDenialNeverFallsBack (
 		[Values (OpenWeatherService.OneCall3, OpenWeatherService.OneCall4, OpenWeatherService.Free)] OpenWeatherService service,
 		[Values ("current", "forecast", "snapshot", "capabilities")] string operation,
 		[Values (HttpStatusCode.Unauthorized, HttpStatusCode.Forbidden)] HttpStatusCode status)
@@ -76,7 +76,7 @@ public sealed class OneCall4Tests
 			"snapshot" => controller.GetWeatherSnapshotAsync (new LatLong (55.5, -3.25)),
 			_ => controller.ProbeCapabilitiesAsync ()
 			};
-		var error = Assert.ThrowsAsync<UnauthorizedAccessException> (async () => await Request ());
+		var error = await Assert.ThrowsAsync<UnauthorizedAccessException> (async () => await Request ());
 		Assert.That (error!.Message, Does.Contain (service == OpenWeatherService.OneCall3 ? "3.0" : service == OpenWeatherService.OneCall4 ? "4.0" : "free"));
 		Assert.That (error.Message, Does.Not.Contain ("synthetic-key"));
 		Assert.That (http.Requests, Has.Count.EqualTo (1));
@@ -173,13 +173,13 @@ public sealed class OneCall4Tests
 
 	[TestCase (HttpStatusCode.Unauthorized, (HttpStatusCode)429)]
 	[TestCase (HttpStatusCode.InternalServerError, HttpStatusCode.OK)]
-	public void Snapshot_ServiceFailuresDoNotTriggerMoreWeatherRequests (HttpStatusCode version3, HttpStatusCode version4)
+	public async System.Threading.Tasks.Task Snapshot_ServiceFailuresDoNotTriggerMoreWeatherRequests (HttpStatusCode version3, HttpStatusCode version4)
 		{
 		using var http = new ScriptedWeather ();
 		http.Reply ("{}", version3);
 		if (version3 == HttpStatusCode.Unauthorized) http.Reply ("{}", version4);
 		using var controller = new WeatherController ("synthetic-key", http);
-		Assert.ThrowsAsync<HttpRequestException> (() => controller.GetWeatherSnapshotAsync (new LatLong (55.5, -3.25)));
+		await Assert.ThrowsAsync<HttpRequestException> (() => controller.GetWeatherSnapshotAsync (new LatLong (55.5, -3.25)));
 		Assert.That (http.Requests, Has.Count.EqualTo (version3 == HttpStatusCode.Unauthorized ? 2 : 1));
 		}
 
@@ -240,55 +240,55 @@ public sealed class OneCall4Tests
 
 	[TestCase (429)]
 	[TestCase (500)]
-	public void Version4Failure_DoesNotSilentlyDowngradeToFree (int status)
+	public async System.Threading.Tasks.Task Version4Failure_DoesNotSilentlyDowngradeToFree (int status)
 		{
 		using var http = new ScriptedWeather ();
 		http.Reply ("{}", HttpStatusCode.Unauthorized);
 		http.Reply ("{}", (HttpStatusCode)status);
 		using var controller = new WeatherController ("synthetic-key", http);
-		Assert.ThrowsAsync<HttpRequestException> (() => controller.GetCurrentWeatherAsync (1, 2));
+		await Assert.ThrowsAsync<HttpRequestException> (() => controller.GetCurrentWeatherAsync (1, 2));
 		Assert.That (http.Requests, Has.Count.EqualTo (2));
 		}
 
 	[TestCase ("{}")]
 	[TestCase ("{\"data\":[]}")]
 	[TestCase ("{\"data\":{\"temp\":12}}")]
-	public void InvalidCurrentPayload_IsNotSuccessfulWeather (string payload)
+	public async System.Threading.Tasks.Task InvalidCurrentPayload_IsNotSuccessfulWeather (string payload)
 		{
 		using var http = new ScriptedWeather ();
 		http.Reply ("{}", HttpStatusCode.Unauthorized);
 		http.Reply (payload);
 		using var controller = new WeatherController ("synthetic-key", http);
-		Assert.ThrowsAsync<InvalidDataException> (() => controller.GetCurrentWeatherAsync (1, 2));
+		await Assert.ThrowsAsync<InvalidDataException> (() => controller.GetCurrentWeatherAsync (1, 2));
 		}
 
 	[TestCase ("https://example.test/data/4.0/onecall/timeline/1day?start=2")]
 	[TestCase ("http://api.openweathermap.org:8080/data/4.0/onecall/timeline/1day?start=2")]
 	[TestCase ("https://api.openweathermap.org/data/4.0/onecall/current?start=2")]
-	public void InvalidPagination_DoesNotSendAnotherRequest (string next)
+	public async System.Threading.Tasks.Task InvalidPagination_DoesNotSendAnotherRequest (string next)
 		{
 		using var http = new ScriptedWeather ();
 		http.Reply ("{}", HttpStatusCode.Unauthorized);
 		http.Reply (Timeline (true, 0, 1, next));
 		using var controller = new WeatherController ("synthetic-key", http);
-		Assert.ThrowsAsync<InvalidDataException> (() => controller.GetWeatherForecastAsync (1, 2));
+		await Assert.ThrowsAsync<InvalidDataException> (() => controller.GetWeatherForecastAsync (1, 2));
 		Assert.That (http.Requests, Has.Count.EqualTo (2));
 		}
 
 	[Test]
-	public void RepeatedTimelineRecord_StopsInsteadOfLooping ()
+	public async System.Threading.Tasks.Task RepeatedTimelineRecord_StopsInsteadOfLooping ()
 		{
 		using var http = new ScriptedWeather ();
 		http.Reply ("{}", HttpStatusCode.Unauthorized);
 		http.Reply (Timeline (true, 0, 1, Api + "timeline/1day?start=2"));
 		http.Reply (Timeline (true, 0, 1, Api + "timeline/1day?start=3"));
 		using var controller = new WeatherController ("synthetic-key", http);
-		Assert.ThrowsAsync<InvalidDataException> (() => controller.GetWeatherForecastAsync (1, 2));
+		await Assert.ThrowsAsync<InvalidDataException> (() => controller.GetWeatherForecastAsync (1, 2));
 		Assert.That (http.Requests, Has.Count.EqualTo (3));
 		}
 
 	[Test]
-	public void CancellationDuringPagination_IsPropagated ()
+	public async System.Threading.Tasks.Task CancellationDuringPagination_IsPropagated ()
 		{
 		using var http = new ScriptedWeather ();
 		http.Reply ("{}", HttpStatusCode.Unauthorized);
@@ -298,6 +298,6 @@ public sealed class OneCall4Tests
 		using var cancellation = new CancellationTokenSource ();
 		Task operation = controller.GetWeatherForecastAsync (1, 2, cancellationToken: cancellation.Token);
 		cancellation.Cancel ();
-		Assert.CatchAsync<OperationCanceledException> (async () => await operation);
+		await Assert.CatchAsync<OperationCanceledException> (async () => await operation);
 		}
 	}

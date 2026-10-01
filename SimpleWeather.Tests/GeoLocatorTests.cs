@@ -9,22 +9,22 @@ public sealed class GeoLocatorTests
 	[TestCase (null)]
 	[TestCase ("")]
 	[TestCase ("  ")]
-	public void EmptyCity_IsRejectedBeforeSending (string? city)
+	public async System.Threading.Tasks.Task EmptyCity_IsRejectedBeforeSending (string? city)
 		{
 		using var http = new ScriptedWeather ();
 		var geo = http.Locator ();
-		Assert.ThrowsAsync<ArgumentException> (() => geo.GetCitiesByNameAsync (city!));
-		Assert.ThrowsAsync<ArgumentException> (() => geo.GetCoordinatesByCityNameAsync (city!));
+		await Assert.ThrowsAsync<ArgumentException> (() => geo.GetCitiesByNameAsync (city!));
+		await Assert.ThrowsAsync<ArgumentException> (() => geo.GetCoordinatesByCityNameAsync (city!));
 		Assert.That (http.Requests, Is.Empty);
 		}
 	[TestCase ("", "GB")]
 	[TestCase ("  ", "GB")]
 	[TestCase ("AB1 2CD", "")]
 	[TestCase ("AB1 2CD", " ")]
-	public void IncompletePostalLocation_IsRejected (string postal, string country)
+	public async System.Threading.Tasks.Task IncompletePostalLocation_IsRejected (string postal, string country)
 		{
 		using var http = new ScriptedWeather ();
-		Assert.ThrowsAsync<ArgumentException> (() => http.Locator ().GetCoordinatesByPostCodeAsync (postal, country));
+		await Assert.ThrowsAsync<ArgumentException> (() => http.Locator ().GetCoordinatesByPostCodeAsync (postal, country));
 		Assert.That (http.Requests, Is.Empty);
 		}
 	[Test]
@@ -90,19 +90,19 @@ public sealed class GeoLocatorTests
 	[TestCase (403)]
 	[TestCase (429)]
 	[TestCase (500)]
-	public void HttpFailure_IsReportedAndDisposed (int status)
+	public async System.Threading.Tasks.Task HttpFailure_IsReportedAndDisposed (int status)
 		{
 		using var http = new ScriptedWeather ();
 		http.Reply ("{}", (HttpStatusCode)status);
-		Assert.ThrowsAsync<HttpRequestException> (() => http.Locator ().GetCoordinatesByCityNameAsync ("Synthetic City"));
+		await Assert.ThrowsAsync<HttpRequestException> (() => http.Locator ().GetCoordinatesByCityNameAsync ("Synthetic City"));
 		Assert.That (http.Contents[0].Disposed, Is.True);
 		}
 	[Test]
-	public void MalformedJson_ReportsParsingFailure ()
+	public async System.Threading.Tasks.Task MalformedJson_ReportsParsingFailure ()
 		{
 		using var http = new ScriptedWeather ();
 		http.Reply ("not-json");
-		Assert.CatchAsync<System.Text.Json.JsonException> (() => http.Locator ().GetCoordinatesByCityNameAsync ("Synthetic City"));
+		await Assert.CatchAsync<System.Text.Json.JsonException> (() => http.Locator ().GetCoordinatesByCityNameAsync ("Synthetic City"));
 		}
 	}
 

@@ -50,14 +50,14 @@ public sealed class WeatherControllerTests
 	[TestCase (false, 403)]
 	[TestCase (true, 401)]
 	[TestCase (true, 403)]
-	public void BothEndpointsDenyAccess_ReportsAuthenticationFailure (bool forecast, int status)
+	public async System.Threading.Tasks.Task BothEndpointsDenyAccess_ReportsAuthenticationFailure (bool forecast, int status)
 		{
 		using var http = new ScriptedWeather ();
 		http.Reply ("{}", HttpStatusCode.Unauthorized);
 		http.Reply ("{}", HttpStatusCode.Unauthorized);
 		http.Reply ("{}", (HttpStatusCode)status);
 		using var controller = new WeatherController ("synthetic-key", http);
-		Assert.ThrowsAsync<UnauthorizedAccessException> (() => Fetch (controller, forecast));
+		await Assert.ThrowsAsync<UnauthorizedAccessException> (() => Fetch (controller, forecast));
 		}
 	[TestCase (false, 404)]
 	[TestCase (false, 429)]
@@ -65,28 +65,28 @@ public sealed class WeatherControllerTests
 	[TestCase (true, 404)]
 	[TestCase (true, 429)]
 	[TestCase (true, 500)]
-	public void OtherHttpFailures_DoNotTriggerFallback (bool forecast, int status)
+	public async System.Threading.Tasks.Task OtherHttpFailures_DoNotTriggerFallback (bool forecast, int status)
 		{
 		using var http = new ScriptedWeather ();
 		http.Reply ("{}", (HttpStatusCode)status);
 		using var controller = new WeatherController ("synthetic-key", http);
-		var exception = Assert.ThrowsAsync<HttpRequestException> (() => Fetch (controller, forecast));
+		var exception = await Assert.ThrowsAsync<HttpRequestException> (() => Fetch (controller, forecast));
 		Assert.That (exception!.Message, Does.Contain (status.ToString ()));
 		Assert.That (http.Requests, Has.Count.EqualTo (1));
 		}
 	[TestCase (false)]
 	[TestCase (true)]
-	public void TransportFailure_IsPreserved (bool forecast)
+	public async System.Threading.Tasks.Task TransportFailure_IsPreserved (bool forecast)
 		{
 		using var http = new ScriptedWeather ();
 		var failure = new HttpRequestException ("Synthetic transport failure");
 		http.Throw (failure);
 		using var controller = new WeatherController ("synthetic-key", http);
-		Assert.That (Assert.ThrowsAsync<HttpRequestException> (() => Fetch (controller, forecast)), Is.SameAs (failure));
+		Assert.That (await Assert.ThrowsAsync<HttpRequestException> (() => Fetch (controller, forecast)), Is.SameAs (failure));
 		}
 	[TestCase (false)]
 	[TestCase (true)]
-	public void Cancellation_IsPropagated (bool forecast)
+	public async System.Threading.Tasks.Task Cancellation_IsPropagated (bool forecast)
 		{
 		using var http = new ScriptedWeather ();
 		http.WaitForCancellation ();
@@ -94,7 +94,7 @@ public sealed class WeatherControllerTests
 		using var cancellation = new CancellationTokenSource ();
 		Task operation = forecast ? controller.GetWeatherForecastAsync (1, 2, cancellationToken: cancellation.Token) : controller.GetCurrentWeatherAsync (1, 2, cancellationToken: cancellation.Token);
 		cancellation.Cancel ();
-		Assert.CatchAsync<OperationCanceledException> (async () => await operation);
+		await Assert.CatchAsync<OperationCanceledException> (async () => await operation);
 		Assert.That (http.Requests, Has.Count.EqualTo (1));
 		}
 	[TestCase ("en-US")]
@@ -135,12 +135,12 @@ public sealed class WeatherControllerTests
 		}
 	[TestCase (false)]
 	[TestCase (true)]
-	public void UnknownCity_StopsBeforeWeatherRequest (bool forecast)
+	public async System.Threading.Tasks.Task UnknownCity_StopsBeforeWeatherRequest (bool forecast)
 		{
 		using var http = new ScriptedWeather ();
 		http.Reply ("[]");
 		using var controller = new WeatherController ("synthetic-key", http);
-		Assert.ThrowsAsync<InvalidOperationException> (async () => { if (forecast) await controller.GetWeatherForecastAsync ("Missing"); else await controller.GetCurrentWeatherAsync ("Missing"); });
+		await Assert.ThrowsAsync<InvalidOperationException> (async () => { if (forecast) await controller.GetWeatherForecastAsync ("Missing"); else await controller.GetCurrentWeatherAsync ("Missing"); });
 		Assert.That (http.Requests, Has.Count.EqualTo (1));
 		}
 	[TestCase (200, true)]
@@ -166,32 +166,32 @@ public sealed class WeatherControllerTests
 		var controller = new WeatherController ("synthetic-key", http);
 		await controller.ProbeCapabilitiesAsync ();
 		controller.Dispose ();
-		Assert.ThrowsAsync<ObjectDisposedException> (() => controller.ProbeCapabilitiesAsync ());
+		await Assert.ThrowsAsync<ObjectDisposedException> (() => controller.ProbeCapabilitiesAsync ());
 		Assert.That (http.Requests, Has.Count.EqualTo (1));
 		}
 
 	[TestCase (false)]
 	[TestCase (true)]
-	public void MalformedSuccessResponse_IsDisposed (bool forecast)
+	public async System.Threading.Tasks.Task MalformedSuccessResponse_IsDisposed (bool forecast)
 		{
 		using var http = new ScriptedWeather ();
 		http.Reply ("not-json");
 		using var controller = new WeatherController ("synthetic-key", http);
-		Assert.CatchAsync<System.Text.Json.JsonException> (() => Fetch (controller, forecast));
+		await Assert.CatchAsync<System.Text.Json.JsonException> (() => Fetch (controller, forecast));
 		Assert.That (http.Contents.Single ().Disposed, Is.True);
 		Assert.That (http.Requests, Has.Count.EqualTo (1));
 		}
 
 	[TestCase (false)]
 	[TestCase (true)]
-	public void DisposedController_RejectsRequests (bool forecast)
+	public async System.Threading.Tasks.Task DisposedController_RejectsRequests (bool forecast)
 		{
 		using var http = new ScriptedWeather ();
 		var controller = new WeatherController ("synthetic-key", http);
 		controller.Dispose ();
 		controller.Dispose ();
 		Assert.That (http.Disposed, Is.True);
-		Assert.ThrowsAsync<ObjectDisposedException> (() => Fetch (controller, forecast));
+		await Assert.ThrowsAsync<ObjectDisposedException> (() => Fetch (controller, forecast));
 		Assert.That (http.Requests, Is.Empty);
 		}
 	}

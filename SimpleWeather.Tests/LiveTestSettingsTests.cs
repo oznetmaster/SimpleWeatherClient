@@ -54,9 +54,9 @@ public sealed class LiveTestSettingsTests
 	[Test]
 	public void InvalidOverride_IsRejected () => Assert.That (() => LiveTestSupport.LoadForRun (SettingsPath, "yes"), Throws.TypeOf<InvalidDataException> ());
 	[Test]
-	public void RequestFailures_DoNotExposeSecretUris ()
+	public async System.Threading.Tasks.Task RequestFailures_DoNotExposeSecretUris ()
 		{
-		Exception? exception = Assert.ThrowsAsync<InvalidOperationException> (() => LiveTestSupport.Request (() => Task.FromException<string> (new HttpRequestException ("https://example.invalid/?appid=synthetic-secret"))));
+		Exception? exception = await Assert.ThrowsAsync<InvalidOperationException> (() => LiveTestSupport.Request (() => Task.FromException<string> (new HttpRequestException ("https://example.invalid/?appid=synthetic-secret"))));
 		Assert.That (exception!.ToString (), Does.Not.Contain ("synthetic-secret"));
 		}
 	private JsonObject WriteValidSettings (bool enabled)
