@@ -4,6 +4,8 @@ This changelog records shipped features, fixes, compatibility and runtime depend
 
 ## 2.0.0 — 2026-09-21
 
+[Compare changes][2.0.0]
+
 ### Added
 
 - One Call 4.0 current weather and paginated daily/hourly forecasts, preserving existing 3.0 and free-endpoint support.
@@ -20,6 +22,8 @@ This changelog records shipped features, fixes, compatibility and runtime depend
 See [release notes](docs/release-notes/v2.0.0.md) for subscription and request-count details.
 
 ## 1.0.3 — 2026-09-12
+
+[Compare changes][1.0.3]
 
 ### Changed
 
