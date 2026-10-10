@@ -2,7 +2,7 @@
 
 This changelog records shipped features, fixes, compatibility and runtime dependency changes. See [development and validation history](DEVELOPMENT-HISTORY.md) for tests, CI, build tooling and work not yet released.
 
-## [2.0.0] - 2026-09-21
+## 2.0.0 — 2026-09-21
 
 ### Added
 
@@ -19,7 +19,7 @@ This changelog records shipped features, fixes, compatibility and runtime depend
 
 See [release notes](docs/release-notes/v2.0.0.md) for subscription and request-count details.
 
-## [1.0.3] - 2026-09-12
+## 1.0.3 — 2026-09-12
 
 ### Changed
 
