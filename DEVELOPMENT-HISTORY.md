@@ -11,6 +11,11 @@ See the [product changelog](CHANGELOG.md) for shipped changes. This document pre
 
 <!-- development-history -->
 
+## Local dependency maintenance - 2026-09-22
+
+- Align the widget's Win32 metadata with CsWin32's supported dependency range (CsWin32 0.3.335 and Win32Metadata 71.0.26-preview), and remove the NU1605 downgrade suppression.
+- Update the local NUnit test project's Microsoft.NET.Test.Sdk to 18.10.1. Library runtime dependencies and API versions are unchanged.
+
 ## Version 2 preparation - 2026-09-21 (not yet released)
 
 - Build all support applications in CI, alongside the offline .NET Framework 4.7.2 and .NET 10 suites. The solution's Any CPU release configuration maps the x64-only widget to x64.
