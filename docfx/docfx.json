@@ -3,7 +3,9 @@
     {
       "src": [
         {
-          "files": [ "SimpleWeather/SimpleWeather.csproj" ],
+          "files": [
+            "SimpleWeather/SimpleWeather.csproj"
+          ],
           "cwd": ".."
         }
       ],
@@ -13,29 +15,52 @@
   "build": {
     "content": [
       {
-        "files": [ "api/**.yml" ]
+        "files": [
+          "api/**.yml"
+        ]
       },
       {
-        "files": [ "articles/**.md" ]
+        "files": [
+          "articles/**.md"
+        ]
       },
       {
-        "files": [ "index.md" ]
+        "files": [
+          "index.md"
+        ]
       },
       {
-        "files": [ "toc.yml" ]
+        "files": [
+          "toc.yml"
+        ]
+      },
+      {
+        "files": [
+          "toc.yml",
+          "guides/**.md",
+          "guides/**/toc.yml",
+          "reference/**.md",
+          "reference/**/toc.yml"
+        ]
       }
     ],
     "resource": [
       {
-        "files": [ "images/**" ]
+        "files": [
+          "images/**"
+        ]
       },
       {
-        "files": [ "styles/**" ]
+        "files": [
+          "styles/**"
+        ]
       }
     ],
     "globalMetadata": {
-      "_appTitle": "SimpleWeather API",
-      "pdf": true
+      "_appTitle": "SimpleWeatherClient",
+      "_appName": "SimpleWeatherClient",
+      "_appFooter": "Copyright (c) 2026 Neil Colvin.",
+      "_enableSearch": true
     },
     "template": [
       "default",
