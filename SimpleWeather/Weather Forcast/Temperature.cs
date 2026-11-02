@@ -33,26 +33,32 @@ public class Temperature
 	/// <summary>
 	/// Morning temperature in Celsius.
 	/// </summary>
+	/// <value>Morning temperature in Celsius.</value>
 	public double? Morning { get; }
 	/// <summary>
 	/// Daytime temperature in Celsius.
 	/// </summary>
+	/// <value>Daytime temperature in Celsius.</value>
 	public double? Day { get; }
 	/// <summary>
 	/// Evening temperature in Celsius.
 	/// </summary>
+	/// <value>Evening temperature in Celsius.</value>
 	public double? Evening { get; }
 	/// <summary>
 	/// Night temperature in Celsius.
 	/// </summary>
+	/// <value>Night temperature in Celsius.</value>
 	public double? Night { get; }
 	/// <summary>
 	/// Minimum daily temperature in Celsius.
 	/// </summary>
+	/// <value>Minimum daily temperature in Celsius.</value>
 	public double? Min { get; }
 	/// <summary>
 	/// Maximum daily temperature in Celsius.
 	/// </summary>
+	/// <value>Maximum daily temperature in Celsius.</value>
 	public double? Max { get; }
 	}
 

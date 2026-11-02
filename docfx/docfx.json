@@ -6,7 +6,7 @@
           "files": [
             "SimpleWeather/SimpleWeather.csproj"
           ],
-          "cwd": ".."
+          "src": ".."
         }
       ],
       "dest": "api"

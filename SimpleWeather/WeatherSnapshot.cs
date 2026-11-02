@@ -13,8 +13,10 @@ public sealed class WeatherSnapshot
 		}
 
 	/// <summary>Current conditions for the requested location.</summary>
+	/// <value>Current conditions for the requested location.</value>
 	public CurrentWeather CurrentWeather { get; }
 
 	/// <summary>The forecast. Hourly readings are empty when they were not requested.</summary>
+	/// <value>The forecast. Hourly readings are empty when they were not requested.</value>
 	public WeatherForecast Forecast { get; }
 	}

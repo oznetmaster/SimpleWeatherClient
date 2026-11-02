@@ -36,6 +36,7 @@ public class Main
 	/// <summary>
 	/// Temperature. Default Unit: Celsius
 	/// </summary>
+	/// <value>Temperature. Default Unit: Celsius</value>
 	public double? Temperature
 		{
 		get;
@@ -43,6 +44,7 @@ public class Main
 	/// <summary>
 	/// Temperature. This temperature parameter accounts for the human perception of weather. Default Unit: Celsius
 	/// </summary>
+	/// <value>Temperature. This temperature parameter accounts for the human perception of weather. Default Unit: Celsius</value>
 	public double? FeelsLike
 		{
 		get;
@@ -50,6 +52,7 @@ public class Main
 	/// <summary>
 	/// Minimum temperature at the moment. This is minimal currently observed temperature (within large megalopolises and urban areas). Default Unit: Celsius
 	/// </summary>
+	/// <value>Minimum temperature at the moment. This is minimal currently observed temperature (within large megalopolises and urban areas). Default Unit: Celsius</value>
 	public double? TemperatureMin
 		{
 		get;
@@ -57,6 +60,7 @@ public class Main
 	/// <summary>
 	/// Maximum temperature at the moment. This is maximal currently observed temperature (within large megalopolises and urban areas). Default Unit: Celsius
 	/// </summary>
+	/// <value>Maximum temperature at the moment. This is maximal currently observed temperature (within large megalopolises and urban areas). Default Unit: Celsius</value>
 	public double? TemperatureMax
 		{
 		get;
@@ -64,6 +68,7 @@ public class Main
 	/// <summary>
 	/// Atmospheric pressure (on the sea level, if there is no SeaLevel or GroundLevel data), hPa
 	/// </summary>
+	/// <value>Atmospheric pressure (on the sea level, if there is no SeaLevel or GroundLevel data), hPa</value>
 	public double? Pressure
 		{
 		get;
@@ -71,6 +76,7 @@ public class Main
 	/// <summary>
 	/// Humidity, %
 	/// </summary>
+	/// <value>Humidity, %</value>
 	public double? Humidity
 		{
 		get;
@@ -78,6 +84,7 @@ public class Main
 	/// <summary>
 	/// Atmospheric pressure on the sea level, hPa
 	/// </summary>
+	/// <value>Atmospheric pressure on the sea level, hPa</value>
 	public double? SeaLevel
 		{
 		get;
@@ -85,6 +92,7 @@ public class Main
 	/// <summary>
 	/// Atmospheric pressure on the ground level, hPa
 	/// </summary>
+	/// <value>Atmospheric pressure on the ground level, hPa</value>
 	public double? GroundLevel
 		{
 		get;
@@ -92,6 +100,7 @@ public class Main
 	/// <summary>
 	/// Dew point temperature in Celsius.
 	/// </summary>
+	/// <value>Dew point temperature in Celsius.</value>
 	public double? DewPoint
 		{
 		get;

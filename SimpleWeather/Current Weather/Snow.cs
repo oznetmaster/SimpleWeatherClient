@@ -29,6 +29,7 @@ public class Snow
 	/// <summary>
 	/// Snow volume for the last 1 hour, mm
 	/// </summary>
+	/// <value>Snow volume for the last 1 hour, mm</value>
 	public double? OneHour
 		{
 		get;
@@ -36,6 +37,7 @@ public class Snow
 	/// <summary>
 	/// Snow volume for the last 3 hour, mm
 	/// </summary>
+	/// <value>Snow volume for the last 3 hour, mm</value>
 	public double? ThreeHours
 		{
 		get;

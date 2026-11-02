@@ -28,6 +28,7 @@ public class Coordinates
 	/// <summary>
 	/// City geo location, longitude
 	/// </summary>
+	/// <value>City geo location, longitude</value>
 	public double? Longitude
 		{
 		get;
@@ -35,6 +36,7 @@ public class Coordinates
 	/// <summary>
 	/// City geo location, latitude
 	/// </summary>
+	/// <value>City geo location, latitude</value>
 	public double? Latitude
 		{
 		get;

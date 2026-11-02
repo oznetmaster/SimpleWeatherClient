@@ -52,6 +52,7 @@ public class Daily
 	/// <summary>
 	/// Gets the forecast timestamp converted to local time.
 	/// </summary>
+	/// <value>The forecast timestamp converted to local time.</value>
 	public DateTime? DT
 		{
 		get;
@@ -59,6 +60,7 @@ public class Daily
 	/// <summary>
 	/// Gets the sunrise time for the forecast day.
 	/// </summary>
+	/// <value>The sunrise time for the forecast day.</value>
 	public DateTime? Sunrise
 		{
 		get;
@@ -66,6 +68,7 @@ public class Daily
 	/// <summary>
 	/// Gets the sunset time for the forecast day.
 	/// </summary>
+	/// <value>The sunset time for the forecast day.</value>
 	public DateTime? Sunset
 		{
 		get;
@@ -73,6 +76,7 @@ public class Daily
 	/// <summary>
 	/// Gets the moonrise time for the forecast day.
 	/// </summary>
+	/// <value>The moonrise time for the forecast day.</value>
 	public DateTime? Moonrise
 		{
 		get;
@@ -80,6 +84,7 @@ public class Daily
 	/// <summary>
 	/// Gets the moonset time for the forecast day.
 	/// </summary>
+	/// <value>The moonset time for the forecast day.</value>
 	public DateTime? Moonset
 		{
 		get;
@@ -87,6 +92,7 @@ public class Daily
 	/// <summary>
 	/// Moon phase
 	/// </summary>
+	/// <value>Moon phase</value>
 	public string? MoonPhase
 		{
 		get;
@@ -94,6 +100,7 @@ public class Daily
 	/// <summary>
 	/// Gets the day-parted temperatures.
 	/// </summary>
+	/// <value>The day-parted temperatures.</value>
 	public Temperature? Temperature
 		{
 		get;
@@ -101,6 +108,7 @@ public class Daily
 	/// <summary>
 	/// Gets the day-parted feels-like temperatures.
 	/// </summary>
+	/// <value>The day-parted feels-like temperatures.</value>
 	public FeelsLike? FeelsLike
 		{
 		get;
@@ -108,6 +116,7 @@ public class Daily
 	/// <summary>
 	/// Gets the sea-level atmospheric pressure in hPa.
 	/// </summary>
+	/// <value>The sea-level atmospheric pressure in hPa.</value>
 	public double? Pressure
 		{
 		get;
@@ -115,6 +124,7 @@ public class Daily
 	/// <summary>
 	/// Gets the relative humidity percentage.
 	/// </summary>
+	/// <value>The relative humidity percentage.</value>
 	public double? Humidity
 		{
 		get;
@@ -122,6 +132,7 @@ public class Daily
 	/// <summary>
 	/// Gets the dew point temperature.
 	/// </summary>
+	/// <value>The dew point temperature.</value>
 	public double? DewPoint
 		{
 		get;
@@ -129,6 +140,7 @@ public class Daily
 	/// <summary>
 	/// Wind speed. Default Unit: meter/sec
 	/// </summary>
+	/// <value>Wind speed. Default Unit: meter/sec</value>
 	public double? WindSpeed
 		{
 		get;
@@ -136,6 +148,7 @@ public class Daily
 	/// <summary>
 	/// Wind gust. Default Unit: meter/sec
 	/// </summary>
+	/// <value>Wind gust. Default Unit: meter/sec</value>
 	public double? WindGust
 		{
 		get;
@@ -143,6 +156,7 @@ public class Daily
 	/// <summary>
 	/// Wind direction, degrees (meteorological)
 	/// </summary>
+	/// <value>Wind direction, degrees (meteorological)</value>
 	public double? WindDegree
 		{
 		get;
@@ -150,6 +164,7 @@ public class Daily
 	/// <summary>
 	/// Short wind direction represented by a string (N, E, S, W, etc.)
 	/// </summary>
+	/// <value>Short wind direction represented by a string (N, E, S, W, etc.)</value>
 	public string? WindDirectionShort
 		{
 		get;
@@ -157,6 +172,7 @@ public class Daily
 	/// <summary>
 	/// Long wind direction represented by a string (North, East, South, West, etc.)
 	/// </summary>
+	/// <value>Long wind direction represented by a string (North, East, South, West, etc.)</value>
 	public string? WindDirectionLong
 		{
 		get;
@@ -164,6 +180,7 @@ public class Daily
 	/// <summary>
 	/// Gets the cloud coverage percentage.
 	/// </summary>
+	/// <value>The cloud coverage percentage.</value>
 	public double? Clouds
 		{
 		get;
@@ -171,6 +188,7 @@ public class Daily
 	/// <summary>
 	/// Gets the UV index.
 	/// </summary>
+	/// <value>The UV index.</value>
 	public double? Uvi
 		{
 		get;
@@ -178,6 +196,7 @@ public class Daily
 	/// <summary>
 	/// Probability of precipitation in percents. The values of the parameter vary between 0 and 100
 	/// </summary>
+	/// <value>Probability of precipitation in percents. The values of the parameter vary between 0 and 100</value>
 	public double? PrecipitationProbability
 		{
 		get;
@@ -185,6 +204,7 @@ public class Daily
 	/// <summary>
 	/// Gets the total rainfall in millimeters.
 	/// </summary>
+	/// <value>The total rainfall in millimeters.</value>
 	public double? Rain
 		{
 		get;
@@ -192,6 +212,7 @@ public class Daily
 	/// <summary>
 	/// Gets the total snowfall in millimeters.
 	/// </summary>
+	/// <value>The total snowfall in millimeters.</value>
 	public double? Snow
 		{
 		get;
@@ -199,6 +220,7 @@ public class Daily
 	/// <summary>
 	/// Gets the descriptive weather information.
 	/// </summary>
+	/// <value>The descriptive weather information.</value>
 	public Weather? Weather
 		{
 		get;

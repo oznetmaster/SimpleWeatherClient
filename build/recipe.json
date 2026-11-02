@@ -80,6 +80,21 @@
         "site": "docfx-site",
         "title": "SimpleWeatherClient"
       }
+    },
+    "xml-documentation": {
+      "commands": [
+        {
+          "executable": "dotnet",
+          "arguments": [
+            "--version"
+          ]
+        }
+      ]
     }
+  },
+  "xmlDocumentation": {
+    "projects": [
+      "SimpleWeather/SimpleWeather.csproj"
+    ]
   }
 }

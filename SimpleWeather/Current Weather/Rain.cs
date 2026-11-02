@@ -28,6 +28,7 @@ public class Rain
 	/// <summary>
 	/// Rain volume for the last 1 hour, mm
 	/// </summary>
+	/// <value>Rain volume for the last 1 hour, mm</value>
 	public double? OneHour
 		{
 		get;
@@ -35,6 +36,7 @@ public class Rain
 	/// <summary>
 	/// Rain volume for the last 3 hours, mm
 	/// </summary>
+	/// <value>Rain volume for the last 3 hours, mm</value>
 	public double? ThreeHours
 		{
 		get;

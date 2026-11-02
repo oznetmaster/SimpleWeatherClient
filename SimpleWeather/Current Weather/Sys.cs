@@ -37,6 +37,7 @@ public class Sys
 	/// <summary>
 	/// Internal parameter returned by OpenWeather.
 	/// </summary>
+	/// <value>Internal parameter returned by OpenWeather.</value>
 	public int? Type
 		{
 		get;
@@ -44,6 +45,7 @@ public class Sys
 	/// <summary>
 	/// Unique identifier for the system block.
 	/// </summary>
+	/// <value>Unique identifier for the system block.</value>
 	public int? ID
 		{
 		get;
@@ -51,6 +53,7 @@ public class Sys
 	/// <summary>
 	/// Country code (ISO 3166) of the location.
 	/// </summary>
+	/// <value>Country code (ISO 3166) of the location.</value>
 	public string? Country
 		{
 		get;
@@ -58,6 +61,7 @@ public class Sys
 	/// <summary>
 	/// A DateTime object representing sunrise time converted to your local time
 	/// </summary>
+	/// <value>A DateTime object representing sunrise time converted to your local time</value>
 	public DateTime Sunrise
 		{
 		get;
@@ -65,6 +69,7 @@ public class Sys
 	/// <summary>
 	/// Time of sunrise in the format HH:mm
 	/// </summary>
+	/// <value>Time of sunrise in the format HH:mm</value>
 	public string? SunriseTime
 		{
 		get;
@@ -72,6 +77,7 @@ public class Sys
 	/// <summary>
 	/// A DateTime object representing sunset time converted to your local time
 	/// </summary>
+	/// <value>A DateTime object representing sunset time converted to your local time</value>
 	public DateTime Sunset
 		{
 		get;
@@ -79,6 +85,7 @@ public class Sys
 	/// <summary>
 	/// Time of sunset in the format HH:mm
 	/// </summary>
+	/// <value>Time of sunset in the format HH:mm</value>
 	public string? SunsetTime
 		{
 		get;

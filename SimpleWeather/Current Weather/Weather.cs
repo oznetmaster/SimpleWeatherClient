@@ -59,18 +59,22 @@ public class Weather
 	/// <summary>
 	/// Weather condition ID
 	/// </summary>
+	/// <value>Weather condition ID</value>
 	public int ID { get; init; }
 	/// <summary>
 	/// Group of weather parameters (Rain, Snow, Extreme etc.)
 	/// </summary>
+	/// <value>Group of weather parameters (Rain, Snow, Extreme etc.)</value>
 	public string? Main { get; init; }
 	/// <summary>
 	/// Weather condition within the group
 	/// </summary>
+	/// <value>Weather condition within the group</value>
 	public string? Description { get; init; }
 	/// <summary>
 	/// Weather icon ID
 	/// </summary>
+	/// <value>Weather icon ID</value>
 	public string? Icon { get; init; }
 
 	/// <summary>

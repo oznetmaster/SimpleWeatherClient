@@ -31,6 +31,7 @@ namespace SimpleWeather;
 		/// <summary>
 		/// Wind speed. Default Unit: meter/sec
 		/// </summary>
+		/// <value>Wind speed. Default Unit: meter/sec</value>
 		public double? Speed
 			{
 			get;
@@ -38,6 +39,7 @@ namespace SimpleWeather;
 		/// <summary>
 		/// Wind direction, degrees (meteorological)
 		/// </summary>
+		/// <value>Wind direction, degrees (meteorological)</value>
 		public double? Degree
 			{
 			get;
@@ -45,6 +47,7 @@ namespace SimpleWeather;
 		/// <summary>
 		/// Short wind direction represented by a string (N, E, S, W, etc.)
 		/// </summary>
+		/// <value>Short wind direction represented by a string (N, E, S, W, etc.)</value>
 		public string? WindDirectionShort
 			{
 			get;
@@ -52,6 +55,7 @@ namespace SimpleWeather;
 		/// <summary>
 		/// Long wind direction represented by a string (North, East, South, West, etc.)
 		/// </summary>
+		/// <value>Long wind direction represented by a string (North, East, South, West, etc.)</value>
 		public string? WindDirectionLong
 			{
 			get;
@@ -59,6 +63,7 @@ namespace SimpleWeather;
 		/// <summary>
 		/// Wind gust. Default Unit: meter/sec
 		/// </summary>
+		/// <value>Wind gust. Default Unit: meter/sec</value>
 		public double? Gust
 			{
 			get;
