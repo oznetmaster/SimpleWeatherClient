@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "tasks": {
+    "tests-build-apps-build-library-console-desktop-and-widget": {
+      "commands": [
+        {
+          "executable": "dotnet",
+          "arguments": [
+            "build",
+            "SimpleWeather.sln",
+            "-c",
+            "Release",
+            "-p:Platform=x64"
+          ]
+        }
+      ]
+    },
+    "tests-test-run-offline-nunit-tests": {
+      "commands": [
+        {
+          "executable": "dotnet",
+          "arguments": [
+            "test",
+            "SimpleWeather.Tests/SimpleWeather.Tests.csproj",
+            "-c",
+            "Release",
+            "-f",
+            "${env:BUILD_INPUT_0}",
+            "--settings",
+            "SimpleWeather.Tests/unit.runsettings",
+            "--logger",
+            "trx;LogFileName=tests.trx",
+            "--results-directory",
+            "TestResults"
+          ]
+        }
+      ],
+      "results": [
+        "TestResults/**/*.trx"
+      ]
+    }
+  }
+}
