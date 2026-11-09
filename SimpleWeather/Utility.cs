@@ -11,16 +11,20 @@ namespace SimpleWeather;
 /// <summary>
 /// Represents a coordinate pair expressed in decimal degrees.
 /// </summary>
+/// <param name="latitude">The latitude in decimal degrees.</param>
+/// <param name="longitude">The longitude in decimal degrees.</param>
 public readonly struct LatLong (double latitude, double longitude)
 	{
 	/// <summary>
 	/// Gets the latitude component in decimal degrees.
 	/// </summary>
+	/// <value>The latitude component in decimal degrees.</value>
 	public double Latitude { get; init; } = latitude;
 
 	/// <summary>
 	/// Gets the longitude component in decimal degrees.
 	/// </summary>
+	/// <value>The longitude component in decimal degrees.</value>
 	public double Longitude { get; init; } = longitude;
 
 	/// <inheritdoc/>

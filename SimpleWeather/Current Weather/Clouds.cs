@@ -27,6 +27,7 @@ public class Clouds
 	/// <summary>
 	/// Cloudiness, %
 	/// </summary>
+	/// <value>Cloudiness, %</value>
 	public double? Cloudiness
 		{
 		get;

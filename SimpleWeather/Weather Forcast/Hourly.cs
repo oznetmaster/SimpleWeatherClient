@@ -48,6 +48,7 @@ public class Hourly
 	/// <summary>
 	/// Time of the forecasted data, UTC
 	/// </summary>
+	/// <value>Time of the forecasted data, UTC</value>
 	public DateTime? DT
 		{
 		get;
@@ -55,6 +56,7 @@ public class Hourly
 	/// <summary>
 	/// Temperature
 	/// </summary>
+	/// <value>Temperature</value>
 	public double? Temperature
 		{
 		get;
@@ -62,6 +64,7 @@ public class Hourly
 	/// <summary>
 	/// Temperature. This accounts for the human perception of weather.
 	/// </summary>
+	/// <value>Temperature. This accounts for the human perception of weather.</value>
 	public double? FeelsLike
 		{
 		get;
@@ -69,6 +72,7 @@ public class Hourly
 	/// <summary>
 	/// Atmospheric pressure on the sea level, hPa
 	/// </summary>
+	/// <value>Atmospheric pressure on the sea level, hPa</value>
 	public double? Pressure
 		{
 		get;
@@ -76,6 +80,7 @@ public class Hourly
 	/// <summary>
 	/// Humidity, %
 	/// </summary>
+	/// <value>Humidity, %</value>
 	public double? Humidity
 		{
 		get;
@@ -83,6 +88,7 @@ public class Hourly
 	/// <summary>
 	///  Atmospheric temperature (varying according to pressure and humidity) below which water droplets begin to condense and dew can form.
 	/// </summary>
+	/// <value>Atmospheric temperature (varying according to pressure and humidity) below which water droplets begin to condense and dew can form.</value>
 	public double? DewPoint
 		{
 		get;
@@ -90,6 +96,7 @@ public class Hourly
 	/// <summary>
 	/// UV index
 	/// </summary>
+	/// <value>UV index</value>
 	public double? Uvi
 		{
 		get;
@@ -97,6 +104,7 @@ public class Hourly
 	/// <summary>
 	/// Cloudiness, %
 	/// </summary>
+	/// <value>Cloudiness, %</value>
 	public double? Clouds
 		{
 		get;
@@ -104,6 +112,7 @@ public class Hourly
 	/// <summary>
 	/// Visibility in meters.
 	/// </summary>
+	/// <value>Visibility in meters.</value>
 	public double? Visibility
 		{
 		get;
@@ -111,6 +120,7 @@ public class Hourly
 	/// <summary>
 	/// Wind speed. Default Unit: meter/sec
 	/// </summary>
+	/// <value>Wind speed. Default Unit: meter/sec</value>
 	public double? WindSpeed
 		{
 		get;
@@ -118,6 +128,7 @@ public class Hourly
 	/// <summary>
 	/// Wind gust. Default Unit: meter/sec
 	/// </summary>
+	/// <value>Wind gust. Default Unit: meter/sec</value>
 	public double? WindGust
 		{
 		get;
@@ -125,6 +136,7 @@ public class Hourly
 	/// <summary>
 	/// Wind direction, degrees (meteorological)
 	/// </summary>
+	/// <value>Wind direction, degrees (meteorological)</value>
 	public double? WindDegree
 		{
 		get;
@@ -132,6 +144,7 @@ public class Hourly
 	/// <summary>
 	/// Short wind direction represented by a string (N, E, S, W, etc.)
 	/// </summary>
+	/// <value>Short wind direction represented by a string (N, E, S, W, etc.)</value>
 	public string? WindDirectionShort
 		{
 		get;
@@ -139,6 +152,7 @@ public class Hourly
 	/// <summary>
 	/// Long wind direction represented by a string (North, East, South, West, etc.)
 	/// </summary>
+	/// <value>Long wind direction represented by a string (North, East, South, West, etc.)</value>
 	public string? WindDirectionLong
 		{
 		get;
@@ -146,6 +160,7 @@ public class Hourly
 	/// <summary>
 	/// Probability of precipitation in percents. The values of the parameter vary between 0 and 100
 	/// </summary>
+	/// <value>Probability of precipitation in percents. The values of the parameter vary between 0 and 100</value>
 	public double? PrecipitationProbability
 		{
 		get;
@@ -153,6 +168,7 @@ public class Hourly
 	/// <summary>
 	/// Gets the rainfall totals for the hour.
 	/// </summary>
+	/// <value>The rainfall totals for the hour.</value>
 	public Rain? Rain
 		{
 		get;
@@ -160,6 +176,7 @@ public class Hourly
 	/// <summary>
 	/// Gets the snowfall totals for the hour.
 	/// </summary>
+	/// <value>The snowfall totals for the hour.</value>
 	public Snow? Snow
 		{
 		get;
@@ -167,6 +184,7 @@ public class Hourly
 	/// <summary>
 	/// Gets the descriptive weather information.
 	/// </summary>
+	/// <value>The descriptive weather information.</value>
 	public Weather? Weather
 		{
 		get;

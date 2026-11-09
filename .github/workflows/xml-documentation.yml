@@ -1,0 +1,14 @@
+name: Strict XML documentation
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  xml-documentation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify every production API configuration
+        uses: oznetmaster/BuildAutomation/.github/actions/xml-documentation@c650afeb23c584d68580440ef0f7baaf737cdfd0

@@ -69,16 +69,19 @@ public sealed class OpenWeatherCapabilities (OpenWeatherFeatures features, int m
     /// <summary>
     /// Gets the set of OpenWeather feature flags available to the application.
     /// </summary>
+    /// <value>The set of OpenWeather feature flags available to the application.</value>
     public OpenWeatherFeatures Features { get; } = features;
 
     /// <summary>
     /// Gets the maximum number of forecast days supported by the current plan.
     /// </summary>
+    /// <value>The maximum number of forecast days supported by the current plan.</value>
     public int MaxForecastDays { get; } = maxForecastDays;
 
     /// <summary>
     /// Gets the time-step between forecast entries provided by the supported forecast endpoint.
     /// </summary>
+    /// <value>The time-step between forecast entries provided by the supported forecast endpoint.</value>
     public TimeSpan ForecastStep { get; } = forecastStep;
 
     /// <summary>
@@ -91,6 +94,7 @@ public sealed class OpenWeatherCapabilities (OpenWeatherFeatures features, int m
 	/// <summary>
 	/// Gets the capability preset for paid plans using One Call.
 	/// </summary>
+	/// <value>The capability preset for paid plans using One Call.</value>
 	public static OpenWeatherCapabilities PaidOneCall => new (
 		OpenWeatherFeatures.CurrentWeather |
 		OpenWeatherFeatures.Geocoding |
@@ -104,6 +108,7 @@ public sealed class OpenWeatherCapabilities (OpenWeatherFeatures features, int m
 	/// <summary>
 	/// Gets the capability preset for the free plan using the 5 day / 3 hour forecast endpoint.
 	/// </summary>
+	/// <value>The capability preset for the free plan using the 5 day / 3 hour forecast endpoint.</value>
 	public static OpenWeatherCapabilities Free => new (
 		OpenWeatherFeatures.CurrentWeather |
 		OpenWeatherFeatures.Geocoding |

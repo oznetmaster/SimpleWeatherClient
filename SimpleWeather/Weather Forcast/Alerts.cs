@@ -34,26 +34,32 @@ public class Alerts
 	/// <summary>
 	/// Gets the source agency issuing the alert.
 	/// </summary>
+	/// <value>The source agency issuing the alert.</value>
 	public string? SenderName { get; }
 	/// <summary>
 	/// Gets the alert event name.
 	/// </summary>
+	/// <value>The alert event name.</value>
 	public string? Event { get; }
 	/// <summary>
 	/// Gets the local start time of the alert window.
 	/// </summary>
+	/// <value>The local start time of the alert window.</value>
 	public DateTime Start { get; }
 	/// <summary>
 	/// Gets the local end time of the alert window.
 	/// </summary>
+	/// <value>The local end time of the alert window.</value>
 	public DateTime End { get; }
 	/// <summary>
 	/// Gets the textual description of the alert.
 	/// </summary>
+	/// <value>The textual description of the alert.</value>
 	public string? Description { get; }
 	/// <summary>
 	/// Gets the raw tags supplied by the API.
 	/// </summary>
+	/// <value>The raw tags supplied by the API.</value>
 	public string? Tags { get; }
 
 	private static DateTime UnixToDateTime (double unixTime)

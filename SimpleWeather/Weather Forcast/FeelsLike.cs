@@ -31,18 +31,22 @@ public class FeelsLike
 	/// <summary>
 	/// Morning feels-like temperature in Celsius.
 	/// </summary>
+	/// <value>Morning feels-like temperature in Celsius.</value>
 	public double? Morning { get; }
 	/// <summary>
 	/// Daytime feels-like temperature in Celsius.
 	/// </summary>
+	/// <value>Daytime feels-like temperature in Celsius.</value>
 	public double? Day { get; }
 	/// <summary>
 	/// Evening feels-like temperature in Celsius.
 	/// </summary>
+	/// <value>Evening feels-like temperature in Celsius.</value>
 	public double? Evening { get; }
 	/// <summary>
 	/// Night feels-like temperature in Celsius.
 	/// </summary>
+	/// <value>Night feels-like temperature in Celsius.</value>
 	public double? Night { get; }
 	}
 

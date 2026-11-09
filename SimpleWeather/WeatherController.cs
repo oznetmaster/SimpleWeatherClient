@@ -32,6 +32,7 @@ public class WeatherController : IDisposable
 	private OpenWeatherCapabilities? _capabilities;
 
 	/// <summary>The service selected for this controller. Other controllers using the same key are independent.</summary>
+	/// <value>The service selected for this controller. Other controllers using the same key are independent.</value>
 	public OpenWeatherService Service { get; }
 
 	/// <summary>
@@ -159,6 +160,13 @@ public class WeatherController : IDisposable
 		GetWeatherForecastAsync (cityName, true, stateCode, countryCode, units, cancellationToken);
 
 	/// <summary>Gets a city forecast, optionally omitting hourly data and its One Call 4.0 requests.</summary>
+	/// <param name="cityName">The city name to geocode.</param>
+	/// <param name="includeHourly">Whether to include hourly forecast data and make any additional requests needed for it.</param>
+	/// <param name="stateCode">The optional state code used to disambiguate the city.</param>
+	/// <param name="countryCode">The optional country code used to disambiguate the city.</param>
+	/// <param name="units">The OpenWeather units setting, such as metric or imperial.</param>
+	/// <param name="cancellationToken">A token used to cancel the operation.</param>
+	/// <returns>A task containing the forecast for the requested location.</returns>
 	public async Task<WeatherForecast> GetWeatherForecastAsync (string cityName, bool includeHourly, string? stateCode = null, string? countryCode = null, string units = "metric", CancellationToken cancellationToken = default)
 		{
 		try
@@ -186,6 +194,12 @@ public class WeatherController : IDisposable
 		GetWeatherForecastAsync (lat, lon, true, units, cancellationToken);
 
 	/// <summary>Gets a coordinate forecast, optionally omitting hourly data and its One Call 4.0 requests.</summary>
+	/// <param name="lat">The latitude in decimal degrees.</param>
+	/// <param name="lon">The longitude in decimal degrees.</param>
+	/// <param name="includeHourly">Whether to include hourly forecast data and make any additional requests needed for it.</param>
+	/// <param name="units">The OpenWeather units setting, such as metric or imperial.</param>
+	/// <param name="cancellationToken">A token used to cancel the operation.</param>
+	/// <returns>A task containing the forecast for the requested location.</returns>
 	public async Task<WeatherForecast> GetWeatherForecastAsync (double lat, double lon, bool includeHourly, string units = "metric", CancellationToken cancellationToken = default)
 		{
 		if (Service == OpenWeatherService.Free)

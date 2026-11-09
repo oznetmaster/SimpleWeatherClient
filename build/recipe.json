@@ -1,0 +1,100 @@
+{
+  "schema": 1,
+  "tasks": {
+    "tests-build-apps-build-library-console-desktop-and-widget": {
+      "commands": [
+        {
+          "executable": "dotnet",
+          "arguments": [
+            "build",
+            "SimpleWeather.sln",
+            "-c",
+            "Release",
+            "-p:Platform=x64"
+          ]
+        }
+      ]
+    },
+    "tests-test-run-offline-nunit-tests": {
+      "commands": [
+        {
+          "executable": "dotnet",
+          "arguments": [
+            "test",
+            "SimpleWeather.Tests/SimpleWeather.Tests.csproj",
+            "-c",
+            "Release",
+            "-f",
+            "${env:BUILD_INPUT_0}",
+            "--settings",
+            "SimpleWeather.Tests/unit.runsettings",
+            "--logger",
+            "trx;LogFileName=tests.trx",
+            "--results-directory",
+            "TestResults"
+          ]
+        }
+      ],
+      "results": [
+        "TestResults/**/*.trx"
+      ]
+    },
+    "documentation": {
+      "commands": [
+        {
+          "executable": "dotnet",
+          "arguments": [
+            "tool",
+            "restore"
+          ]
+        },
+        {
+          "executable": "dotnet",
+          "arguments": [
+            "tool",
+            "run",
+            "docfx",
+            "metadata",
+            "./docfx/docfx.json",
+            "--logLevel",
+            "Error",
+            "--property",
+            "TargetFramework=net472;Configuration=Release"
+          ]
+        },
+        {
+          "executable": "dotnet",
+          "arguments": [
+            "tool",
+            "run",
+            "docfx",
+            "build",
+            "./docfx/docfx.json",
+            "--output",
+            "./docfx-site"
+          ]
+        }
+      ],
+      "documentation": {
+        "config": "docfx/docfx.json",
+        "site": "docfx-site",
+        "title": "SimpleWeatherClient"
+      }
+    },
+    "xml-documentation": {
+      "commands": [
+        {
+          "executable": "dotnet",
+          "arguments": [
+            "--version"
+          ]
+        }
+      ]
+    }
+  },
+  "xmlDocumentation": {
+    "projects": [
+      "SimpleWeather/SimpleWeather.csproj"
+    ]
+  }
+}

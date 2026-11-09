@@ -86,34 +86,42 @@ public class WeatherForecast
 	/// <summary>
 	/// Geographical coordinates of the location (latitude)
 	/// </summary>
+	/// <value>Geographical coordinates of the location (latitude)</value>
 	public double? Latitude { get; }
 	/// <summary>
 	/// Geographical coordinates of the location (longitude)
 	/// </summary>
+	/// <value>Geographical coordinates of the location (longitude)</value>
 	public double? Longitude { get; }
 	/// <summary>
 	/// Timezone name for the requested location
 	/// </summary>
+	/// <value>Timezone name for the requested location</value>
 	public string? Timezone { get; }
 	/// <summary>
 	/// Shift in hours from UTC
 	/// </summary>
+	/// <value>Shift in hours from UTC</value>
 	public int TimezoneOffset { get; }
 	/// <summary>
 	/// Current weather data as an object
 	/// </summary>
+	/// <value>Current weather data as an object</value>
 	public Current? Current { get; }
 	/// <summary>
 	/// Hourly forecast weather data as a list of objects containing the data for each hour
 	/// </summary>
+	/// <value>Hourly forecast weather data as a list of objects containing the data for each hour</value>
 	public List<Hourly> Hourly { get; } = [];
 	/// <summary>
 	/// Daily forecast weather data as a list of objects containing the data for each day
 	/// </summary>
+	/// <value>Daily forecast weather data as a list of objects containing the data for each day</value>
 	public List<Daily> Daily { get; } = [];
 	/// <summary>
 	/// A list of objects containing National weather alerts data from major national weather warning systems
 	/// </summary>
+	/// <value>A list of objects containing National weather alerts data from major national weather warning systems</value>
 	public List<Alerts> Alerts { get; } = [];
 	}
 

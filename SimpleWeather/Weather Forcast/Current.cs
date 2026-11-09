@@ -50,6 +50,7 @@ public class Current
 	/// <summary>
 	/// Gets the timestamp of this reading converted to local time.
 	/// </summary>
+	/// <value>The timestamp of this reading converted to local time.</value>
 	public DateTime DT
 		{
 		get;
@@ -57,6 +58,7 @@ public class Current
 	/// <summary>
 	/// Gets the sunrise time associated with the reading.
 	/// </summary>
+	/// <value>The sunrise time associated with the reading.</value>
 	public DateTime Sunrise
 		{
 		get;
@@ -64,6 +66,7 @@ public class Current
 	/// <summary>
 	/// Gets the sunset time associated with the reading.
 	/// </summary>
+	/// <value>The sunset time associated with the reading.</value>
 	public DateTime Sunset
 		{
 		get;
@@ -71,6 +74,7 @@ public class Current
 	/// <summary>
 	/// Gets the ambient temperature.
 	/// </summary>
+	/// <value>The ambient temperature.</value>
 	public double? Temperature
 		{
 		get;
@@ -78,6 +82,7 @@ public class Current
 	/// <summary>
 	/// Gets the feels-like temperature that accounts for humidity and wind.
 	/// </summary>
+	/// <value>The feels-like temperature that accounts for humidity and wind.</value>
 	public double? FeelsLike
 		{
 		get;
@@ -85,6 +90,7 @@ public class Current
 	/// <summary>
 	/// Gets the sea-level atmospheric pressure in hPa.
 	/// </summary>
+	/// <value>The sea-level atmospheric pressure in hPa.</value>
 	public double? Pressure
 		{
 		get;
@@ -92,6 +98,7 @@ public class Current
 	/// <summary>
 	/// Gets the relative humidity percentage.
 	/// </summary>
+	/// <value>The relative humidity percentage.</value>
 	public double? Humidity
 		{
 		get;
@@ -99,6 +106,7 @@ public class Current
 	/// <summary>
 	/// Gets the dew point temperature.
 	/// </summary>
+	/// <value>The dew point temperature.</value>
 	public double? DewPoint
 		{
 		get;
@@ -106,6 +114,7 @@ public class Current
 	/// <summary>
 	/// Gets the cloud coverage percentage.
 	/// </summary>
+	/// <value>The cloud coverage percentage.</value>
 	public double? Clouds
 		{
 		get;
@@ -113,6 +122,7 @@ public class Current
 	/// <summary>
 	/// Gets the UV index.
 	/// </summary>
+	/// <value>The UV index.</value>
 	public double? Uvi
 		{
 		get;
@@ -120,6 +130,7 @@ public class Current
 	/// <summary>
 	/// Gets the visibility distance in meters.
 	/// </summary>
+	/// <value>The visibility distance in meters.</value>
 	public double? Visibility
 		{
 		get;
@@ -127,6 +138,7 @@ public class Current
 	/// <summary>
 	/// Gets the wind speed in meters per second.
 	/// </summary>
+	/// <value>The wind speed in meters per second.</value>
 	public double? WindSpeed
 		{
 		get;
@@ -134,6 +146,7 @@ public class Current
 	/// <summary>
 	/// Gets the wind gust speed in meters per second.
 	/// </summary>
+	/// <value>The wind gust speed in meters per second.</value>
 	public double? WindGust
 		{
 		get;
@@ -141,6 +154,7 @@ public class Current
 	/// <summary>
 	/// Gets the wind direction in meteorological degrees.
 	/// </summary>
+	/// <value>The wind direction in meteorological degrees.</value>
 	public double? WindDegree
 		{
 		get;
@@ -148,6 +162,7 @@ public class Current
 	/// <summary>
 	/// Gets the short compass representation for the wind direction.
 	/// </summary>
+	/// <value>The short compass representation for the wind direction.</value>
 	public string? WindDirectionShort
 		{
 		get;
@@ -155,6 +170,7 @@ public class Current
 	/// <summary>
 	/// Gets the long compass representation for the wind direction.
 	/// </summary>
+	/// <value>The long compass representation for the wind direction.</value>
 	public string? WindDirectionLong
 		{
 		get;
@@ -162,6 +178,7 @@ public class Current
 	/// <summary>
 	/// Gets the rainfall totals for the period.
 	/// </summary>
+	/// <value>The rainfall totals for the period.</value>
 	public Rain? Rain
 		{
 		get;
@@ -169,6 +186,7 @@ public class Current
 	/// <summary>
 	/// Gets the snowfall totals for the period.
 	/// </summary>
+	/// <value>The snowfall totals for the period.</value>
 	public Snow? Snow
 		{
 		get;
@@ -176,6 +194,7 @@ public class Current
 	/// <summary>
 	/// Gets the descriptive weather information.
 	/// </summary>
+	/// <value>The descriptive weather information.</value>
 	public Weather? Weather
 		{
 		get;
