@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "name": "SimpleWeatherClient",
+  "versionFile": "SimpleWeather/SimpleWeather.csproj",
+  "versionXPath": "/Project/PropertyGroup/Version",
+  "notesFile": "release-notes/v{version}.md",
+  "packages": [
+    {
+      "assembly": "SimpleWeather",
+      "id": "SimpleWeatherClient",
+      "frameworks": [
+        "net472",
+        "net10.0"
+      ],
+      "project": "SimpleWeather/SimpleWeather.csproj"
+    }
+  ],
+  "applications": [],
+  "documents": [
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "rawLibraries": false,
+  "libraryArchive": false
+}

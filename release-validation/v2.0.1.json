@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "version": "2.0.1",
+  "completedUtc": "2026-11-09T23:12:44.6184403Z",
+  "workstation": [
+    {
+      "configurations": [
+        "Debug",
+        "Release"
+      ],
+      "passed": 177,
+      "suite": "SimpleWeather",
+      "failed": 0,
+      "framework": "net10.0",
+      "skipped": 0
+    },
+    {
+      "configurations": [
+        "Debug",
+        "Release"
+      ],
+      "passed": 177,
+      "suite": "SimpleWeather",
+      "failed": 0,
+      "framework": "net472",
+      "skipped": 0
+    }
+  ],
+  "processor": {
+    "selectedPassed": 42.0,
+    "aggregatePassed": 374,
+    "scope": "Merged offline host with recorded resolved dependencies; fake services and credentials only",
+    "runtime": "Mono 6.12.0.107, 32-bit",
+    "firmware": "4.013.0134",
+    "failed": 0,
+    "skipped": 0
+  },
+  "validatedSourceFiles": [
+    {
+      "Path": "SimpleWeather.Tests/CapabilityConcurrencyTests.cs",
+      "Sha256": "2201737C4578D571BE8205D3DE68387EAF54A008697B255A09458FE31749187F"
+    },
+    {
+      "Path": "SimpleWeather.Tests/FrameworkTaskWaitExtensions.cs",
+      "Sha256": "98180A386F2BF1A7196BB346A008BCB9A75F80F36525E8BC9CB73F44D67BE28D"
+    },
+    {
+      "Path": "SimpleWeather.Tests/WeatherControllerTests.cs",
+      "Sha256": "4AD0076EF1BB4895EC264FAE8158831BD67CE519C74D2C81CF6214044EAC7F99"
+    },
+    {
+      "Path": "SimpleWeather/WeatherController.cs",
+      "Sha256": "0C6DD7A7B14BF1FE3730A9C76F3A3441825715B9DCFE05A495ADF9752D709303"
+    }
+  ],
+  "publicationChanges": "Version metadata, documentation and shared publication tooling added after validation; runtime source hashes retained."
+}
