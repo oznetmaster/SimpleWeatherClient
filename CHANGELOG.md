@@ -2,6 +2,10 @@
 
 This changelog records shipped features, fixes, compatibility and runtime dependency changes. See [development and validation history](DEVELOPMENT-HISTORY.md) for tests, CI, build tooling and work not yet released.
 
+## Unreleased
+
+- Future binary library releases include separate portable-PDB symbol packages on GitHub and NuGet, verified against the matching Release DLLs for each framework.
+
 ## [2.0.1](https://github.com/oznetmaster/SimpleWeatherClient/releases/tag/v2.0.1) — 2026-11-10
 
 - Capability probes are serialized per controller. Temporary service failures return fallback capabilities without caching a subscription downgrade, allowing a later successful probe to establish the real capabilities. Confirmed capabilities are retained, and late probes cannot repopulate the cache after disposal.
